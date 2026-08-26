@@ -1,49 +1,118 @@
 import { practice } from '../data/practice'
 
-const careItems = [
+// Patient-friendly conditions and services for heart rhythm care.
+
+const services = [
   {
-    title: 'Cardiology consultation',
-    body: `Office visits with ${practice.physician} for cardiology and heart rhythm concerns.`,
+    title: 'Cardiology visits',
+    body: `Office visits with ${practice.physician} for heart and heart rhythm concerns.`,
   },
   {
     title: 'Heart rhythm evaluation',
-    body: 'Evaluation of palpitations, irregular heartbeat, and other rhythm-related symptoms.',
+    body: 'Evaluation of palpitations, irregular heartbeat, and related symptoms.',
   },
   {
-    title: 'Cardiac electrophysiology care',
-    body: 'Focused assessment and treatment planning for heart rhythm disorders.',
+    title: 'Treatment planning',
+    body: 'Care planning for heart rhythm disorders after evaluation.',
   },
+] as const
+
+const primaryConditions = [
+  {
+    title: 'Irregular heartbeat',
+    body: 'A heartbeat that feels uneven, skipped, or out of rhythm.',
+  },
+  {
+    title: 'Palpitations',
+    body: 'A feeling that the heart is racing, fluttering, or skipping beats.',
+  },
+  {
+    title: 'Fast or slow heart rate',
+    body: 'A pulse that seems too fast, too slow, or hard to explain.',
+  },
+] as const
+
+const moreConditions = [
+  'Atrial fibrillation (AFib) and other named rhythm disorders, as referred',
+  'Lightheaded or fainting spells that may be related to heart rhythm',
+  'An irregular heartbeat found on a test, monitor, or hospital visit',
+  'Heart rhythm questions after a referral from another doctor',
 ] as const
 
 export function Care() {
   return (
     <section id="care" className="scroll-mt-28 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
-        <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-            Heart rhythm care
-          </p>
-          <h2 className="mt-3 font-serif text-3xl tracking-tight text-navy sm:text-4xl">
-            Thoughtful care for heart rhythm disorders
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted">
-            {practice.brandName} provides cardiology care centered on cardiac
-            electrophysiology and the evaluation and treatment of heart rhythm
-            disorders at our office in Reseda.
-          </p>
-        </div>
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <p className="text-base font-semibold text-gold">Heart rhythm care</p>
+        <h2 className="mt-3 max-w-3xl font-serif text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+          Conditions and services we help with
+        </h2>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
+          {practice.brandName} provides cardiology care focused on heart rhythm
+          disorders at our office in Reseda.
+        </p>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {careItems.map((item) => (
-            <article
+        <h3 className="mt-12 font-serif text-2xl font-semibold text-navy">
+          Common heart rhythm concerns
+        </h3>
+        <ul className="mt-6 grid gap-4 md:grid-cols-3">
+          {primaryConditions.map((item) => (
+            <li
               key={item.title}
-              className="rounded-2xl border border-navy/8 bg-mist/70 p-7"
+              className="rounded-2xl border border-navy/10 bg-mist px-6 py-6"
             >
-              <div className="mb-5 h-px w-10 bg-gold-soft" />
-              <h3 className="font-serif text-xl text-navy">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
-            </article>
+              <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
+              <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>
+            </li>
           ))}
+        </ul>
+
+        <details className="mt-6 rounded-2xl border-2 border-navy/15 bg-white">
+          <summary className="flex min-h-16 cursor-pointer items-center justify-between gap-4 px-5 py-3 text-lg font-semibold text-navy">
+            <span className="details-closed">View More Conditions We Evaluate</span>
+            <span className="details-open">Hide Additional Conditions</span>
+          </summary>
+          <div className="border-t border-navy/10 px-5 py-5">
+            <ul className="list-disc space-y-4 pl-6 text-lg leading-relaxed text-navy">
+              {moreConditions.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p className="mt-5 text-lg leading-relaxed text-navy">
+              If you are not sure whether your concern belongs here, call the
+              office. The staff can help you take the next step.
+            </p>
+          </div>
+        </details>
+
+        <h3 className="mt-14 font-serif text-2xl font-semibold text-navy">
+          How we can help
+        </h3>
+        <ul className="mt-6 grid gap-4 md:grid-cols-3">
+          {services.map((item) => (
+            <li
+              key={item.title}
+              className="rounded-2xl border border-navy/10 bg-mist px-6 py-6"
+            >
+              <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
+              <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <a
+            href={practice.phoneTel}
+            className="inline-flex min-h-14 items-center justify-center rounded-full bg-navy px-8 text-lg font-semibold text-white hover:bg-navy-soft"
+          >
+            Call {practice.phoneDisplay}
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-navy px-8 text-lg font-semibold text-navy"
+          >
+            Contact the Office
+          </a>
         </div>
       </div>
     </section>

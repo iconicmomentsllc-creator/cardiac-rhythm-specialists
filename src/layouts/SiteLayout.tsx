@@ -35,7 +35,7 @@ export function SiteLayout() {
       </a>
       <p
         role="note"
-        className="border-b border-navy/15 bg-mist px-4 py-2.5 text-center text-sm text-ink"
+        className="border-b border-navy/15 bg-mist px-4 py-3 text-center text-base text-navy"
       >
         <span className="font-semibold text-navy">Emergency: </span>
         If this is a medical emergency, call 911. For office matters, call{' '}

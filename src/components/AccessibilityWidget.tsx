@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useAccessibility } from '../context/AccessibilityContext'
 
 export function AccessibilityWidget() {
@@ -29,8 +30,20 @@ export function AccessibilityWidget() {
     buttonRef.current?.focus()
   }
 
-  return (
-    <div className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-4 z-50 sm:left-auto sm:right-6">
+  const widget = (
+    <>
+      <button
+        ref={buttonRef}
+        type="button"
+        className="a11y-fab"
+        aria-label="Accessibility Options"
+        aria-expanded={open}
+        aria-haspopup="dialog"
+        onClick={() => setOpen(true)}
+      >
+        <span aria-hidden="true">♿</span>
+      </button>
+
       <dialog
         ref={dialogRef}
         aria-labelledby={titleId}
@@ -38,18 +51,18 @@ export function AccessibilityWidget() {
         onClose={handleClose}
       >
         <div className="flex items-start justify-between gap-3">
-          <h2 id={titleId} className="font-serif text-xl text-navy">
+          <h2 id={titleId} className="font-serif text-xl font-semibold text-navy">
             Accessibility Options
           </h2>
           <button
             type="button"
-            className="inline-flex min-h-12 items-center rounded-xl border-2 border-navy/20 bg-cream px-3 text-sm font-semibold text-navy"
+            className="inline-flex min-h-14 items-center rounded-xl border-2 border-navy/20 bg-cream px-4 text-base font-semibold text-navy"
             onClick={() => dialogRef.current?.close()}
           >
             Close
           </button>
         </div>
-        <p className="mt-2 text-sm text-muted">
+        <p className="mt-3 text-base leading-relaxed text-navy">
           These tools are optional. You can use this website with a keyboard
           and screen reader without opening this panel.
         </p>
@@ -92,21 +105,11 @@ export function AccessibilityWidget() {
           </button>
         </div>
       </dialog>
-
-      <button
-        ref={buttonRef}
-        type="button"
-        className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-navy/20 bg-white text-2xl text-navy shadow-[0_8px_24px_rgba(20,32,51,0.12)]"
-        aria-label="Accessibility Options"
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        onClick={() => setOpen(true)}
-      >
-        <span aria-hidden="true">♿</span>
-      </button>
-    </div>
+    </>
   )
+
+  return createPortal(widget, document.body)
 }
 
 const controlClass =
-  'min-h-12 rounded-xl border-2 border-navy/20 bg-cream px-3 text-left text-sm font-semibold text-navy'
+  'min-h-14 rounded-xl border-2 border-navy/20 bg-cream px-3 text-left text-base font-semibold text-navy'

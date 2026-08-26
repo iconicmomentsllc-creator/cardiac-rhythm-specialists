@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import { About } from '../components/About'
 import { Care } from '../components/Care'
 import { Contact } from '../components/Contact'
+import { Education } from '../components/Education'
 import { Hero } from '../components/Hero'
 import { PatientInfo } from '../components/PatientInfo'
+import { QuickStart } from '../components/QuickStart'
 
 export function HomePage() {
   useEffect(() => {
@@ -13,8 +15,10 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <QuickStart />
       <About />
       <Care />
+      <Education />
       <PatientInfo />
       <Contact />
     </>

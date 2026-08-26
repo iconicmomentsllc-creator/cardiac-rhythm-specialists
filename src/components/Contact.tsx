@@ -54,7 +54,7 @@ export function Contact() {
   function fieldError(field: Field) {
     const errorId = `${ids}-${field}-error`
     return errors[field] ? (
-      <p id={errorId} className="mt-1 text-sm font-medium text-navy" role="alert">
+      <p id={errorId} className="mt-1 text-base font-medium text-navy" role="alert">
         {errors[field]}
       </p>
     ) : null
@@ -72,18 +72,16 @@ export function Contact() {
     <section id="contact" className="scroll-mt-28 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-            Contact
-          </p>
-          <h2 className="mt-3 font-serif text-3xl tracking-tight text-navy sm:text-4xl">
-            Visit our Reseda office
+          <p className="text-base font-semibold text-gold">Contact the office</p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+            Phone, address, hours, and directions
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted">
-            {practice.legalName} is located in Reseda, California. For the fastest
-            response, call{' '}
+          <p className="mt-4 text-lg leading-relaxed text-navy">
+            {practice.legalName} is located in Reseda, California. The fastest way
+            to reach us is to call{' '}
             <a
               href={practice.phoneTel}
-              className="font-semibold text-navy underline underline-offset-4"
+              className="font-semibold underline underline-offset-4"
             >
               {practice.phoneDisplay}
             </a>
@@ -94,9 +92,17 @@ export function Contact() {
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">
             <div className="rounded-2xl border border-navy/10 bg-cream p-6">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-                Office address
-              </h3>
+              <h3 className="text-base font-semibold text-gold">Phone</h3>
+              <a
+                href={practice.phoneTel}
+                className="mt-4 inline-flex min-h-14 items-center rounded-full bg-navy px-6 text-lg font-semibold text-white hover:bg-navy-soft"
+              >
+                Call {practice.phoneDisplay}
+              </a>
+            </div>
+
+            <div className="rounded-2xl border border-navy/10 bg-cream p-6">
+              <h3 className="text-base font-semibold text-gold">Office address</h3>
               <address className="mt-3 not-italic text-lg leading-relaxed text-navy">
                 {practice.legalName}
                 <br />
@@ -108,37 +114,23 @@ export function Contact() {
                 href={practice.directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white hover:bg-navy-soft"
+                className="mt-5 inline-flex min-h-14 items-center rounded-full bg-navy px-6 text-lg font-semibold text-white hover:bg-navy-soft"
               >
-                Get Directions to Our Reseda Office
-                <span className="sr-only"> (opens in a new tab)</span>
+                Get Directions
+                <span className="sr-only"> to our Reseda office (opens in a new tab)</span>
               </a>
             </div>
 
             <div className="rounded-2xl border border-navy/10 bg-cream p-6">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-                Phone
-              </h3>
-              <a
-                href={practice.phoneTel}
-                className="mt-3 block min-h-12 font-serif text-2xl text-navy"
-              >
-                Call {practice.phoneDisplay}
-              </a>
-            </div>
-
-            <div className="rounded-2xl border border-navy/10 bg-cream p-6">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-                Office hours
-              </h3>
+              <h3 className="text-base font-semibold text-gold">Office hours</h3>
               <div className="mt-4 grid gap-5 sm:grid-cols-2">
                 <div>
-                  <p className="font-semibold text-navy">{practice.weekdayLabel}</p>
-                  <p className="mt-1 text-muted">{practice.weekdayHours}</p>
+                  <p className="text-lg font-semibold text-navy">{practice.weekdayLabel}</p>
+                  <p className="mt-1 text-lg text-navy">{practice.weekdayHours}</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-navy">{practice.weekendLabel}</p>
-                  <p className="mt-1 text-muted">{practice.weekendHours}</p>
+                  <p className="text-lg font-semibold text-navy">{practice.weekendLabel}</p>
+                  <p className="mt-1 text-lg text-navy">{practice.weekendHours}</p>
                 </div>
               </div>
             </div>
@@ -155,17 +147,17 @@ export function Contact() {
           </div>
 
           <div className="rounded-2xl border border-navy/10 bg-white p-6 sm:p-8">
-            <h3 className="font-serif text-2xl text-navy">Send a message</h3>
+            <h3 className="font-serif text-2xl font-semibold text-navy">Send a message</h3>
             <p
               id={warningId}
               role="note"
-              className="mt-3 rounded-xl border-2 border-navy/20 bg-cream px-4 py-3 text-sm leading-relaxed text-ink"
+              className="mt-3 rounded-xl border-2 border-navy/20 bg-cream px-4 py-3 text-base leading-relaxed text-navy"
             >
               Please do not use this form for medical emergencies or to submit
               sensitive medical information. If you are experiencing a medical
               emergency, call 911.
             </p>
-            <p className="mt-3 text-sm text-muted">
+            <p className="mt-3 text-base leading-relaxed text-navy">
               This form is not a secure channel for protected health information.
               Please call the office for appointments and other requests.
             </p>
@@ -177,10 +169,12 @@ export function Contact() {
                 aria-live="polite"
                 className="mt-8 rounded-xl border-2 border-navy/20 bg-mist p-5"
               >
-                <p className="font-semibold text-navy">Thank you. Your request was received on this page.</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <p className="text-lg font-semibold text-navy">
+                  Thank you. Your request was received on this page.
+                </p>
+                <p className="mt-2 text-lg leading-relaxed text-navy">
                   Please call{' '}
-                  <a href={practice.phoneTel} className="font-semibold text-navy underline underline-offset-4">
+                  <a href={practice.phoneTel} className="font-semibold underline underline-offset-4">
                     {practice.phoneDisplay}
                   </a>{' '}
                   to complete your request. This form does not send information to the office.
@@ -189,7 +183,7 @@ export function Contact() {
             ) : (
               <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate aria-describedby={warningId}>
                 <div>
-                  <label htmlFor={`${ids}-name`} className="block text-sm font-semibold text-navy">
+                  <label htmlFor={`${ids}-name`} className="block text-base font-semibold text-navy">
                     Full name (required)
                   </label>
                   <input
@@ -201,12 +195,12 @@ export function Contact() {
                     aria-describedby={describedBy('name')}
                     name="name"
                     autoComplete="name"
-                    className="mt-1.5 min-h-12 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-base text-navy"
+                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
                   />
                   {fieldError('name')}
                 </div>
                 <div>
-                  <label htmlFor={`${ids}-phone`} className="block text-sm font-semibold text-navy">
+                  <label htmlFor={`${ids}-phone`} className="block text-base font-semibold text-navy">
                     Phone (required)
                   </label>
                   <input
@@ -219,12 +213,12 @@ export function Contact() {
                     aria-describedby={describedBy('phone')}
                     name="phone"
                     autoComplete="tel"
-                    className="mt-1.5 min-h-12 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-base text-navy"
+                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
                   />
                   {fieldError('phone')}
                 </div>
                 <div>
-                  <label htmlFor={`${ids}-email`} className="block text-sm font-semibold text-navy">
+                  <label htmlFor={`${ids}-email`} className="block text-base font-semibold text-navy">
                     Email (required)
                   </label>
                   <input
@@ -237,12 +231,12 @@ export function Contact() {
                     aria-describedby={describedBy('email')}
                     name="email"
                     autoComplete="email"
-                    className="mt-1.5 min-h-12 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-base text-navy"
+                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
                   />
                   {fieldError('email')}
                 </div>
                 <div>
-                  <label htmlFor={`${ids}-topic`} className="block text-sm font-semibold text-navy">
+                  <label htmlFor={`${ids}-topic`} className="block text-base font-semibold text-navy">
                     How can we help? (required)
                   </label>
                   <select
@@ -254,7 +248,7 @@ export function Contact() {
                     aria-required="true"
                     aria-invalid={errors.topic ? true : undefined}
                     aria-describedby={describedBy('topic')}
-                    className="mt-1.5 min-h-12 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-base text-navy"
+                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
                   >
                     <option value="" disabled>
                       Select a topic
@@ -266,7 +260,7 @@ export function Contact() {
                   {fieldError('topic')}
                 </div>
                 <div>
-                  <label htmlFor={`${ids}-message`} className="block text-sm font-semibold text-navy">
+                  <label htmlFor={`${ids}-message`} className="block text-base font-semibold text-navy">
                     Message (optional)
                   </label>
                   <textarea
@@ -274,17 +268,17 @@ export function Contact() {
                     name="message"
                     rows={4}
                     aria-describedby={`${ids}-message-hint`}
-                    className="mt-1.5 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 py-3 text-base text-navy"
+                    className="mt-1.5 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 py-3 text-lg text-navy"
                   />
-                  <p id={`${ids}-message-hint`} className="mt-1 text-sm text-muted">
+                  <p id={`${ids}-message-hint`} className="mt-1 text-base text-navy">
                     Do not include sensitive medical information.
                   </p>
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-navy px-5 text-sm font-semibold text-white hover:bg-navy-soft"
+                  className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-navy px-5 text-lg font-semibold text-white hover:bg-navy-soft"
                 >
-                  Submit request
+                  Send Message to the Office
                 </button>
               </form>
             )}

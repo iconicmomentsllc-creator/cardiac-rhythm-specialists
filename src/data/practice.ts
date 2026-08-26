@@ -9,7 +9,8 @@ export const practice = {
   brandName: 'Cardiac Rhythm Specialists',
   physician: 'Leo Polosajian, MD',
   physicianInformal: 'Dr. Leo Polosajian',
-  specialty: 'Cardiology',
+  specialty: 'Cardiology & Electrophysiology',
+  photoSrc: '/dr-leo-polosajian.jpg',
   streetAddress,
   city,
   state,
@@ -31,5 +32,24 @@ export const practice = {
     'Medical records',
     'Insurance questions',
     'Procedure instructions',
+  ],
+  youtubeName: 'Dr. Leo Polosajian',
+  youtubeHandle: '@dr.leopolosajian6474',
+  youtubeUrl: 'https://www.youtube.com/@dr.leopolosajian6474',
+  instagramHandle: '@drleopolosaijan',
+  instagramUrl: 'https://www.instagram.com/drleopolosaijan/',
+  featuredVideos: [
+    {
+      id: 'dwrHQzGXZr0',
+      title: 'What is a pacemaker?',
+    },
+    {
+      id: 'V-vxTgyBdgw',
+      title: 'How does a pacemaker know when to pace the heart?',
+    },
+    {
+      id: 'q8HWorPtGTs',
+      title: 'What are the most common heart conditions?',
+    },
   ],
 } as const
