@@ -69,11 +69,11 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-28 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+    <section id="contact" className="scroll-mt-28 border-t border-navy/10 bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <div className="max-w-2xl">
-          <p className="text-base font-semibold text-gold">Contact the office</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+          <p className="section-label">Contact the office</p>
+          <h2 className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
             Phone, address, hours, and directions
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-navy">
@@ -91,17 +91,14 @@ export function Contact() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">
-            <div className="rounded-2xl border border-navy/10 bg-cream p-6">
+            <div className="rounded-2xl border border-navy/10 bg-white p-6">
               <h3 className="text-base font-semibold text-gold">Phone</h3>
-              <a
-                href={practice.phoneTel}
-                className="mt-4 inline-flex min-h-14 items-center rounded-full bg-navy px-6 text-lg font-semibold text-white hover:bg-navy-soft"
-              >
+              <a href={practice.phoneTel} className="btn btn-primary mt-4">
                 Call {practice.phoneDisplay}
               </a>
             </div>
 
-            <div className="rounded-2xl border border-navy/10 bg-cream p-6">
+            <div className="rounded-2xl border border-navy/10 bg-white p-6">
               <h3 className="text-base font-semibold text-gold">Office address</h3>
               <address className="mt-3 not-italic text-lg leading-relaxed text-navy">
                 {practice.legalName}
@@ -114,14 +111,14 @@ export function Contact() {
                 href={practice.directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex min-h-14 items-center rounded-full bg-navy px-6 text-lg font-semibold text-white hover:bg-navy-soft"
+                className="btn btn-primary mt-5"
               >
                 Get Directions
                 <span className="sr-only"> to our Reseda office (opens in a new tab)</span>
               </a>
             </div>
 
-            <div className="rounded-2xl border border-navy/10 bg-cream p-6">
+            <div className="rounded-2xl border border-navy/10 bg-white p-6">
               <h3 className="text-base font-semibold text-gold">Office hours</h3>
               <div className="mt-4 grid gap-5 sm:grid-cols-2">
                 <div>
@@ -151,7 +148,7 @@ export function Contact() {
             <p
               id={warningId}
               role="note"
-              className="mt-3 rounded-xl border-2 border-navy/20 bg-cream px-4 py-3 text-base leading-relaxed text-navy"
+              className="mt-3 rounded-xl border-2 border-navy/20 bg-white px-4 py-3 text-base leading-relaxed text-navy"
             >
               Please do not use this form for medical emergencies or to submit
               sensitive medical information. If you are experiencing a medical
@@ -167,7 +164,7 @@ export function Contact() {
                 ref={successRef}
                 tabIndex={-1}
                 aria-live="polite"
-                className="mt-8 rounded-xl border-2 border-navy/20 bg-mist p-5"
+                className="mt-8 rounded-xl border-2 border-navy/20 bg-white p-5"
               >
                 <p className="text-lg font-semibold text-navy">
                   Thank you. Your request was received on this page.
@@ -195,7 +192,7 @@ export function Contact() {
                     aria-describedby={describedBy('name')}
                     name="name"
                     autoComplete="name"
-                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
+                    className="site-input mt-1.5"
                   />
                   {fieldError('name')}
                 </div>
@@ -213,7 +210,7 @@ export function Contact() {
                     aria-describedby={describedBy('phone')}
                     name="phone"
                     autoComplete="tel"
-                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
+                    className="site-input mt-1.5"
                   />
                   {fieldError('phone')}
                 </div>
@@ -231,7 +228,7 @@ export function Contact() {
                     aria-describedby={describedBy('email')}
                     name="email"
                     autoComplete="email"
-                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
+                    className="site-input mt-1.5"
                   />
                   {fieldError('email')}
                 </div>
@@ -248,7 +245,7 @@ export function Contact() {
                     aria-required="true"
                     aria-invalid={errors.topic ? true : undefined}
                     aria-describedby={describedBy('topic')}
-                    className="mt-1.5 min-h-14 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 text-lg text-navy"
+                    className="site-input mt-1.5"
                   >
                     <option value="" disabled>
                       Select a topic
@@ -268,7 +265,7 @@ export function Contact() {
                     name="message"
                     rows={4}
                     aria-describedby={`${ids}-message-hint`}
-                    className="mt-1.5 w-full rounded-lg border-2 border-navy/20 bg-cream px-3 py-3 text-lg text-navy"
+                    className="site-input mt-1.5 min-h-32 py-3"
                   />
                   <p id={`${ids}-message-hint`} className="mt-1 text-base text-navy">
                     Do not include sensitive medical information.
@@ -276,7 +273,7 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-navy px-5 text-lg font-semibold text-white hover:bg-navy-soft"
+                  className="btn btn-primary w-full"
                 >
                   Send Message to the Office
                 </button>

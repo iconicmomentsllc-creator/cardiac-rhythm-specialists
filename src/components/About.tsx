@@ -21,27 +21,27 @@ const credentials = [
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-28 bg-cream">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+    <section id="about" className="scroll-mt-28 border-t border-navy/10 bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
-            <figure className="mx-auto max-w-sm overflow-hidden rounded-2xl border border-navy/10 bg-white lg:max-w-none">
+            <figure className="mx-auto w-full max-w-[18.5rem] overflow-hidden rounded-2xl border border-navy/10 bg-white lg:mx-0">
               <img
                 src={practice.photoSrc}
                 alt="Leo Polosajian, MD"
                 width={170}
                 height={226}
-                className="h-auto w-full object-cover object-[center_20%]"
+                className="aspect-[170/226] h-auto w-full object-cover object-[center_18%]"
               />
             </figure>
           </div>
 
           <div className="lg:col-span-7">
-            <p className="text-base font-semibold text-gold">About Dr. Polosajian</p>
-            <h2 className="mt-3 font-serif text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+            <p className="section-label">About Dr. Polosajian</p>
+            <h2 className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
               {practice.physician} is a cardiologist and electrophysiologist
             </h2>
-            <div className="mt-6 space-y-4 text-lg leading-relaxed text-navy">
+            <div className="mt-6 max-w-2xl space-y-4 text-lg leading-relaxed text-navy">
               <p>
                 Patients are seen by {practice.physician} at {practice.legalName} in
                 Reseda, California.
@@ -59,7 +59,7 @@ export function About() {
             <h3 className="mt-10 font-serif text-2xl font-semibold text-navy">
               Practice information
             </h3>
-            <p className="mt-3 text-lg leading-relaxed text-navy">
+            <p className="mt-3 max-w-2xl text-lg leading-relaxed text-navy">
               Verified information about Dr. Polosajian is listed below. Additional
               training details can be confirmed by calling the office.
             </p>
@@ -75,10 +75,7 @@ export function About() {
               ))}
             </ul>
 
-            <a
-              href={practice.phoneTel}
-              className="mt-8 inline-flex min-h-14 items-center rounded-full bg-navy px-8 text-lg font-semibold text-white hover:bg-navy-soft"
-            >
+            <a href={practice.phoneTel} className="btn btn-primary mt-8">
               Call {practice.phoneDisplay}
             </a>
           </div>

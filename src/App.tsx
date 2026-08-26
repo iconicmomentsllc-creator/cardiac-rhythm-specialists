@@ -7,9 +7,11 @@ import { PrivacyPage } from './pages/PrivacyPage'
 import { TermsPage } from './pages/TermsPage'
 
 function App() {
+  const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
   return (
     <AccessibilityProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename || undefined}>
         <Routes>
           <Route element={<SiteLayout />}>
             <Route path="/" element={<HomePage />} />

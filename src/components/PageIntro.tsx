@@ -20,9 +20,9 @@ export function PageIntro({
   }, [documentTitle])
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
-      <p className="text-base font-semibold text-gold">{eyebrow}</p>
-      <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-navy">
+    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+      <p className="section-label">{eyebrow}</p>
+      <h1 className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
         {title}
       </h1>
       <div className="mt-8 space-y-5 text-lg leading-relaxed text-navy">

@@ -6,6 +6,7 @@ import { Logo } from './Logo'
 const navItems = [
   { hash: 'about', label: 'About' },
   { hash: 'care', label: 'Heart Rhythm Care' },
+  { hash: 'videos', label: 'Videos' },
   { hash: 'patient-information', label: 'Patient Information' },
   { hash: 'contact', label: 'Contact' },
 ] as const
@@ -35,7 +36,7 @@ export function Header() {
   }, [open])
 
   function sectionHref(hash: string) {
-    return onHome ? `#${hash}` : `/#${hash}`
+    return onHome ? `#${hash}` : `${import.meta.env.BASE_URL}#${hash}`
   }
 
   function closeMenu() {
@@ -60,7 +61,7 @@ export function Header() {
               <a
                 key={item.hash}
                 href={sectionHref(item.hash)}
-                className="inline-flex min-h-12 items-center text-base font-semibold text-navy"
+                className="inline-flex min-h-12 items-center text-base font-semibold text-navy hover:underline hover:decoration-gold hover:underline-offset-4"
               >
                 {item.label}
               </a>
@@ -69,23 +70,23 @@ export function Header() {
 
           <a
             href={practice.phoneTel}
-            className="hidden min-h-14 items-center rounded-full bg-navy px-5 text-base font-semibold text-white hover:bg-navy-soft xl:inline-flex"
+            className="btn btn-primary hidden px-5 text-base max-xl:hidden xl:inline-flex"
           >
             Call {practice.phoneDisplay}
           </a>
         </div>
 
-        <div className="mt-3 flex items-center gap-3 xl:hidden">
+        <div className="mt-3 flex items-stretch gap-3 xl:hidden">
           <a
             href={practice.phoneTel}
-            className="inline-flex min-h-14 flex-1 items-center justify-center rounded-full bg-navy px-4 text-base font-semibold text-white hover:bg-navy-soft"
+            className="btn btn-primary min-w-0 flex-1 px-3 text-base"
           >
             Call {practice.phoneDisplay}
           </a>
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex min-h-14 min-w-24 items-center justify-center rounded-full border-2 border-navy/25 px-5 text-base font-semibold text-navy"
+            className="btn btn-secondary shrink-0 px-4 text-base"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -105,7 +106,7 @@ export function Header() {
             <a
               key={item.hash}
               href={sectionHref(item.hash)}
-              className="flex min-h-14 items-center rounded-xl px-3 text-lg font-semibold text-navy"
+              className="flex min-h-14 items-center rounded-xl px-3 text-lg font-semibold text-navy hover:bg-cream"
               onClick={closeMenu}
             >
               {item.label}
@@ -114,7 +115,7 @@ export function Header() {
         </nav>
         <button
           type="button"
-          className="mt-4 inline-flex min-h-14 w-full items-center justify-center rounded-full border-2 border-navy/25 text-lg font-semibold text-navy"
+          className="btn btn-secondary mt-4 w-full"
           onClick={() => {
             closeMenu()
             menuButtonRef.current?.focus()

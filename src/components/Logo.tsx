@@ -17,10 +17,10 @@ export function Logo() {
         />
       </svg>
       <span className="min-w-0 text-left leading-snug">
-        <span className="block font-serif text-[0.95rem] font-semibold tracking-tight text-navy sm:text-lg">
+        <span className="block font-serif text-base font-semibold tracking-tight text-navy sm:text-lg">
           Cardiac Rhythm Specialists, Inc.
         </span>
-        <span className="mt-0.5 block text-sm font-semibold text-navy">
+        <span className="mt-0.5 block text-[0.95rem] font-semibold leading-snug text-navy sm:text-base">
           Leo Polosajian, MD — Cardiology & Electrophysiology
         </span>
       </span>

@@ -18,10 +18,10 @@ function InstagramIcon() {
 
 export function Education() {
   return (
-    <section id="videos" className="scroll-mt-28 bg-cream">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <p className="text-base font-semibold text-gold">Videos from Dr. Polosajian</p>
-        <h2 className="mt-3 max-w-3xl font-serif text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+    <section id="videos" className="scroll-mt-28 border-t border-navy/10 bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+        <p className="section-label">Videos from Dr. Polosajian</p>
+        <h2 className="mt-3 max-w-3xl font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
           Videos &amp; Patient Education
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
@@ -29,11 +29,13 @@ export function Education() {
           videos from Leo Polosajian, MD.
         </p>
 
-        <ul className="mt-10 grid gap-8 lg:grid-cols-3">
+        <ul className="mt-10 grid items-stretch gap-10 lg:grid-cols-3 lg:gap-8">
           {practice.featuredVideos.map((video) => (
-            <li key={video.id}>
-              <h3 className="text-xl font-semibold leading-snug text-navy">{video.title}</h3>
-              <div className="relative mt-4 aspect-video overflow-hidden rounded-2xl border border-navy/10 bg-navy">
+            <li key={video.id} className="flex min-w-0 flex-col">
+              <h3 className="video-title shrink-0 text-xl font-semibold leading-snug text-navy">
+                {video.title}
+              </h3>
+              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
                 <iframe
                   title={`Educational video from Leo Polosajian, MD: ${video.title}`}
                   src={`https://www.youtube.com/embed/${video.id}?rel=0`}
@@ -52,19 +54,19 @@ export function Education() {
           href={practice.youtubeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-10 inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-navy px-8 text-lg font-semibold text-white hover:bg-navy-soft"
+          className="btn btn-primary mt-10 gap-3"
         >
           <YouTubeIcon />
           Watch More on YouTube
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
 
-        <div className="mt-12 rounded-2xl border border-navy/10 bg-white px-6 py-8 sm:px-8">
+        <div className="mt-14 max-w-2xl">
           <h3 className="font-serif text-2xl font-semibold text-navy">
             Follow Dr. Leo on Instagram
           </h3>
           <p className="mt-3 text-xl font-semibold text-navy">{practice.instagramHandle}</p>
-          <p className="mt-3 max-w-2xl text-lg leading-relaxed text-navy">
+          <p className="mt-3 text-lg leading-relaxed text-navy">
             See additional heart-health education from {practice.physician} on
             Instagram.
           </p>
@@ -72,7 +74,7 @@ export function Education() {
             href={practice.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-navy px-8 text-lg font-semibold text-white hover:bg-navy-soft"
+            className="btn btn-primary mt-6 gap-3"
           >
             <InstagramIcon />
             View Instagram
