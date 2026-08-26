@@ -3,8 +3,10 @@ import { practice } from '../data/practice'
 export function Hero() {
   return (
     <section id="home" className="bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-        <p className="section-label">{practice.legalName}</p>
+      <div className="mx-auto max-w-[1280px] px-4 pt-10 pb-16 sm:px-6 sm:pt-12 sm:pb-20 lg:pt-14 lg:pb-20">
+        <p className="section-label uppercase tracking-[0.08em]">
+          Cardiac Electrophysiology
+        </p>
         <h1 className="mt-4 max-w-3xl font-serif text-[clamp(2.25rem,5vw,3.25rem)] font-semibold tracking-tight text-navy lg:leading-[1.15]">
           Specialized Care for Your Heart&apos;s Rhythm
         </h1>
