@@ -130,10 +130,23 @@ summary {
   text-underline-offset: 0.25rem;
 }
 
-.btn-text:hover {
-  color: var(--color-navy);
-  text-decoration-color: var(--color-gold);
-}
+  .btn-text:hover {
+    color: var(--color-navy);
+    text-decoration-color: var(--color-gold);
+  }
+
+  .help-card {
+    color: var(--color-navy);
+  }
+
+  .help-card:hover {
+    border-color: var(--color-gold);
+  }
+
+  .help-card:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
 
 .site-input {
   min-height: 3.5rem;

@@ -4,8 +4,9 @@ import { Care } from '../components/Care'
 import { Contact } from '../components/Contact'
 import { Education } from '../components/Education'
 import { Hero } from '../components/Hero'
+import { HowCanWeHelp } from '../components/HowCanWeHelp'
+import { MeetPhysician } from '../components/MeetPhysician'
 import { PatientInfo } from '../components/PatientInfo'
-import { QuickStart } from '../components/QuickStart'
 
 export function HomePage() {
   useEffect(() => {
@@ -15,7 +16,8 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <QuickStart />
+      <MeetPhysician />
+      <HowCanWeHelp />
       <About />
       <Care />
       <Education />
