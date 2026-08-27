@@ -2,7 +2,7 @@ import { practice } from '../data/practice'
 
 export function Hero() {
   return (
-    <section id="home" className="bg-white">
+    <section id="home" className="scroll-mt-28 bg-white">
       <div className="mx-auto max-w-[1280px] px-4 pt-10 pb-16 sm:px-6 sm:pt-12 sm:pb-20 lg:pt-14 lg:pb-20">
         <p className="section-label uppercase tracking-[0.08em]">
           Cardiac Electrophysiology

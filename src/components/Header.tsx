@@ -50,6 +50,22 @@ export function Header() {
     return () => media.removeEventListener('change', onChange)
   }, [])
 
+  useEffect(() => {
+    const main = document.getElementById('main')
+    const footer = document.querySelector('footer')
+    if (open) {
+      main?.setAttribute('inert', '')
+      footer?.setAttribute('inert', '')
+    } else {
+      main?.removeAttribute('inert')
+      footer?.removeAttribute('inert')
+    }
+    return () => {
+      main?.removeAttribute('inert')
+      footer?.removeAttribute('inert')
+    }
+  }, [open])
+
   function sectionHref(hash: string) {
     return onHome ? `#${hash}` : `${import.meta.env.BASE_URL}#${hash}`
   }
@@ -76,6 +92,7 @@ export function Header() {
             to="/"
             className="min-w-0 rounded-sm xl:shrink-0"
             aria-label="Cardiac Rhythm Specialists, Inc. home"
+            aria-current={onHome && !activeHash ? 'page' : undefined}
             onClick={closeMenu}
           >
             <Logo />
@@ -88,7 +105,7 @@ export function Header() {
                   key={item.hash}
                   href={sectionHref(item.hash)}
                   className={navClass(item.hash)}
-                  aria-current={activeHash === item.hash ? 'true' : undefined}
+                  aria-current={activeHash === item.hash ? 'location' : undefined}
                 >
                   {item.label}
                 </a>
@@ -107,7 +124,7 @@ export function Header() {
               ref={menuButtonRef}
               type="button"
               className="btn btn-secondary min-h-12 shrink-0 px-4 text-base"
-              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={open}
               aria-controls="mobile-nav"
               onClick={() => setOpen((value) => !value)}
@@ -129,7 +146,7 @@ export function Header() {
                 key={item.hash}
                 href={sectionHref(item.hash)}
                 className="flex min-h-14 items-center rounded-xl px-3 text-lg font-semibold text-navy hover:bg-cream"
-                aria-current={activeHash === item.hash ? 'true' : undefined}
+                aria-current={activeHash === item.hash ? 'location' : undefined}
                 onClick={closeMenu}
               >
                 {item.label}

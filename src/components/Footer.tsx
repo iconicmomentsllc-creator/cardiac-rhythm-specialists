@@ -81,21 +81,21 @@ export function Footer() {
           <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2">
             <Link
               to="/accessibility"
-              className="inline-flex min-h-14 items-center font-semibold underline-offset-4 hover:underline"
+              className="inline-flex min-h-14 items-center font-semibold underline underline-offset-4"
               aria-current={location.pathname === '/accessibility' ? 'page' : undefined}
             >
               Accessibility
             </Link>
             <Link
               to="/privacy"
-              className="inline-flex min-h-14 items-center font-semibold underline-offset-4 hover:underline"
+              className="inline-flex min-h-14 items-center font-semibold underline underline-offset-4"
               aria-current={location.pathname === '/privacy' ? 'page' : undefined}
             >
               Privacy Policy
             </Link>
             <Link
               to="/terms"
-              className="inline-flex min-h-14 items-center font-semibold underline-offset-4 hover:underline"
+              className="inline-flex min-h-14 items-center font-semibold underline underline-offset-4"
               aria-current={location.pathname === '/terms' ? 'page' : undefined}
             >
               Terms of Use

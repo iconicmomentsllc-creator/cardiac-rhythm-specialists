@@ -7,6 +7,7 @@ export function PrivacyPage() {
       eyebrow={practice.legalName}
       title="Privacy Policy"
       documentTitle="Privacy Policy | Cardiac Rhythm Specialists"
+      description={`Privacy information for ${practice.legalName} in Reseda, CA. Do not send sensitive medical information through the website form. Call ${practice.phoneDisplay}.`}
     >
       <p>
         This website is provided by {practice.legalName} for general information
@@ -15,7 +16,11 @@ export function PrivacyPage() {
       <p>
         Please do not use the website contact form for medical emergencies or to
         submit sensitive medical information. If you are experiencing a medical
-        emergency, call 911.
+        emergency, call{' '}
+        <a href="tel:911" className="font-semibold text-navy underline underline-offset-4">
+          911
+        </a>
+        .
       </p>
       <p>
         The contact form is not a HIPAA-compliant or otherwise secure channel for

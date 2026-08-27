@@ -7,6 +7,7 @@ export function TermsPage() {
       eyebrow={practice.legalName}
       title="Terms of Use"
       documentTitle="Terms of Use | Cardiac Rhythm Specialists"
+      description={`Terms of use for the ${practice.legalName} website. Website content is not medical advice. For office requests, call ${practice.phoneDisplay}.`}
     >
       <p>
         By using this website, you agree to these terms. The information on this
@@ -16,7 +17,11 @@ export function TermsPage() {
       <p>
         Website content is not medical advice, a diagnosis, or a substitute for
         consultation with a qualified physician. If you are experiencing a
-        medical emergency, call 911.
+        medical emergency, call{' '}
+        <a href="tel:911" className="font-semibold text-navy underline underline-offset-4">
+          911
+        </a>
+        .
       </p>
       <p>
         This website describes a single office location in Reseda, California.

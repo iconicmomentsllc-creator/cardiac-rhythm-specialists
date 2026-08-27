@@ -26,7 +26,8 @@ export function Education() {
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
           Learn more about heart health and cardiac care through educational
-          videos from Leo Polosajian, MD.
+          videos from Leo Polosajian, MD. Videos are hosted by YouTube. Use the
+          player controls for captions and playback when they are available.
         </p>
 
         <ul className="mt-10 grid items-stretch gap-10 lg:grid-cols-3 lg:gap-8">
@@ -38,7 +39,7 @@ export function Education() {
               <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
                 <iframe
                   title={`Educational video from Leo Polosajian, MD: ${video.title}`}
-                  src={`https://www.youtube.com/embed/${video.id}?rel=0`}
+                  src={`https://www.youtube.com/embed/${video.id}?rel=0&cc_load_policy=1`}
                   className="absolute inset-0 h-full w-full"
                   allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -78,7 +79,7 @@ export function Education() {
           >
             <InstagramIcon />
             View Instagram
-            <span className="sr-only"> (opens in a new tab)</span>
+            <span className="sr-only"> of Leo Polosajian, MD (opens in a new tab)</span>
           </a>
         </div>
       </div>

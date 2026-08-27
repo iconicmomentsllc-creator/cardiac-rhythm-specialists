@@ -1,10 +1,11 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useAccessibility } from '../context/AccessibilityContext'
 
 export function AccessibilityWidget() {
   const [open, setOpen] = useState(false)
-  const titleId = useId()
+  const titleId = 'a11y-options-title'
+  const dialogId = 'a11y-options-dialog'
   const buttonRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDialogElement>(null)
   const {
@@ -36,7 +37,7 @@ export function AccessibilityWidget() {
         ref={buttonRef}
         type="button"
         className="a11y-fab"
-        aria-label="Accessibility Options"
+        aria-label="Open accessibility options"
         aria-expanded={open}
         aria-haspopup="dialog"
         onClick={() => setOpen(true)}
@@ -46,6 +47,7 @@ export function AccessibilityWidget() {
 
       <dialog
         ref={dialogRef}
+        id={dialogId}
         aria-labelledby={titleId}
         className="a11y-dialog"
         onClose={handleClose}
@@ -56,7 +58,7 @@ export function AccessibilityWidget() {
           </h2>
           <button
             type="button"
-            className="inline-flex min-h-14 items-center rounded-xl border-2 border-navy/20 bg-cream px-4 text-base font-semibold text-navy"
+            className="a11y-control inline-flex w-auto items-center px-4"
             onClick={() => dialogRef.current?.close()}
           >
             Close
@@ -67,18 +69,18 @@ export function AccessibilityWidget() {
           and screen reader without opening this panel.
         </p>
         <div className="mt-4 grid gap-2">
-          <button type="button" className={controlClass} onClick={increaseText}>
+          <button type="button" className="a11y-control" onClick={increaseText}>
             Increase text size
           </button>
-          <button type="button" className={controlClass} onClick={decreaseText}>
+          <button type="button" className="a11y-control" onClick={decreaseText}>
             Decrease text size
           </button>
-          <button type="button" className={controlClass} onClick={resetText}>
+          <button type="button" className="a11y-control" onClick={resetText}>
             Reset text size
           </button>
           <button
             type="button"
-            className={controlClass}
+            className="a11y-control"
             aria-pressed={settings.contrast}
             onClick={toggleContrast}
           >
@@ -86,7 +88,7 @@ export function AccessibilityWidget() {
           </button>
           <button
             type="button"
-            className={controlClass}
+            className="a11y-control"
             aria-pressed={settings.links}
             onClick={toggleLinks}
           >
@@ -94,13 +96,13 @@ export function AccessibilityWidget() {
           </button>
           <button
             type="button"
-            className={controlClass}
+            className="a11y-control"
             aria-pressed={settings.motion}
             onClick={toggleMotion}
           >
             Reduce motion {settings.motion ? '(on)' : '(off)'}
           </button>
-          <button type="button" className={controlClass} onClick={reset}>
+          <button type="button" className="a11y-control" onClick={reset}>
             Reset accessibility preferences
           </button>
         </div>
@@ -110,6 +112,3 @@ export function AccessibilityWidget() {
 
   return createPortal(widget, document.body)
 }
-
-const controlClass =
-  'min-h-14 rounded-xl border-2 border-navy/20 bg-cream px-3 text-left text-base font-semibold text-navy'

@@ -18,12 +18,13 @@
 :root {
   --text-scale: 1;
   --focus-ring: #142033;
+  --color-ui-border: #4f5b66;
 }
 
 html {
   font-size: calc(18px * var(--text-scale));
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  scroll-padding-top: 7.5rem;
 }
 
 body {
@@ -47,6 +48,12 @@ body {
 :focus-visible {
   outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
+  scroll-margin-top: 7.5rem;
+}
+
+#main:focus {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
 }
 
 a,
@@ -151,7 +158,7 @@ summary {
 .site-input {
   min-height: 3.5rem;
   width: 100%;
-  border: 2px solid color-mix(in srgb, var(--color-navy) 20%, white);
+  border: 2px solid var(--color-ui-border);
   border-radius: 0.5rem;
   background: #ffffff;
   padding-inline: 0.85rem;
@@ -256,11 +263,24 @@ iframe {
   width: min(21rem, calc(100vw - 1.5rem));
   max-height: min(72vh, calc(100dvh - 8.5rem));
   overflow: auto;
-  border: 2px solid color-mix(in srgb, var(--color-navy) 20%, white);
+  border: 2px solid var(--color-ui-border);
   border-radius: 1rem;
   padding: 1rem;
   background: #ffffff;
   color: var(--color-navy);
+}
+
+.a11y-control {
+  min-height: 3.5rem;
+  width: 100%;
+  border: 2px solid var(--color-ui-border);
+  border-radius: 0.75rem;
+  background: var(--color-cream);
+  padding-inline: 0.75rem;
+  color: var(--color-navy);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
 }
 
 @media (min-width: 640px) {
@@ -284,6 +304,7 @@ html[data-a11y-contrast="true"] {
   --color-ink: #000000;
   --color-muted: #000000;
   --focus-ring: #000000;
+  --color-ui-border: #000000;
 }
 
 html[data-a11y-links="true"] a[href] {
@@ -336,4 +357,20 @@ details[open] .details-closed {
 
 details[open] .details-open {
   display: inline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.disclosure {
+  border: 2px solid var(--color-ui-border);
 }

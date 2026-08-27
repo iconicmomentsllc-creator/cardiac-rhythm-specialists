@@ -36,7 +36,7 @@ export function HowCanWeHelp() {
     <section
       id="how-can-we-help"
       aria-labelledby="how-can-we-help-heading"
-      className="border-t border-navy/10 bg-white"
+      className="scroll-mt-28 border-t border-navy/10 bg-white"
     >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <p className="section-label uppercase tracking-[0.08em]">Patient Care</p>

@@ -38,7 +38,11 @@ export function SiteLayout() {
         className="border-b border-navy/10 bg-mist px-4 py-2 text-center text-[0.9375rem] leading-snug text-navy sm:text-base"
       >
         <span className="font-semibold text-navy">Emergency: </span>
-        If this is a medical emergency, call 911. For office matters, call{' '}
+        If this is a medical emergency, call{' '}
+        <a href="tel:911" className="font-semibold text-navy underline underline-offset-2">
+          911
+        </a>
+        . For office matters, call{' '}
         <a
           href={practice.phoneTel}
           className="font-semibold text-navy underline underline-offset-2"
@@ -48,7 +52,7 @@ export function SiteLayout() {
         .
       </p>
       <Header />
-      <main id="main" ref={mainRef} tabIndex={-1} className="outline-none">
+      <main id="main" ref={mainRef} tabIndex={-1}>
         <Outlet />
       </main>
       <Footer />

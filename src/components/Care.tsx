@@ -67,7 +67,7 @@ export function Care() {
           ))}
         </ul>
 
-        <details className="mt-6 rounded-2xl border-2 border-navy/15 bg-white">
+        <details className="disclosure mt-6 rounded-2xl bg-white">
           <summary className="flex min-h-16 cursor-pointer items-center justify-between gap-4 px-5 py-3 text-lg font-semibold text-navy">
             <span className="details-closed">View More Conditions We Evaluate</span>
             <span className="details-open">Hide Additional Conditions</span>

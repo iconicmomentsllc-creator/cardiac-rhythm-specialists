@@ -54,7 +54,7 @@ export function Contact() {
   function fieldError(field: Field) {
     const errorId = `${ids}-${field}-error`
     return errors[field] ? (
-      <p id={errorId} className="mt-1 text-base font-medium text-navy" role="alert">
+      <p id={errorId} className="mt-1 text-base font-medium text-navy">
         {errors[field]}
       </p>
     ) : null
@@ -141,6 +141,24 @@ export function Contact() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <p className="text-base leading-relaxed text-navy">
+              The map above is provided by Google Maps and may not be fully
+              accessible. If it is not usable, use{' '}
+              <a
+                href={practice.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold underline underline-offset-4"
+              >
+                Get Directions
+                <span className="sr-only"> to our Reseda office (opens in a new tab)</span>
+              </a>{' '}
+              or call{' '}
+              <a href={practice.phoneTel} className="font-semibold underline underline-offset-4">
+                {practice.phoneDisplay}
+              </a>
+              .
+            </p>
           </div>
 
           <div className="rounded-2xl border border-navy/10 bg-white p-6 sm:p-8">
@@ -148,11 +166,15 @@ export function Contact() {
             <p
               id={warningId}
               role="note"
-              className="mt-3 rounded-xl border-2 border-navy/20 bg-white px-4 py-3 text-base leading-relaxed text-navy"
+              className="mt-3 rounded-xl border-2 border-[var(--color-ui-border)] bg-white px-4 py-3 text-base leading-relaxed text-navy"
             >
               Please do not use this form for medical emergencies or to submit
               sensitive medical information. If you are experiencing a medical
-              emergency, call 911.
+              emergency, call{' '}
+              <a href="tel:911" className="font-semibold underline underline-offset-4">
+                911
+              </a>
+              .
             </p>
             <p className="mt-3 text-base leading-relaxed text-navy">
               This form is not a secure channel for protected health information.
@@ -163,8 +185,8 @@ export function Contact() {
               <div
                 ref={successRef}
                 tabIndex={-1}
-                aria-live="polite"
-                className="mt-8 rounded-xl border-2 border-navy/20 bg-white p-5"
+                role="status"
+                className="mt-8 rounded-xl border-2 border-[var(--color-ui-border)] bg-white p-5"
               >
                 <p className="text-lg font-semibold text-navy">
                   Thank you. Your request was received on this page.
@@ -179,6 +201,25 @@ export function Contact() {
               </div>
             ) : (
               <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate aria-describedby={warningId}>
+                {fieldOrder.some((field) => errors[field]) ? (
+                  <div role="alert" className="rounded-xl border-2 border-[var(--color-ui-border)] bg-white px-4 py-3">
+                    <p className="font-semibold text-navy">Please correct the following:</p>
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-base text-navy">
+                      {fieldOrder.map((field) =>
+                        errors[field] ? (
+                          <li key={field}>
+                            <a
+                              href={`#${ids}-${field}`}
+                              className="font-semibold underline underline-offset-4"
+                            >
+                              {errors[field]}
+                            </a>
+                          </li>
+                        ) : null,
+                      )}
+                    </ul>
+                  </div>
+                ) : null}
                 <div>
                   <label htmlFor={`${ids}-name`} className="block text-base font-semibold text-navy">
                     Full name (required)
@@ -187,11 +228,12 @@ export function Contact() {
                     ref={nameRef}
                     id={`${ids}-name`}
                     required
+                    type="text"
+                    autoComplete="name"
                     aria-required="true"
                     aria-invalid={errors.name ? true : undefined}
                     aria-describedby={describedBy('name')}
                     name="name"
-                    autoComplete="name"
                     className="site-input mt-1.5"
                   />
                   {fieldError('name')}
@@ -205,11 +247,12 @@ export function Contact() {
                     id={`${ids}-phone`}
                     required
                     type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
                     aria-required="true"
                     aria-invalid={errors.phone ? true : undefined}
                     aria-describedby={describedBy('phone')}
                     name="phone"
-                    autoComplete="tel"
                     className="site-input mt-1.5"
                   />
                   {fieldError('phone')}
