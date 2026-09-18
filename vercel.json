@@ -6,7 +6,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "headers": [
         {
           "key": "Content-Security-Policy",
@@ -87,13 +87,13 @@
     { "source": "/ICD-Checks.html", "destination": "/testing/icd-checks", "permanent": true },
     { "source": "/Bi-V-Pacer-Implant.html", "destination": "/treatments/cardiac-resynchronization-therapy", "permanent": true },
     { "source": "/Bi-V-Pacemaker-Checks.html", "destination": "/testing/device-follow-up", "permanent": true },
-    { "source": "/Bi-V-+-ICD-Implant.html", "destination": "/treatments/cardiac-resynchronization-therapy", "permanent": true },
-    { "source": "/Bi-V-+-ICD-Checks.html", "destination": "/testing/device-follow-up", "permanent": true },
+    { "source": "/Bi-V-\\+-ICD-Implant.html", "destination": "/treatments/cardiac-resynchronization-therapy", "permanent": true },
+    { "source": "/Bi-V-\\+-ICD-Checks.html", "destination": "/testing/device-follow-up", "permanent": true },
     { "source": "/SVT-Ablation.html", "destination": "/treatments/svt-ablation", "permanent": true },
     { "source": "/VT-Ablation.html", "destination": "/treatments/vt-ablation", "permanent": true },
     { "source": "/3-D-Electro-Anatomical-Mapping.html", "destination": "/treatments/three-dimensional-mapping", "permanent": true },
     { "source": "/Tilt-Table-Study.html", "destination": "/testing/tilt-table", "permanent": true },
-    { "source": "/Intra-Cardiac Echo-(ICE).html", "destination": "/testing/echocardiogram", "permanent": true },
+    { "source": "/Intra-Cardiac Echo-\\(ICE\\).html", "destination": "/testing/echocardiogram", "permanent": true },
     { "source": "/Coumadin-Management.html", "destination": "/patient-resources", "permanent": true },
     { "source": "/movies.html", "destination": "/videos", "permanent": true },
     { "source": "/photos.html", "destination": "/photos", "permanent": true },

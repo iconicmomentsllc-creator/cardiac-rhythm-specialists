@@ -98,12 +98,17 @@ if (!headers.includes(csp)) {
   failures.push('public/_headers CSP does not match vercel.json')
 }
 
+function vercelLiteral(source) {
+  return source.replace(/\\([+()?])/g, '$1')
+}
+
 const vercelRedirects = vercel.redirects.filter((item) => !item.has)
 const vercelSources = new Map()
 for (const item of vercelRedirects) {
-  const existing = vercelSources.get(item.source)
-  if (existing) failures.push(`Duplicate Vercel redirect ${item.source} -> ${existing} and ${item.destination}`)
-  vercelSources.set(item.source, item.destination)
+  const source = vercelLiteral(item.source)
+  const existing = vercelSources.get(source)
+  if (existing) failures.push(`Duplicate Vercel redirect ${source} -> ${existing} and ${item.destination}`)
+  vercelSources.set(source, item.destination)
 }
 
 const hostRedirects = vercel.redirects.filter((item) => item.has)
