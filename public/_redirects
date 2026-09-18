@@ -1,1 +1,14 @@
-/*    /index.html   200
+# Host consolidation notes for platforms that read _redirects.
+# Production hosting is Vercel (see vercel.json). GitHub Pages is not production.
+
+https://crsmdinc.com/*           https://www.crsmdinc.com/:splat  301!
+http://crsmdinc.com/*            https://www.crsmdinc.com/:splat  301!
+http://www.crsmdinc.com/*        https://www.crsmdinc.com/:splat  301!
+
+https://www.cardiacrhythmspecialists.com/*  https://www.crsmdinc.com/:splat  301!
+https://cardiacrhythmspecialists.com/*      https://www.crsmdinc.com/:splat  301!
+http://www.cardiacrhythmspecialists.com/*   https://www.crsmdinc.com/:splat  301!
+http://cardiacrhythmspecialists.com/*       https://www.crsmdinc.com/:splat  301!
+
+# Existing prerendered files take precedence. Unknown paths should not be soft 404s.
+/*    /404.html   404

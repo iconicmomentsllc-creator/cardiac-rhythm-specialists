@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { About } from '../components/About'
 import { Care } from '../components/Care'
 import { Contact } from '../components/Contact'
@@ -7,12 +6,9 @@ import { Hero } from '../components/Hero'
 import { HowCanWeHelp } from '../components/HowCanWeHelp'
 import { MeetPhysician } from '../components/MeetPhysician'
 import { PatientInfo } from '../components/PatientInfo'
+import { MedicalDisclaimer } from '../components/MedicalDisclaimer'
 
 export function HomePage() {
-  useEffect(() => {
-    document.title = 'Cardiac Rhythm Specialists | Leo Polosajian, MD'
-  }, [])
-
   return (
     <>
       <Hero />
@@ -23,6 +19,9 @@ export function HomePage() {
       <Education />
       <PatientInfo />
       <Contact />
+      <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <MedicalDisclaimer compact />
+      </div>
     </>
   )
 }

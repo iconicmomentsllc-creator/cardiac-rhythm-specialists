@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { practice } from '../data/practice'
 
 export function PatientInfo() {
@@ -12,8 +13,8 @@ export function PatientInfo() {
           Please call the office. Staff can help with the requests listed below.
         </p>
         <p className="mt-3 max-w-2xl text-lg leading-relaxed text-navy">
-          Do not send medical records or other sensitive information through the
-          website form.
+          Please do not submit confidential medical information through this form.
+          Do not send medical records through the website.
         </p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -27,9 +28,17 @@ export function PatientInfo() {
           ))}
         </ul>
 
-        <a href={practice.phoneTel} className="btn btn-primary mt-10">
-          Call {practice.phoneDisplay}
-        </a>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+          <a href={practice.phoneTel} className="btn btn-primary w-full sm:w-auto">
+            Call {practice.phoneDisplay}
+          </a>
+          <Link to="/new-patients" className="btn btn-secondary w-full sm:w-auto">
+            New patient information
+          </Link>
+          <Link to="/insurance" className="btn btn-secondary w-full sm:w-auto">
+            Insurance questions
+          </Link>
+        </div>
       </div>
     </section>
   )

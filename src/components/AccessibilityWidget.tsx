@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
 import { useAccessibility } from '../context/AccessibilityContext'
 
 export function AccessibilityWidget() {
@@ -31,19 +30,23 @@ export function AccessibilityWidget() {
     buttonRef.current?.focus()
   }
 
-  const widget = (
-    <>
-      <button
-        ref={buttonRef}
-        type="button"
-        className="a11y-fab"
-        aria-label="Open accessibility options"
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        onClick={() => setOpen(true)}
-      >
-        <span aria-hidden="true">♿</span>
-      </button>
+  return (
+    <section className="a11y-dock" aria-label="Accessibility tools">
+      <div className="a11y-dock-inner">
+        <p className="a11y-dock-label">Accessibility</p>
+        <button
+          ref={buttonRef}
+          type="button"
+          className="a11y-fab"
+          aria-label="Open accessibility options"
+          aria-expanded={open}
+          aria-haspopup="dialog"
+          aria-controls={dialogId}
+          onClick={() => setOpen(true)}
+        >
+          <span aria-hidden="true">♿</span>
+        </button>
+      </div>
 
       <dialog
         ref={dialogRef}
@@ -107,8 +110,6 @@ export function AccessibilityWidget() {
           </button>
         </div>
       </dialog>
-    </>
+    </section>
   )
-
-  return createPortal(widget, document.body)
 }

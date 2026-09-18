@@ -1,46 +1,82 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { MEDIA_SECTION_PATHS } from '../data/media'
 import { practice } from '../data/practice'
 import { Logo } from './Logo'
 
 const navItems = [
-  { hash: 'about', label: 'About' },
-  { hash: 'care', label: 'Heart Rhythm Care' },
-  { hash: 'videos', label: 'Videos' },
-  { hash: 'patient-information', label: 'Patient Information' },
-  { hash: 'contact', label: 'Contact' },
+  { to: '/', label: 'Home' },
+  { to: '/about-dr-polosajian', label: 'About' },
+  { to: '/conditions', label: 'Conditions' },
+  { to: '/treatments', label: 'Treatments' },
+  { to: '/testing', label: 'Testing' },
+  { to: '/media', label: 'Media' },
+  { to: '/patient-resources', label: 'Patient Resources' },
+  { to: '/contact', label: 'Contact' },
 ] as const
-
-const headerCallClass =
-  'btn btn-primary min-h-12 whitespace-nowrap px-4 text-base'
 
 export function Header() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
-  const onHome = location.pathname === '/'
+  const [menuPath, setMenuPath] = useState(location.pathname)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
-  const activeHash = location.hash.replace('#', '')
+  const mobileNavRef = useRef<HTMLDivElement>(null)
+
+  if (menuPath !== location.pathname) {
+    setMenuPath(location.pathname)
+    setOpen(false)
+  }
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    document.body.toggleAttribute('data-nav-open', open)
     return () => {
-      document.body.style.overflow = ''
+      document.body.removeAttribute('data-nav-open')
     }
   }, [open])
 
   useEffect(() => {
+    if (!open) return
+
+    const root = mobileNavRef.current
+    const firstItem = root?.querySelector<HTMLElement>('a[href], button:not([disabled])')
+    firstItem?.focus()
+
+    function focusables() {
+      const items = [
+        menuButtonRef.current,
+        ...Array.from(root?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? []),
+      ]
+      return items.filter((item): item is HTMLElement => Boolean(item))
+    }
+
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape' && open) {
+      if (event.key === 'Escape') {
         setOpen(false)
         menuButtonRef.current?.focus()
+        return
+      }
+      if (event.key !== 'Tab') return
+      const items = focusables()
+      if (items.length === 0) return
+      const first = items[0]
+      const last = items[items.length - 1]
+      if (!first || !last) return
+      const active = document.activeElement
+      if (event.shiftKey && active === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault()
+        first.focus()
       }
     }
+
     document.addEventListener('keydown', onKeyDown)
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [open])
 
   useEffect(() => {
-    const media = window.matchMedia('(min-width: 1280px)')
+    const media = window.matchMedia('(min-width: 1536px)')
     function onChange(event: MediaQueryListEvent) {
       if (event.matches) {
         setOpen(false)
@@ -53,29 +89,37 @@ export function Header() {
   useEffect(() => {
     const main = document.getElementById('main')
     const footer = document.querySelector('footer')
+    const dock = document.querySelector('.a11y-dock')
     if (open) {
       main?.setAttribute('inert', '')
       footer?.setAttribute('inert', '')
+      dock?.setAttribute('inert', '')
     } else {
       main?.removeAttribute('inert')
       footer?.removeAttribute('inert')
+      dock?.removeAttribute('inert')
     }
     return () => {
       main?.removeAttribute('inert')
       footer?.removeAttribute('inert')
+      dock?.removeAttribute('inert')
     }
   }, [open])
-
-  function sectionHref(hash: string) {
-    return onHome ? `#${hash}` : `${import.meta.env.BASE_URL}#${hash}`
-  }
 
   function closeMenu() {
     setOpen(false)
   }
 
-  function navClass(hash: string) {
-    const active = activeHash === hash
+  function isActive(to: string) {
+    if (to === '/') return location.pathname === '/'
+    if (to === '/media') {
+      return MEDIA_SECTION_PATHS.some((path) => location.pathname === path)
+    }
+    return location.pathname === to || location.pathname.startsWith(`${to}/`)
+  }
+
+  function navClass(to: string) {
+    const active = isActive(to)
     return [
       'inline-flex min-h-12 items-center whitespace-nowrap text-base font-semibold text-navy',
       active
@@ -84,46 +128,61 @@ export function Header() {
     ].join(' ')
   }
 
-  return (
-    <header className="sticky top-0 z-40 border-b border-navy/10 bg-white">
+    return (
+    <header className="z-40 overflow-x-clip border-b border-navy/10 bg-white 2xl:sticky 2xl:top-0">
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-        <div className="flex flex-col gap-2.5 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-3">
+        <div className="flex flex-col gap-3 py-2.5 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:gap-6 2xl:py-3">
           <Link
             to="/"
-            className="min-w-0 rounded-sm xl:shrink-0"
+            className="min-w-0 rounded-sm 2xl:shrink-0"
             aria-label="Cardiac Rhythm Specialists, Inc. home"
-            aria-current={onHome && !activeHash ? 'page' : undefined}
+            aria-current={isActive('/') ? 'page' : undefined}
             onClick={closeMenu}
           >
             <Logo />
           </Link>
 
-          <div className="hidden min-w-0 items-center gap-7 xl:flex">
-            <nav aria-label="Primary" className="flex items-center gap-7">
+          <div className="hidden min-w-0 items-center gap-5 2xl:flex">
+            <nav aria-label="Primary" className="flex flex-wrap items-center gap-x-5 gap-y-1">
               {navItems.map((item) => (
-                <a
-                  key={item.hash}
-                  href={sectionHref(item.hash)}
-                  className={navClass(item.hash)}
-                  aria-current={activeHash === item.hash ? 'location' : undefined}
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={navClass(item.to)}
+                  aria-current={isActive(item.to) ? 'page' : undefined}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </nav>
-            <a href={practice.phoneTel} className={`${headerCallClass} shrink-0`}>
+            <Link
+              to="/appointment-request"
+              className="btn btn-secondary min-h-12 shrink-0 px-4 text-base"
+            >
+              Request appointment
+            </Link>
+            <a href={practice.phoneTel} className="btn btn-primary min-h-12 shrink-0 px-4 text-base">
               Call {practice.phoneDisplay}
             </a>
           </div>
 
-          <div className="flex items-center gap-2.5 xl:hidden">
-            <a href={practice.phoneTel} className={`${headerCallClass} min-w-0 flex-1 sm:flex-none`}>
+          <div className="flex flex-col gap-2.5 min-[480px]:flex-row min-[480px]:flex-wrap 2xl:hidden">
+            <Link
+              to="/appointment-request"
+              className="btn btn-secondary min-h-12 w-full min-[480px]:min-w-[12rem] min-[480px]:flex-1 px-3 text-base"
+            >
+              Request appointment
+            </Link>
+            <a
+              href={practice.phoneTel}
+              className="btn btn-primary min-h-12 w-full min-[480px]:min-w-[14rem] min-[480px]:flex-1 px-3 text-base leading-snug"
+            >
               Call {practice.phoneDisplay}
             </a>
             <button
               ref={menuButtonRef}
               type="button"
-              className="btn btn-secondary min-h-12 shrink-0 px-4 text-base"
+              className="btn btn-secondary min-h-12 w-full min-[480px]:w-auto px-4 text-base"
               aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={open}
               aria-controls="mobile-nav"
@@ -136,21 +195,22 @@ export function Header() {
       </div>
 
       <div
+        ref={mobileNavRef}
         id="mobile-nav"
-        className={open ? 'border-t border-navy/10 bg-white xl:hidden' : 'hidden'}
+        className={open ? 'border-t border-navy/10 bg-white 2xl:hidden' : 'hidden'}
       >
         <div className="mx-auto max-w-[1280px] px-4 py-4 sm:px-6">
           <nav aria-label="Mobile" className="flex flex-col gap-1">
             {navItems.map((item) => (
-              <a
-                key={item.hash}
-                href={sectionHref(item.hash)}
+              <Link
+                key={item.to}
+                to={item.to}
                 className="flex min-h-14 items-center rounded-xl px-3 text-lg font-semibold text-navy hover:bg-cream"
-                aria-current={activeHash === item.hash ? 'location' : undefined}
+                aria-current={isActive(item.to) ? 'page' : undefined}
                 onClick={closeMenu}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <button

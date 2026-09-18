@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import { practice } from '../data/practice'
+import { PhysicianName } from './PhysicianName'
 
 export function MeetPhysician() {
   return (
@@ -9,9 +11,11 @@ export function MeetPhysician() {
             <figure className="mx-auto w-full max-w-[18.5rem] overflow-hidden rounded-2xl border border-navy/10 bg-white lg:mx-0">
               <img
                 src={practice.photoSrc}
-                alt="Leo Polosajian, MD"
+                alt={practice.photoAlt}
                 width={170}
                 height={226}
+                fetchPriority="high"
+                decoding="async"
                 className="aspect-[170/226] h-auto w-full object-cover object-[center_18%]"
               />
             </figure>
@@ -19,21 +23,21 @@ export function MeetPhysician() {
 
           <div className="lg:col-span-7">
             <p className="section-label uppercase tracking-[0.08em]">Meet Your Cardiologist</p>
-            <h2 className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
-              Meet Leo Polosajian, MD
+            <h2 className="mt-3 max-w-3xl font-serif text-[clamp(1.5rem,3.6vw,2.25rem)] font-semibold tracking-tight leading-snug text-navy">
+              Meet <PhysicianName />
             </h2>
             <p className="mt-3 text-xl font-medium leading-relaxed text-navy">
-              Cardiology &amp; Cardiac Electrophysiology
+              {practice.specialtyLong}
             </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy">
-              Dr. Leo Polosajian provides specialized cardiovascular care with a
+              {practice.physicianInformalFull} provides specialized cardiovascular care with a
               focus on diagnosing and treating heart rhythm disorders. His goal is
               to help patients understand their condition, their treatment options,
               and the next steps in their care.
             </p>
-            <a href="#about" className="btn btn-primary mt-8 w-full sm:w-auto">
-              Learn About Dr. Polosajian
-            </a>
+            <Link to="/about-dr-polosajian" className="btn btn-primary mt-8 w-full sm:w-auto">
+              Learn About {practice.physicianInformal}
+            </Link>
           </div>
         </div>
       </div>

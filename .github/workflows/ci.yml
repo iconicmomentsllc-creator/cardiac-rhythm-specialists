@@ -1,0 +1,33 @@
+# Production for www.crsmdinc.com is Vercel, not GitHub Pages.
+# This workflow only builds. It does not publish dist.
+# GitHub Pages cannot run /api/inquiry, so it must not be treated as production.
+name: Build check (production is Vercel)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run qa
+      - run: npm run build
+        env:
+          VITE_SITE_URL: https://www.crsmdinc.com

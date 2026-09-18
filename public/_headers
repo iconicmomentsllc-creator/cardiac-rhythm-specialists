@@ -1,0 +1,7 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com https://img.youtube.com https://www.google-analytics.com; frame-src https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://maps.google.com https://www.google.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(self "https://www.youtube.com"), autoplay=(self "https://www.youtube.com"), camera=(), display-capture=(), encrypted-media=(self "https://www.youtube.com"), fullscreen=(self "https://www.youtube.com" "https://www.google.com" "https://maps.google.com"), geolocation=(), gyroscope=(self "https://www.youtube.com"), microphone=(), payment=(), usb=(), picture-in-picture=(self "https://www.youtube.com"), clipboard-write=(self "https://www.youtube.com"), web-share=(self "https://www.youtube.com"), browsing-topics=()
+  X-Frame-Options: DENY

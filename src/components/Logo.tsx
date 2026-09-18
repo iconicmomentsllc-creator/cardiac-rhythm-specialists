@@ -19,12 +19,12 @@ export function Logo() {
         />
       </svg>
       <span className="min-w-0 text-left">
-        <span className="block font-serif text-[1.05rem] font-semibold leading-tight tracking-tight text-navy xl:whitespace-nowrap">
+        <span className="block max-w-full font-serif text-[1.05rem] font-semibold leading-tight tracking-tight text-navy [overflow-wrap:break-word] [word-break:keep-all] 2xl:whitespace-nowrap">
           {practice.legalName}
         </span>
-        <span className="mt-0.5 block text-[0.8125rem] font-medium leading-snug text-navy">
-          <span className="block">{practice.physician}</span>
-          <span className="block">{practice.specialty}</span>
+        <span className="mt-0.5 block text-[0.9375rem] font-medium leading-snug text-navy">
+          <span className="physician-name block">{practice.physician}</span>
+          <span className="mt-0.5 block">{practice.specialty}</span>
         </span>
       </span>
     </span>

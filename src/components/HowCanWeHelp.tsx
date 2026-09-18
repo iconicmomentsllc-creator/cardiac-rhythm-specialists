@@ -1,33 +1,30 @@
+import { Link } from 'react-router-dom'
+
 const cards = [
   {
-    href: '#care',
+    to: '/conditions/atrial-fibrillation',
     title: 'Irregular or Racing Heartbeat',
     body: 'Learn about AFib, arrhythmias and other heart rhythm concerns.',
   },
   {
-    href: '#care',
+    to: '/conditions/syncope',
     title: 'Fainting or Dizziness',
-    body: 'Learn about evaluation for symptoms that may be related to your heart rhythm.',
+    body: 'Learn about syncope evaluation and related heart rhythm testing.',
   },
   {
-    href: '#care',
+    to: '/treatments/pacemaker',
     title: 'Pacemaker or Device Care',
     body: 'Learn about pacemakers, defibrillators and cardiac device care.',
   },
   {
-    href: '#care',
-    title: 'Chest Pain or Heart Concerns',
-    body: 'Learn about cardiovascular evaluation and diagnostic care.',
+    to: '/testing',
+    title: 'Monitoring and Tests',
+    body: 'Learn about Holter monitors, event monitors, EKGs, and device checks.',
   },
   {
-    href: '#care',
-    title: 'Leg Swelling or Circulation Concerns',
-    body: 'Learn about evaluation of vascular and circulation-related concerns.',
-  },
-  {
-    href: '#contact',
+    to: '/appointment-request',
     title: 'I’m Not Sure Where to Start',
-    body: 'Contact our office and we’ll help you determine the appropriate next step.',
+    body: 'Request an appointment or call the office and we will help you take the next step.',
   },
 ] as const
 
@@ -57,22 +54,30 @@ export function HowCanWeHelp() {
         <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {cards.map((card) => (
             <li key={card.title} className="min-w-0">
-              <a
-                href={card.href}
+              <Link
+                to={card.to}
                 className="help-card flex h-full min-h-44 flex-col rounded-2xl border border-navy/10 bg-white px-6 py-7 no-underline"
               >
                 <h3 className="font-serif text-xl font-semibold leading-snug text-navy">
                   {card.title}
                 </h3>
                 <p className="mt-3 text-lg leading-relaxed text-navy">{card.body}</p>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a href="#care" className="btn btn-secondary mt-10 w-full sm:w-auto">
-          View All Conditions &amp; Treatments
-        </a>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <Link to="/conditions" className="btn btn-secondary w-full sm:w-auto">
+            View Heart Rhythm Conditions
+          </Link>
+          <Link to="/treatments" className="btn btn-secondary w-full sm:w-auto">
+            View Treatments &amp; Device Care
+          </Link>
+          <Link to="/testing" className="btn btn-secondary w-full sm:w-auto">
+            View Testing &amp; Monitoring
+          </Link>
+        </div>
       </div>
     </section>
   )

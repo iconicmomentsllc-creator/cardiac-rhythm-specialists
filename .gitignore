@@ -12,6 +12,19 @@ dist
 dist-ssr
 *.local
 
+# Server/runtime secrets. Keep .env.example as the committed template.
+.env
+.env.*
+!.env.example
+
+# Recovered original website archive. Keep on disk as read-only source/reference.
+# Do not commit or deploy this tree with the production application.
+legacy-crs-site/
+
+# Local Windows thumbnail caches
+Thumbs.db
+ehthumbs.db
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

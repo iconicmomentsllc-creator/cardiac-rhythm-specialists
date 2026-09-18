@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom'
+import { MEDIA_HOME_LINKS } from '../data/media'
 import { practice } from '../data/practice'
+import { YouTubeFacade } from './YouTubeFacade'
 
 function YouTubeIcon() {
   return (
@@ -26,7 +29,7 @@ export function Education() {
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
           Learn more about heart health and cardiac care through educational
-          videos from Leo Polosajian, MD. Videos are hosted by YouTube. Use the
+          videos from {practice.physicianInformal}. Videos are hosted by YouTube. Use the
           player controls for captions and playback when they are available.
         </p>
 
@@ -37,15 +40,7 @@ export function Education() {
                 {video.title}
               </h3>
               <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
-                <iframe
-                  title={`Educational video from Leo Polosajian, MD: ${video.title}`}
-                  src={`https://www.youtube.com/embed/${video.id}?rel=0&cc_load_policy=1`}
-                  className="absolute inset-0 h-full w-full"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
+                <YouTubeFacade videoId={video.id} title={video.title} />
               </div>
             </li>
           ))}
@@ -68,7 +63,7 @@ export function Education() {
           </h3>
           <p className="mt-3 text-xl font-semibold text-navy">{practice.instagramHandle}</p>
           <p className="mt-3 text-lg leading-relaxed text-navy">
-            See additional heart-health education from {practice.physician} on
+            See additional heart-health education from {practice.physicianInformal} on
             Instagram.
           </p>
           <a
@@ -79,8 +74,36 @@ export function Education() {
           >
             <InstagramIcon />
             View Instagram
-            <span className="sr-only"> of Leo Polosajian, MD (opens in a new tab)</span>
+            <span className="sr-only"> of {practice.physicianInformal} (opens in a new tab)</span>
           </a>
+        </div>
+
+        <div className="mt-16 max-w-3xl border-t border-navy/10 pt-14">
+          <p className="section-label">Media library</p>
+          <h2 className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
+            Explore {practice.physicianInformal}’s Media & Education
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-navy">
+            Browse videos, presentations, articles, and illustrated patient education from Cardiac
+            Rhythm Specialists in one place.
+          </p>
+          <Link to="/media" className="btn btn-primary mt-6">
+            Browse the media library
+          </Link>
+          <nav aria-label="Media and education" className="hub-list">
+            <ul>
+              {MEDIA_HOME_LINKS.map((item) => (
+                <li key={item.to} className="hub-item">
+                  <h3 className="hub-item-title">
+                    <Link to={item.to} className="hub-item-link">
+                      {item.heading}
+                    </Link>
+                  </h3>
+                  <p className="hub-item-intro">{item.body}</p>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </section>

@@ -1,0 +1,144 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com https://img.youtube.com https://www.google-analytics.com; frame-src https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://maps.google.com https://www.google.com; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.google-analytics.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "accelerometer=(self \"https://www.youtube.com\"), autoplay=(self \"https://www.youtube.com\"), camera=(), display-capture=(), encrypted-media=(self \"https://www.youtube.com\"), fullscreen=(self \"https://www.youtube.com\" \"https://www.google.com\" \"https://maps.google.com\"), geolocation=(), gyroscope=(self \"https://www.youtube.com\"), microphone=(), payment=(), usb=(), picture-in-picture=(self \"https://www.youtube.com\"), clipboard-write=(self \"https://www.youtube.com\"), web-share=(self \"https://www.youtube.com\"), browsing-topics=()"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "crsmdinc.com" }],
+      "destination": "https://www.crsmdinc.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "cardiacrhythmspecialists.com" }],
+      "destination": "https://www.crsmdinc.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.cardiacrhythmspecialists.com" }],
+      "destination": "https://www.crsmdinc.com/:path*",
+      "permanent": true
+    },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/welcome.html", "destination": "/about-dr-polosajian", "permanent": true },
+    { "source": "/contact-us.html", "destination": "/contact", "permanent": true },
+    { "source": "/For-Patient.html", "destination": "/patient-resources", "permanent": true },
+    { "source": "/Appointment-Requests.html", "destination": "/appointment-request", "permanent": true },
+    { "source": "/Forms.html", "destination": "/patient-forms", "permanent": true },
+    { "source": "/FAQ.html", "destination": "/faq", "permanent": true },
+    { "source": "/Medical-Questions.html", "destination": "/faq", "permanent": true },
+    { "source": "/Prescription-Refills.html", "destination": "/prescription-refills", "permanent": true },
+    { "source": "/Lab-Test-Results.html", "destination": "/lab-test-information", "permanent": true },
+    { "source": "/Medical-Records-Questions.html", "destination": "/medical-records", "permanent": true },
+    { "source": "/Conditions.html", "destination": "/conditions", "permanent": true },
+    { "source": "/Arrhythmia.html", "destination": "/conditions/arrhythmias", "permanent": true },
+    { "source": "/Arrhythmias.html", "destination": "/conditions/arrhythmias", "permanent": true },
+    { "source": "/Treatments.html", "destination": "/treatments", "permanent": true },
+    { "source": "/Tests.html", "destination": "/testing", "permanent": true },
+    { "source": "/The-Normal-Heart.html", "destination": "/education/the-normal-heart", "permanent": true },
+    { "source": "/Basic-Cardiology.html", "destination": "/education/basic-cardiology", "permanent": true },
+    { "source": "/Electrophysiology-Study.html", "destination": "/treatments/electrophysiology-study", "permanent": true },
+    { "source": "/24-Hour-Holter-Monitoring.html", "destination": "/testing/holter-monitoring", "permanent": true },
+    { "source": "/30-Day-Event-Monitoring.html", "destination": "/testing/event-monitoring", "permanent": true },
+    { "source": "/Outpatient-ECG-Monitoring.html", "destination": "/testing/outpatient-ecg-monitoring", "permanent": true },
+    { "source": "/Trans-telephonic-Home-Monitoring.html", "destination": "/testing/device-follow-up", "permanent": true },
+    { "source": "/Device-Follow-up.html", "destination": "/testing/device-follow-up", "permanent": true },
+    { "source": "/Device-Implant.html", "destination": "/treatments/pacemaker-implantation", "permanent": true },
+    { "source": "/Device-Replacement.html", "destination": "/treatments/device-replacement", "permanent": true },
+    { "source": "/Pacemaker-Implant.html", "destination": "/treatments/pacemaker-implantation", "permanent": true },
+    { "source": "/Pacemaker-Checks.html", "destination": "/testing/pacemaker-checks", "permanent": true },
+    { "source": "/ICD.html", "destination": "/treatments/implantable-cardioverter-defibrillator", "permanent": true },
+    { "source": "/ICD-Implant.html", "destination": "/treatments/icd-implantation", "permanent": true },
+    { "source": "/ICD-Checks.html", "destination": "/testing/icd-checks", "permanent": true },
+    { "source": "/Bi-V-Pacer-Implant.html", "destination": "/treatments/cardiac-resynchronization-therapy", "permanent": true },
+    { "source": "/Bi-V-Pacemaker-Checks.html", "destination": "/testing/device-follow-up", "permanent": true },
+    { "source": "/Bi-V-+-ICD-Implant.html", "destination": "/treatments/cardiac-resynchronization-therapy", "permanent": true },
+    { "source": "/Bi-V-+-ICD-Checks.html", "destination": "/testing/device-follow-up", "permanent": true },
+    { "source": "/SVT-Ablation.html", "destination": "/treatments/svt-ablation", "permanent": true },
+    { "source": "/VT-Ablation.html", "destination": "/treatments/vt-ablation", "permanent": true },
+    { "source": "/3-D-Electro-Anatomical-Mapping.html", "destination": "/treatments/three-dimensional-mapping", "permanent": true },
+    { "source": "/Tilt-Table-Study.html", "destination": "/testing/tilt-table", "permanent": true },
+    { "source": "/Intra-Cardiac Echo-(ICE).html", "destination": "/testing/echocardiogram", "permanent": true },
+    { "source": "/Coumadin-Management.html", "destination": "/patient-resources", "permanent": true },
+    { "source": "/movies.html", "destination": "/videos", "permanent": true },
+    { "source": "/photos.html", "destination": "/photos", "permanent": true },
+    { "source": "/links.html", "destination": "/education/useful-resources", "permanent": true },
+    { "source": "/whats-new.html", "destination": "/", "permanent": true },
+    { "source": "/patients-letters.html", "destination": "/", "permanent": true },
+    { "source": "/Patient-Feedback.html", "destination": "/contact", "permanent": true },
+    { "source": "/html/Atrial_Fibrillation.html", "destination": "/conditions/atrial-fibrillation", "permanent": true },
+    { "source": "/html/Atrial_Flutter.html", "destination": "/conditions/atrial-flutter", "permanent": true },
+    { "source": "/html/SVT.html", "destination": "/conditions/supraventricular-tachycardia", "permanent": true },
+    { "source": "/html/Ventric_Tachycardia.html", "destination": "/conditions/ventricular-tachycardia", "permanent": true },
+    { "source": "/html/Ventric_Fibrillation.html", "destination": "/conditions/ventricular-fibrillation", "permanent": true },
+    { "source": "/html/Syncope.html", "destination": "/conditions/syncope", "permanent": true },
+    { "source": "/html/Pacemakers.html", "destination": "/treatments/pacemaker", "permanent": true },
+    { "source": "/html/ICD_Device.html", "destination": "/treatments/implantable-cardioverter-defibrillator", "permanent": true },
+    { "source": "/html/Catheter_Ablation.html", "destination": "/treatments/cardiac-ablation", "permanent": true },
+    { "source": "/html/Electrophysiol_Study.html", "destination": "/treatments/electrophysiology-study", "permanent": true },
+    { "source": "/html/Holter_Monitor.html", "destination": "/testing/holter-monitoring", "permanent": true },
+    { "source": "/html/Echocardiogram.html", "destination": "/testing/echocardiogram", "permanent": true },
+    { "source": "/html/Electrocardiogram.html", "destination": "/testing/electrocardiogram", "permanent": true },
+    { "source": "/html/Long_QT_Syndrome.html", "destination": "/conditions/long-qt-syndrome", "permanent": true },
+    { "source": "/html/Wolff-Parkinson_White.html", "destination": "/conditions/wolff-parkinson-white", "permanent": true },
+    { "source": "/html/Heart_Block.html", "destination": "/conditions/heart-block", "permanent": true },
+    { "source": "/html/Bradycardia.html", "destination": "/conditions/bradycardia", "permanent": true },
+    { "source": "/html/Cardiac_Arrest.html", "destination": "/conditions/sudden-cardiac-arrest", "permanent": true },
+    { "source": "/html/Loop_Recorder_Syncope.html", "destination": "/treatments/loop-recorder", "permanent": true },
+    { "source": "/Loop-Recorder-Implant.html", "destination": "/treatments/loop-recorder", "permanent": true },
+    { "source": "/Device-Information.html", "destination": "/treatments", "permanent": true },
+    { "source": "/books.html", "destination": "/education", "permanent": true },
+    { "source": "/html/3D_Electrical_Mapping.html", "destination": "/treatments/three-dimensional-mapping", "permanent": true },
+    { "source": "/html/CRT_Device.html", "destination": "/treatments/cardiac-resynchronization-therapy", "permanent": true },
+    { "source": "/html/Heart_Failure.html", "destination": "/conditions/heart-failure", "permanent": true },
+    { "source": "/html/Ejection_Fraction.html", "destination": "/education/ejection-fraction", "permanent": true },
+    { "source": "/html/Electrical_System.html", "destination": "/education/electrical-system", "permanent": true },
+    { "source": "/html/AVNRT.html", "destination": "/conditions/avnrt", "permanent": true },
+    { "source": "/html/AVRT.html", "destination": "/conditions/avrt", "permanent": true },
+    { "source": "/html/PVC.html", "destination": "/conditions/premature-ventricular-contractions", "permanent": true },
+    { "source": "/html/Mitral_Regurgitation.html", "destination": "/conditions/mitral-valve-disease", "permanent": true },
+    { "source": "/html/Mitral_Valve_Stenosis.html", "destination": "/conditions/mitral-valve-disease", "permanent": true },
+    { "source": "/html/Heart_Valve_Disease.html", "destination": "/conditions/aortic-valve-disease", "permanent": true },
+    { "source": "/presentations.html", "destination": "/presentations", "permanent": true },
+    { "source": "/articles.html", "destination": "/articles", "permanent": true },
+    { "source": "/Atrial/Default.html", "destination": "/education/booklets/atrial-fibrillation", "permanent": true },
+    { "source": "/Arrhythmias/Default.html", "destination": "/education/booklets/common-arrhythmias", "permanent": true },
+    { "source": "/CRT/Default.html", "destination": "/education/booklets/crt", "permanent": true },
+    { "source": "/Heart/Default.html", "destination": "/education/booklets/heart-failure", "permanent": true }
+  ]
+}

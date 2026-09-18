@@ -1,17 +1,19 @@
+import { Link } from 'react-router-dom'
 import { practice } from '../data/practice'
-
-// Patient-friendly conditions and services for heart rhythm care.
 
 const services = [
   {
+    to: '/conditions',
     title: 'Cardiology visits',
-    body: `Office visits with ${practice.physician} for heart and heart rhythm concerns.`,
+    body: `Office visits with ${practice.physicianInformal} for heart and heart rhythm concerns.`,
   },
   {
+    to: '/conditions/heart-palpitations',
     title: 'Heart rhythm evaluation',
     body: 'Evaluation of palpitations, irregular heartbeat, and related symptoms.',
   },
   {
+    to: '/treatments',
     title: 'Treatment planning',
     body: 'Care planning for heart rhythm disorders after evaluation.',
   },
@@ -19,24 +21,20 @@ const services = [
 
 const primaryConditions = [
   {
+    to: '/conditions/arrhythmias',
     title: 'Irregular heartbeat',
     body: 'A heartbeat that feels uneven, skipped, or out of rhythm.',
   },
   {
+    to: '/conditions/heart-palpitations',
     title: 'Palpitations',
     body: 'A feeling that the heart is racing, fluttering, or skipping beats.',
   },
   {
+    to: '/conditions/arrhythmias',
     title: 'Fast or slow heart rate',
     body: 'A pulse that seems too fast, too slow, or hard to explain.',
   },
-] as const
-
-const moreConditions = [
-  'Atrial fibrillation (AFib) and other named rhythm disorders, as referred',
-  'Lightheaded or fainting spells that may be related to heart rhythm',
-  'An irregular heartbeat found on a test, monitor, or hospital visit',
-  'Heart rhythm questions after a referral from another doctor',
 ] as const
 
 export function Care() {
@@ -57,12 +55,14 @@ export function Care() {
         </h3>
         <ul className="mt-6 grid gap-4 md:grid-cols-3">
           {primaryConditions.map((item) => (
-            <li
-              key={item.title}
-              className="rounded-2xl border border-navy/10 bg-white px-6 py-6"
-            >
-              <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
-              <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>
+            <li key={item.title} className="min-w-0">
+              <Link
+                to={item.to}
+                className="flex h-full flex-col rounded-2xl border border-navy/10 bg-white px-6 py-6 no-underline hover:border-gold"
+              >
+                <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
+                <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>
+              </Link>
             </li>
           ))}
         </ul>
@@ -74,9 +74,21 @@ export function Care() {
           </summary>
           <div className="border-t border-navy/10 px-5 py-5">
             <ul className="list-disc space-y-4 pl-6 text-lg leading-relaxed text-navy">
-              {moreConditions.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
+              <li>
+                <Link to="/conditions/atrial-fibrillation" className="font-semibold underline underline-offset-4">
+                  Atrial fibrillation (AFib)
+                </Link>{' '}
+                and other named rhythm disorders, as referred
+              </li>
+              <li>
+                Lightheaded or fainting spells that may be related to heart rhythm
+              </li>
+              <li>
+                An irregular heartbeat found on a test, monitor, or hospital visit
+              </li>
+              <li>
+                Heart rhythm questions after a referral from another doctor
+              </li>
             </ul>
             <p className="mt-5 text-lg leading-relaxed text-navy">
               If you are not sure whether your concern belongs here, call the
@@ -90,12 +102,14 @@ export function Care() {
         </h3>
         <ul className="mt-6 grid gap-4 md:grid-cols-3">
           {services.map((item) => (
-            <li
-              key={item.title}
-              className="rounded-2xl border border-navy/10 bg-white px-6 py-6"
-            >
-              <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
-              <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>
+            <li key={item.title} className="min-w-0">
+              <Link
+                to={item.to}
+                className="flex h-full flex-col rounded-2xl border border-navy/10 bg-white px-6 py-6 no-underline hover:border-gold"
+              >
+                <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
+                <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>
+              </Link>
             </li>
           ))}
         </ul>
@@ -104,9 +118,12 @@ export function Care() {
           <a href={practice.phoneTel} className="btn btn-primary w-full sm:w-auto">
             Call {practice.phoneDisplay}
           </a>
-          <a href="#contact" className="btn btn-secondary w-full sm:w-auto">
+          <Link to="/conditions" className="btn btn-secondary w-full sm:w-auto">
+            Conditions
+          </Link>
+          <Link to="/contact" className="btn btn-secondary w-full sm:w-auto">
             Contact the Office
-          </a>
+          </Link>
         </div>
       </div>
     </section>
