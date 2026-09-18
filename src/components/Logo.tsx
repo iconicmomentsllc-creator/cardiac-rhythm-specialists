@@ -2,11 +2,11 @@ import { practice } from '../data/practice'
 
 export function Logo() {
   return (
-    <span className="flex min-w-0 items-center gap-2.5">
+    <span className="site-logo">
       <svg
         aria-hidden="true"
         viewBox="0 0 40 40"
-        className="h-9 w-9 shrink-0"
+        className="site-logo-mark"
       >
         <rect width="40" height="40" rx="10" className="fill-navy" />
         <path
@@ -18,13 +18,11 @@ export function Logo() {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="min-w-0 text-left">
-        <span className="block max-w-full font-serif text-[1.05rem] font-semibold leading-tight tracking-tight text-navy [overflow-wrap:break-word] [word-break:keep-all] 2xl:whitespace-nowrap">
-          {practice.legalName}
-        </span>
-        <span className="mt-0.5 block text-[0.9375rem] font-medium leading-snug text-navy">
-          <span className="physician-name block">{practice.physician}</span>
-          <span className="mt-0.5 block">{practice.specialty}</span>
+      <span className="site-logo-text">
+        <span className="site-logo-name">{practice.brandName}</span>
+        <span className="site-logo-meta">
+          <span className="physician-name site-logo-physician">{practice.physician}</span>
+          <span className="site-logo-specialty">{practice.specialty}</span>
         </span>
       </span>
     </span>

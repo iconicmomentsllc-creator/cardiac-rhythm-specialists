@@ -33,7 +33,6 @@ export function AccessibilityWidget() {
   return (
     <section className="a11y-dock" aria-label="Accessibility tools">
       <div className="a11y-dock-inner">
-        <p className="a11y-dock-label">Accessibility</p>
         <button
           ref={buttonRef}
           type="button"
@@ -44,7 +43,10 @@ export function AccessibilityWidget() {
           aria-controls={dialogId}
           onClick={() => setOpen(true)}
         >
-          <span aria-hidden="true">♿</span>
+          <span className="a11y-fab-icon" aria-hidden="true">
+            ♿
+          </span>
+          <span className="a11y-fab-text">Accessibility</span>
         </button>
       </div>
 

@@ -1,8 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { useAccessibility } from '../context/AccessibilityContext'
 import { MEDIA_SECTION_PATHS } from '../data/media'
 import { practice } from '../data/practice'
 import { Logo } from './Logo'
+
+const DESKTOP_NAV_QUERY = '(min-width: 1536px)'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -17,6 +20,7 @@ const navItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
+  const { settings } = useAccessibility()
   const location = useLocation()
   const [menuPath, setMenuPath] = useState(location.pathname)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
@@ -76,15 +80,15 @@ export function Header() {
   }, [open])
 
   useEffect(() => {
-    const media = window.matchMedia('(min-width: 1536px)')
+    const media = window.matchMedia(DESKTOP_NAV_QUERY)
     function onChange(event: MediaQueryListEvent) {
-      if (event.matches) {
+      if (event.matches && settings.textSize < 125) {
         setOpen(false)
       }
     }
     media.addEventListener('change', onChange)
     return () => media.removeEventListener('change', onChange)
-  }, [])
+  }, [settings.textSize])
 
   useEffect(() => {
     const main = document.getElementById('main')
@@ -120,84 +124,73 @@ export function Header() {
 
   function navClass(to: string) {
     const active = isActive(to)
-    return [
-      'inline-flex min-h-12 items-center whitespace-nowrap text-base font-semibold text-navy',
-      active
-        ? 'underline decoration-gold decoration-[1.5px] underline-offset-[10px]'
-        : 'hover:underline hover:decoration-gold hover:decoration-[1.5px] hover:underline-offset-[10px]',
-    ].join(' ')
+    return ['site-header-link', active ? 'is-active' : ''].filter(Boolean).join(' ')
   }
 
-    return (
-    <header className="z-40 overflow-x-clip border-b border-navy/10 bg-white 2xl:sticky 2xl:top-0">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-        <div className="flex flex-col gap-3 py-2.5 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:gap-6 2xl:py-3">
+  return (
+    <header className="site-header">
+      <div className="site-header-inner">
+        <Link
+          to="/"
+          className="site-header-brand"
+          aria-label="Cardiac Rhythm Specialists, Inc. home"
+          aria-current={isActive('/') ? 'page' : undefined}
+          onClick={closeMenu}
+        >
+          <Logo />
+        </Link>
+
+        <div className="site-header-desktop">
+          <nav aria-label="Primary" className="site-header-nav">
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={navClass(item.to)}
+                aria-current={isActive(item.to) ? 'page' : undefined}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="site-header-cta">
+            <Link to="/appointment-request" className="btn btn-secondary site-header-cta-btn">
+              Request appointment
+            </Link>
+            <a href={practice.phoneTel} className="btn btn-primary site-header-cta-btn">
+              Call {practice.phoneDisplay}
+            </a>
+          </div>
+        </div>
+
+        <div className="site-header-mobile">
           <Link
-            to="/"
-            className="min-w-0 rounded-sm 2xl:shrink-0"
-            aria-label="Cardiac Rhythm Specialists, Inc. home"
-            aria-current={isActive('/') ? 'page' : undefined}
-            onClick={closeMenu}
+            to="/appointment-request"
+            className="btn btn-secondary site-header-mobile-btn"
           >
-            <Logo />
+            Request appointment
           </Link>
-
-          <div className="hidden min-w-0 items-center gap-5 2xl:flex">
-            <nav aria-label="Primary" className="flex flex-wrap items-center gap-x-5 gap-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className={navClass(item.to)}
-                  aria-current={isActive(item.to) ? 'page' : undefined}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <Link
-              to="/appointment-request"
-              className="btn btn-secondary min-h-12 shrink-0 px-4 text-base"
-            >
-              Request appointment
-            </Link>
-            <a href={practice.phoneTel} className="btn btn-primary min-h-12 shrink-0 px-4 text-base">
-              Call {practice.phoneDisplay}
-            </a>
-          </div>
-
-          <div className="flex flex-col gap-2.5 min-[480px]:flex-row min-[480px]:flex-wrap 2xl:hidden">
-            <Link
-              to="/appointment-request"
-              className="btn btn-secondary min-h-12 w-full min-[480px]:min-w-[12rem] min-[480px]:flex-1 px-3 text-base"
-            >
-              Request appointment
-            </Link>
-            <a
-              href={practice.phoneTel}
-              className="btn btn-primary min-h-12 w-full min-[480px]:min-w-[14rem] min-[480px]:flex-1 px-3 text-base leading-snug"
-            >
-              Call {practice.phoneDisplay}
-            </a>
-            <button
-              ref={menuButtonRef}
-              type="button"
-              className="btn btn-secondary min-h-12 w-full min-[480px]:w-auto px-4 text-base"
-              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              onClick={() => setOpen((value) => !value)}
-            >
-              {open ? 'Close' : 'Menu'}
-            </button>
-          </div>
+          <a href={practice.phoneTel} className="btn btn-primary site-header-mobile-btn">
+            Call {practice.phoneDisplay}
+          </a>
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="btn btn-secondary site-header-menu-btn"
+            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? 'Close' : 'Menu'}
+          </button>
         </div>
       </div>
 
       <div
         ref={mobileNavRef}
         id="mobile-nav"
-        className={open ? 'border-t border-navy/10 bg-white 2xl:hidden' : 'hidden'}
+        className={open ? 'site-header-panel' : 'hidden'}
       >
         <div className="mx-auto max-w-[1280px] px-4 py-4 sm:px-6">
           <nav aria-label="Mobile" className="flex flex-col gap-1">
