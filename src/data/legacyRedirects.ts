@@ -4,7 +4,7 @@ export type LegacyRedirect = {
   note: string
 }
 
-export const LEGACY_REDIRECTS: LegacyRedirect[] = [
+const LEGACY_HTML_REDIRECTS: LegacyRedirect[] = [
   { from: '/index.html', to: '/', note: 'Legacy homepage' },
   { from: '/welcome.html', to: '/about-dr-polosajian', note: 'Physician biography' },
   { from: '/contact-us.html', to: '/contact', note: 'Contact' },
@@ -50,7 +50,7 @@ export const LEGACY_REDIRECTS: LegacyRedirect[] = [
   { from: '/photos.html', to: '/photos', note: 'Photo gallery' },
   { from: '/links.html', to: '/education/useful-resources', note: 'External resources' },
   { from: '/whats-new.html', to: '/', note: 'News archive not republished' },
-  { from: '/patients-letters.html', to: '/', note: 'Testimonials withheld for privacy review' },
+  { from: '/patients-letters.html', to: '/testimonials', note: 'Original testimonials page' },
   { from: '/Patient-Feedback.html', to: '/contact', note: 'Feedback routed to contact' },
   { from: '/html/Atrial_Fibrillation.html', to: '/conditions/atrial-fibrillation', note: 'AFib education' },
   { from: '/html/Atrial_Flutter.html', to: '/conditions/atrial-flutter', note: 'Atrial flutter' },
@@ -92,6 +92,21 @@ export const LEGACY_REDIRECTS: LegacyRedirect[] = [
   { from: '/CRT/Default.html', to: '/education/booklets/crt', note: 'Flash CRT booklet' },
   { from: '/Heart/Default.html', to: '/education/booklets/heart-failure', note: 'Flash heart-failure booklet' },
 ]
+
+function withCleanUrlAliases(items: LegacyRedirect[]): LegacyRedirect[] {
+  const fromSet = new Set(items.map((item) => item.from))
+  const extras: LegacyRedirect[] = []
+  for (const item of items) {
+    if (!item.from.endsWith('.html')) continue
+    const stem = item.from.slice(0, -5)
+    if (!stem || stem === item.to || fromSet.has(stem)) continue
+    extras.push({ from: stem, to: item.to, note: `${item.note} (clean URL)` })
+    fromSet.add(stem)
+  }
+  return [...items, ...extras]
+}
+
+export const LEGACY_REDIRECTS = withCleanUrlAliases(LEGACY_HTML_REDIRECTS)
 
 function assertUniqueRedirects(items: LegacyRedirect[]) {
   const seen = new Map<string, string>()

@@ -20,15 +20,46 @@ const lastmods = new Set([...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].m
 const today = new Date().toISOString().slice(0, 10)
 const lastmod = [...lastmods][0]
 if (locs.length !== 79) failures.push(`Sitemap has ${locs.length} URLs, expected 79`)
+if (locs.some((loc) => loc.endsWith('/education/multimedia-library'))) {
+  failures.push('Sitemap includes noindex /education/multimedia-library')
+}
 if (lastmods.size !== 1 || lastmod !== today) {
   failures.push(`Sitemap lastmod is ${lastmod ?? '(missing)'} expected ${today}`)
 }
 
 const origin = 'https://www.crsmdinc.com'
+if (locs.some((loc) => !loc.startsWith(`${origin}/`))) {
+  failures.push('Sitemap contains a URL that is not on https://www.crsmdinc.com')
+}
+if (locs.some((loc) => !loc.startsWith('https://'))) failures.push('Sitemap contains a non-HTTPS URL')
+if (new Set(locs).size !== locs.length) failures.push('Sitemap contains duplicate URLs')
+if (locs.some((loc) => loc !== `${origin}/` && loc.endsWith('/'))) {
+  failures.push('Sitemap contains a trailing-slash URL other than the homepage')
+}
+if (locs.some((loc) => loc.includes('.html'))) failures.push('Sitemap contains a legacy .html URL')
+if (locs.includes(`${origin}/404`) || locs.includes(`${origin}/404.html`)) {
+  failures.push('Sitemap includes the 404 page')
+}
+if (locs.some((loc) => loc.includes('localhost') || loc.includes('127.0.0.1'))) {
+  failures.push('Sitemap contains a localhost URL')
+}
+
 const pages = locs.map((loc) => loc.replace(origin, '') || '/')
 for (const page of pages) {
   const file = page === '/' ? path.join(distDir, 'index.html') : path.join(distDir, page.slice(1), 'index.html')
-  if (!fs.existsSync(file)) failures.push(`Missing prerendered file for ${page}`)
+  if (!fs.existsSync(file)) {
+    failures.push(`Missing prerendered file for ${page}`)
+    continue
+  }
+  const html = fs.readFileSync(file, 'utf8')
+  const canonical = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1]
+  const robotsTag = html.match(/<meta[^>]*name=["']robots["'][^>]*content=["']([^"']+)["']/i)?.[1] ?? ''
+  const expected = page === '/' ? `${origin}/` : `${origin}${page}`
+  if (canonical !== expected) failures.push(`${page} canonical is ${canonical ?? '(missing)'}, expected ${expected}`)
+  if (robotsTag.includes('noindex')) failures.push(`${page} is in the sitemap but has robots ${robotsTag}`)
+  if ((html.match(/rel=["']canonical["']/gi) || []).length > 1) {
+    failures.push(`${page} has more than one canonical tag`)
+  }
 }
 
 if (!fs.existsSync(path.join(distDir, '404.html'))) failures.push('Missing dist/404.html')
@@ -49,6 +80,24 @@ if (!notFound.includes('canonical') || !notFound.includes(`${origin}/404`)) {
   failures.push('404 canonical is not /404')
 }
 
+const multimediaLibrary = path.join(distDir, 'education', 'multimedia-library', 'index.html')
+if (!fs.existsSync(multimediaLibrary)) {
+  failures.push('Missing prerendered /education/multimedia-library')
+} else {
+  const multimediaHtml = fs.readFileSync(multimediaLibrary, 'utf8')
+  if (!/name=["']robots["'][^>]*content=["']noindex, follow["']/.test(multimediaHtml)) {
+    failures.push('/education/multimedia-library is missing noindex, follow')
+  }
+  if (multimediaHtml.includes('\uFFFD') || multimediaHtml.includes('???Electrophysiology')) {
+    failures.push('/education/multimedia-library has garbled characters in prerendered HTML')
+  }
+}
+
+const robotsTxt = fs.readFileSync(path.join(distDir, 'robots.txt'), 'utf8').replace(/\r\n/g, '\n')
+if (robotsTxt !== 'User-agent: *\nAllow: /\n\nSitemap: https://www.crsmdinc.com/sitemap.xml\n') {
+  failures.push('dist/robots.txt does not allow crawlers and point to the production sitemap')
+}
+
 const headers = fs.readFileSync(path.join(distDir, '_headers'), 'utf8')
 if (headers.includes('unsafe-inline')) failures.push('dist/_headers still contains unsafe-inline')
 if (headers.includes('style-src-attr')) failures.push('dist/_headers still contains style-src-attr')
@@ -63,6 +112,13 @@ for (const file of htmlFiles) {
     if (inline.length) failures.push(`Inline JS in ${file}: ${inline.length}`)
   }
   if (html.includes('style="')) overflowCandidates += 1
+  if (/https?:\/\/(?:localhost|127\.0\.0\.1)/i.test(html)) {
+    failures.push(`Localhost URL in ${file}`)
+  }
+  const canonical = html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1] ?? ''
+  if (/github\.io|vercel\.app|localhost|127\.0\.0\.1/i.test(canonical)) {
+    failures.push(`Non-production canonical in ${file}: ${canonical}`)
+  }
 }
 if (overflowCandidates) failures.push(`${overflowCandidates} HTML files still contain style=" attributes`)
 

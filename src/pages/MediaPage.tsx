@@ -11,14 +11,15 @@ export function MediaPage() {
       title="Media"
       intro={`Videos, presentations, articles, and recovered educational material from ${practice.physicianInformal} and Cardiac Rhythm Specialists.`}
       related={[
+        { to: '/testimonials', label: 'Testimonials' },
         { to: '/photos', label: 'Photos' },
         { to: '/patient-resources', label: 'Patient resources' },
       ]}
     >
       <p>
         Current educational videos are available here and on YouTube. Presentations, magazine PDFs,
-        and recovered illustrations are historical material from the original website. They are not
-        presented as current medical guidelines.
+        thank-you notes, and recovered illustrations are historical material from the original
+        website. They are not presented as current medical guidelines.
       </p>
       <nav aria-label="Media sections" className="hub-list">
         <ul>

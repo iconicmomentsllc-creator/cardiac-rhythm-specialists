@@ -12,9 +12,10 @@ const resourceLinks = [
   { to: '/lab-test-information', label: 'Lab and test information', body: 'How to ask about results.' },
   { to: '/education', label: 'Patient education', body: 'Recovered educational topics and illustrated booklets.' },
   { to: '/media', label: 'Media', body: 'Videos, presentations, articles, and educational multimedia from Dr. Polosajian.' },
-  { to: '/education/multimedia-library', label: 'Original education library', body: 'Map of the old multimedia library to modern pages.' },
+  { to: '/education/multimedia-library', label: 'Original education library', body: 'Topics from the original education library, linked to current pages on this website.' },
   { to: '/presentations', label: 'Presentations', body: 'Recovered historical presentation images.' },
   { to: '/articles', label: 'Articles', body: 'A recovered 2010 magazine article, kept as historical material.' },
+  { to: '/testimonials', label: 'Testimonials', body: 'Thank-you notes and a letter from the original website. Individual comments, not typical or guaranteed results.' },
   { to: '/videos', label: 'Videos', body: 'Educational videos from Dr. Polosajian.' },
   { to: '/photos', label: 'Photos', body: 'Physician photographs and educational images.' },
   { to: '/insurance', label: 'Insurance', body: 'Call the office or your insurer to confirm coverage.' },
@@ -52,7 +53,7 @@ export function PatientFormsPage() {
       path="/patient-forms"
       eyebrow="Patient forms"
       title="Patient forms"
-      intro="The original website provided printable forms. One recovered new-patient intake PDF is available here. Other listed forms were placeholders on the old site and are not republished until the office provides current files."
+      intro="A new-patient intake form is available to print. Please call the office if you need another form."
     >
       <ul className="mt-4 list-disc space-y-3 pl-6">
         <li>
@@ -66,8 +67,8 @@ export function PatientFormsPage() {
           at the office, plan extra check-in time.
         </li>
         <li>
-          New patient history, privacy-notice, and records-release PDFs from the old site were not
-          attached to working files. Call the office if you need a current form.
+          If you need a new-patient history form, a privacy notice, or a records-release form,
+          please call the office. Current copies are provided by the office.
         </li>
       </ul>
       <p className="mt-6">
@@ -94,8 +95,8 @@ export function MedicalRecordsPage() {
         for records questions. Staff can tell you what is needed for a request.
       </p>
       <p>
-        Recovered pages mentioned a records-release form that is not currently attached as a working
-        file. Use the current process the office gives you.
+        If you need a medical-records release or authorization form, please call the office. Current
+        copies are provided by the office.
       </p>
     </ContentLayout>
   )
@@ -157,11 +158,11 @@ export function PhotosPage() {
       path="/photos"
       eyebrow="Practice photos"
       title="Photos"
-      intro="The recovered site included physician photographs and educational illustrations. Identifiable patient letters and testimonials are not published here pending privacy review."
+      intro="The original Cardiac Rhythm Specialists website included physician photographs and educational illustrations. This page shows a physician photograph."
       related={[
+        { to: '/testimonials', label: 'Testimonials' },
         { to: '/media', label: 'Media library' },
         { to: '/education', label: 'Patient education' },
-        { to: '/presentations', label: 'Presentations' },
       ]}
     >
       <figure className="mt-6 max-w-xs">
@@ -183,6 +184,10 @@ export function PhotosPage() {
         . Historical presentation images are on{' '}
         <Link to="/presentations" className="font-semibold underline underline-offset-4">
           presentations
+        </Link>
+        . Thank-you notes from the original website are on{' '}
+        <Link to="/testimonials" className="font-semibold underline underline-offset-4">
+          testimonials
         </Link>
         .
       </p>

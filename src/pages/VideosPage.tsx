@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { ContentLayout } from '../components/ContentLayout'
 import { VideosPageSections } from '../components/VideosPageSections'
 import { practice } from '../data/practice'
@@ -18,15 +17,7 @@ export function VideosPage() {
     >
       <VideosPageSections />
       <p>
-        Watch more current videos on the{' '}
-        <Link to="/media" className="font-semibold underline underline-offset-4">
-          media library
-        </Link>
-        , the{' '}
-        <Link to="/" className="font-semibold underline underline-offset-4">
-          homepage
-        </Link>
-        , or on{' '}
+        Additional current educational videos from Dr. Polosajian are available on{' '}
         <a
           href={practice.youtubeUrl}
           target="_blank"

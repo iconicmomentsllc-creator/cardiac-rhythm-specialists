@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { App } from './App'
-import { getSeo, PUBLIC_PATHS } from './seo/pages'
+import { getSeo, PUBLIC_PATHS, SITEMAP_PATHS } from './seo/pages'
 import { jsonLdGraph } from './seo/structuredData'
 import { GSC_VERIFICATION } from './seo/site'
 
@@ -22,5 +22,6 @@ export function render(url: string) {
     jsonLd: jsonLdGraph(url),
     gsc: GSC_VERIFICATION,
     publicPaths: PUBLIC_PATHS,
+    sitemapPaths: SITEMAP_PATHS,
   }
 }

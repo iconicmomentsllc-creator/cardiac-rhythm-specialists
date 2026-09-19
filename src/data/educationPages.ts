@@ -307,19 +307,13 @@ export const EDUCATION: Record<string, EducationPageContent> = {
     h1: 'Original Electrophysiology Education Library',
     eyebrow: 'Patient education',
     intro:
-      'The recovered Cardiac Rhythm Specialists website included an “Electrophysiology Multimedia Library.” Many items were Flash animations. Useful text and still images have been rebuilt as modern pages. Flash-only illustrations remain in the on-disk archive until they can be converted.',
+      'The original Cardiac Rhythm Specialists website included an electrophysiology education library. The topics below open current educational pages on this website. They are historical educational material, not personal medical advice.',
     sections: [
       {
-        heading: 'How this library is used today',
+        heading: 'How to use this list',
         paragraphs: [
-          'Topics that had recovered written education now have modern pages. Topics that were only a Flash movie are listed so nothing is silently dropped. We did not invent medical text to fill those Flash wrappers.',
-          'Illustrated booklets that used Flash (atrial fibrillation, common arrhythmias, CRT, and heart failure) are available as accessible image sequences.',
-        ],
-      },
-      {
-        heading: 'Cooking, diet, and medication Flash books',
-        paragraphs: [
-          'The archive also contains Cooking for a Healthy Heart, Diet for a Healthy Heart, and Lincare medication booklets. Those remain in the archive because the medication material needs physician review before it is published.',
+          'Each topic name opens the current educational page that corresponds to that item from the original library.',
+          'Illustrated booklets about atrial fibrillation, common arrhythmias, cardiac resynchronization therapy, and heart failure are available as accessible page-by-page images.',
         ],
       },
     ],

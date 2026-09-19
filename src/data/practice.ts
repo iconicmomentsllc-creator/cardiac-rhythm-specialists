@@ -112,3 +112,4 @@ export const MEDICAL_DISCLAIMER =
 
 export const CONTENT_UPDATED_ISO = '2026-09-19'
 export const CONTENT_UPDATED_LABEL = 'September 19, 2026'
+export const CONTENT_UPDATED_NOTICE = `Website content updated ${CONTENT_UPDATED_LABEL}`

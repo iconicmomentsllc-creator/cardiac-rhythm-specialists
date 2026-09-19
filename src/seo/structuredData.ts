@@ -126,6 +126,7 @@ export function breadcrumbsFor(path: string): Crumb[] {
     '/lab-test-information': 'Lab and Test Information',
     '/videos': 'Videos',
     '/photos': 'Photos',
+    '/testimonials': 'Testimonials',
     '/presentations': 'Presentations',
     '/articles': 'Articles',
     '/new-patients': 'New Patients',
@@ -164,7 +165,7 @@ export function breadcrumbsFor(path: string): Crumb[] {
     crumbs.push({ name: 'Patient Education', path: '/education' })
   } else if (normalized.startsWith('/education/')) {
     crumbs.push({ name: 'Patient Education', path: '/education' })
-  } else if (['/videos', '/photos', '/presentations', '/articles'].includes(normalized)) {
+  } else if (['/videos', '/photos', '/testimonials', '/presentations', '/articles'].includes(normalized)) {
     crumbs.push({ name: 'Media', path: '/media' })
   }
 

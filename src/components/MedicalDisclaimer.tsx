@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { CONTENT_UPDATED_LABEL, MEDICAL_DISCLAIMER } from '../data/practice'
+import { CONTENT_UPDATED_NOTICE, MEDICAL_DISCLAIMER } from '../data/practice'
 
 export function MedicalDisclaimer({
   compact = false,
@@ -20,7 +20,7 @@ export function MedicalDisclaimer({
       </p>
       {compact ? null : (
         <p className="mt-3">
-          Educational information last updated {CONTENT_UPDATED_LABEL}.{' '}
+          {CONTENT_UPDATED_NOTICE}.{' '}
           <Link to="/medical-disclaimer" className="font-semibold underline underline-offset-4">
             Full medical disclaimer
           </Link>

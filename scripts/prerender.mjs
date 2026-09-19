@@ -88,9 +88,18 @@ const template = readFileSync(resolve(distDir, 'index.html'), 'utf8')
 const origin = (process.env.VITE_SITE_URL || 'https://www.crsmdinc.com').replace(/\/$/, '')
 const first = render('/')
 const PUBLIC_PATHS = first.publicPaths
+const SITEMAP_PATHS = first.sitemapPaths
 const lastmod = new Date().toISOString().slice(0, 10)
-if (!Array.isArray(PUBLIC_PATHS) || PUBLIC_PATHS.length !== 79) {
-  throw new Error(`Expected 79 public paths, received ${PUBLIC_PATHS?.length ?? 0}`)
+if (!Array.isArray(PUBLIC_PATHS) || PUBLIC_PATHS.length !== 80) {
+  throw new Error(`Expected 80 public paths, received ${PUBLIC_PATHS?.length ?? 0}`)
+}
+if (!Array.isArray(SITEMAP_PATHS) || SITEMAP_PATHS.includes('/education/multimedia-library')) {
+  throw new Error('Noindex multimedia-library page must not appear in the sitemap path list')
+}
+if (SITEMAP_PATHS.length !== PUBLIC_PATHS.length - 1) {
+  throw new Error(
+    `Expected ${PUBLIC_PATHS.length - 1} sitemap paths after excluding noindex pages, received ${SITEMAP_PATHS.length}`,
+  )
 }
 
 for (const path of PUBLIC_PATHS) {
@@ -103,7 +112,7 @@ for (const path of PUBLIC_PATHS) {
 const notFound = applySeo(template, render('/__not-found__'))
 writeFileSync(resolve(distDir, '404.html'), notFound)
 
-writeFileSync(resolve(distDir, 'sitemap.xml'), sitemapXml(origin, PUBLIC_PATHS, lastmod))
+writeFileSync(resolve(distDir, 'sitemap.xml'), sitemapXml(origin, SITEMAP_PATHS, lastmod))
 writeFileSync(
   resolve(distDir, 'robots.txt'),
   `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`,

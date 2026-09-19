@@ -40,10 +40,7 @@ export function PrivacyPage() {
         Browser settings such as accessibility preferences may be stored locally on your device so
         those settings can be remembered on later visits.
       </p>
-      <p>
-        This website does not add advertising or analytics trackers unless a measurement ID is later
-        supplied and enabled by the practice with an appropriate consent process.
-      </p>
+      <p>This website does not use advertising or analytics tracking.</p>
     </ContentLayout>
   )
 }

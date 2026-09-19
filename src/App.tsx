@@ -37,6 +37,7 @@ import {
 import { AppointmentRequestPage } from './pages/AppointmentRequestPage'
 import { VideosPage } from './pages/VideosPage'
 import { MediaPage } from './pages/MediaPage'
+import { TestimonialsPage } from './pages/TestimonialsPage'
 import { LEGACY_REDIRECTS } from './data/legacyRedirects'
 
 export function App() {
@@ -63,6 +64,7 @@ export function App() {
         <Route path="/media" element={<MediaPage />} />
         <Route path="/videos" element={<VideosPage />} />
         <Route path="/photos" element={<PhotosPage />} />
+        <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/presentations" element={<PresentationsPage />} />
         <Route path="/articles" element={<ArticlesPage />} />
         <Route path="/new-patients" element={<NewPatientsPage />} />

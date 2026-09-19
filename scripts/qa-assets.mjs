@@ -49,7 +49,7 @@ function walk(dir) {
 }
 
 const assetPattern =
-  /['"`](\/(?:education|forms|presentations|articles|dr-leo)[^'"`]+?\.(?:jpg|jpeg|png|gif|webp|pdf|svg))['"`]/g
+  /['"`](\/(?:education|forms|presentations|articles|testimonials|dr-leo)[^'"`]+?\.(?:jpg|jpeg|png|gif|webp|pdf|svg))['"`]/g
 
 for (const file of walk('src')) {
   if (!/\.(ts|tsx)$/.test(file)) continue

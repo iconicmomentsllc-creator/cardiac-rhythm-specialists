@@ -58,8 +58,7 @@ export function EducationTopicPage({ slug }: { slug: string }) {
 function MultimediaLibraryPage() {
   const page = EDUCATION['multimedia-library']
   if (!page) return <NotFoundPage />
-  const recovered = MULTIMEDIA_LIBRARY.filter((item) => item.to)
-  const archived = MULTIMEDIA_LIBRARY.filter((item) => !item.to)
+  const published = MULTIMEDIA_LIBRARY.filter((item) => item.to)
 
   return (
     <MedicalPageLayout
@@ -70,28 +69,13 @@ function MultimediaLibraryPage() {
       related={page.related}
     >
       <TopicSections sections={page.sections} />
-      <h2 className="topic-section-heading mt-10">Topics with modern pages</h2>
+      <h2 className="topic-section-heading mt-10">Education topics</h2>
       <ul className="mt-4 grid gap-3">
-        {recovered.map((item) => (
+        {published.map((item) => (
           <li key={item.legacyFile}>
             <Link to={item.to!} className="font-semibold underline underline-offset-4">
               {item.title}
             </Link>
-            <span className="text-navy"> — {item.note}</span>
-          </li>
-        ))}
-      </ul>
-      <h2 className="topic-section-heading mt-10">
-        Flash-only illustrations still in the archive
-      </h2>
-      <p className="mt-3">
-        These items were Flash movies without recovered paragraph text. They are kept in the
-        recovered original-site archive. We did not invent replacement medical copy.
-      </p>
-      <ul className="mt-4 list-disc space-y-2 pl-6">
-        {archived.map((item) => (
-          <li key={item.legacyFile}>
-            {item.title}. {item.note}
           </li>
         ))}
       </ul>
@@ -276,8 +260,8 @@ export function EducationIndexPage() {
         <>
           <h2 className="topic-section-heading mt-12">Multimedia education</h2>
           <p className="mt-3">
-            The original site’s full topic list, including Flash-only illustrations that were not
-            converted into public pages, is kept on the multimedia library page.
+            A topic list from the original education library, with links to current pages, is on the
+            multimedia library page.
           </p>
           <LinkHub
             label="Multimedia education"

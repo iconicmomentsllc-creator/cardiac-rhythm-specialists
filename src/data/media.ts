@@ -2,6 +2,7 @@ export const MEDIA_SECTION_PATHS = [
   '/media',
   '/videos',
   '/photos',
+  '/testimonials',
   '/presentations',
   '/articles',
 ] as const
@@ -23,9 +24,14 @@ export const MEDIA_HUB_SECTIONS = [
     body: 'Published articles and archived educational material recovered from the original website, kept as historical reading rather than current guidance.',
   },
   {
+    to: '/testimonials',
+    heading: 'Testimonials',
+    body: 'Thank-you notes and a letter from the original Cardiac Rhythm Specialists website. Individual comments, not typical or guaranteed results.',
+  },
+  {
     to: '/education/multimedia-library',
     heading: 'Multimedia education',
-    body: 'Educational illustrations, rhythm examples, and other recovered patient-learning material from the original multimedia library.',
+    body: 'Topics from the original Cardiac Rhythm Specialists education library, linked to current pages on this website.',
   },
   {
     to: '/education',

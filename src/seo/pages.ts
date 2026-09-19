@@ -151,7 +151,7 @@ export const pageSeo: Record<string, SeoRecord> = {
   '/patient-forms': {
     title: 'Patient Forms | Cardiac Rhythm Specialists',
     description:
-      'Print the new-patient intake form and learn which recovered forms still need office confirmation.',
+      'Print the new-patient intake form. Please call the office if you need another form.',
   },
   '/medical-records': {
     title: 'Medical Records | Cardiac Rhythm Specialists',
@@ -174,7 +174,12 @@ export const pageSeo: Record<string, SeoRecord> = {
   '/photos': {
     title: 'Photos | Cardiac Rhythm Specialists',
     description:
-      'Physician photographs and educational images from Cardiac Rhythm Specialists. Patient testimonials are not published pending privacy review.',
+      'Physician photograph and educational images from Cardiac Rhythm Specialists.',
+  },
+  '/testimonials': {
+    title: 'Testimonials | Cardiac Rhythm Specialists',
+    description:
+      'Thank-you notes and a 2010 letter from the original Cardiac Rhythm Specialists website. Individual comments, not typical or guaranteed results.',
   },
   '/presentations': {
     title: 'Presentations | Cardiac Rhythm Specialists',
@@ -185,6 +190,12 @@ export const pageSeo: Record<string, SeoRecord> = {
     title: 'Articles | Cardiac Rhythm Specialists',
     description:
       'A recovered November 2010 magazine article from the original Cardiac Rhythm Specialists website, kept as historical material rather than current guidance.',
+  },
+  '/education/multimedia-library': {
+    title: 'Original Education Library | Patient Education | Cardiac Rhythm Specialists',
+    description:
+      'Topics from the original Cardiac Rhythm Specialists education library, linked to current educational pages. Historical educational material, not personal medical advice.',
+    robots: 'noindex, follow',
   },
 }
 
@@ -241,6 +252,10 @@ function generatedSeo(): Record<string, SeoRecord> {
 const generated = generatedSeo()
 export const allPageSeo: Record<string, SeoRecord> = { ...generated, ...pageSeo }
 export const PUBLIC_PATHS = Object.keys(allPageSeo)
+export const SITEMAP_PATHS = PUBLIC_PATHS.filter((path) => {
+  const robots = allPageSeo[path]?.robots ?? 'index, follow'
+  return !robots.includes('noindex')
+})
 
 function assertUniqueSeo(records: Record<string, SeoRecord>) {
   const titles = new Map<string, string>()
