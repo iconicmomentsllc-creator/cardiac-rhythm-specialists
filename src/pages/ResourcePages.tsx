@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { practice } from '../data/practice'
 import { ContentLayout } from '../components/ContentLayout'
 import { InquiryForm } from '../components/InquiryForm'
-import { YouTubeFacade } from '../components/YouTubeFacade'
 
 const resourceLinks = [
   { to: '/appointment-request', label: 'Appointment request', body: 'Request a visit. Staff will confirm any appointment.' },
@@ -169,60 +168,6 @@ export function LabTestInformationPage() {
         <Link to="/testing" className="font-semibold underline underline-offset-4">
           testing and monitoring
         </Link>
-        .
-      </p>
-    </ContentLayout>
-  )
-}
-
-export function VideosPage() {
-  return (
-    <ContentLayout
-      path="/videos"
-      eyebrow="Education"
-      title="Educational videos"
-      intro="The original site used Flash to play FLV files. Those files cannot run in modern browsers. Current educational videos from Dr. Polosajian are available on YouTube, with keyboard-accessible players on this site."
-      related={[
-        { to: '/media', label: 'Media library' },
-        { to: '/education', label: 'Patient education' },
-        { to: '/presentations', label: 'Presentations' },
-      ]}
-    >
-      <p>
-        Recovered Flash titles included atrial fibrillation, types of arrhythmia, and sudden cardiac
-        arrest. They are archived for physician review and are not embedded here.
-      </p>
-      <ul className="mt-8 grid items-stretch gap-10 lg:grid-cols-1">
-        {practice.featuredVideos.map((video) => (
-          <li key={video.id} className="flex min-w-0 flex-col">
-            <h2 className="video-title shrink-0 text-xl font-semibold leading-snug text-navy">
-              {video.title}
-            </h2>
-            <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
-              <YouTubeFacade videoId={video.id} title={video.title} />
-            </div>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-8">
-        Watch more current videos on the{' '}
-        <Link to="/media" className="font-semibold underline underline-offset-4">
-          media library
-        </Link>
-        , the{' '}
-        <Link to="/" className="font-semibold underline underline-offset-4">
-          homepage
-        </Link>
-        , or on{' '}
-        <a
-          href={practice.youtubeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-semibold underline underline-offset-4"
-        >
-          YouTube
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>
         .
       </p>
     </ContentLayout>

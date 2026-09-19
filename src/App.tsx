@@ -31,11 +31,11 @@ import {
   MedicalRecordsPage,
   PrescriptionRefillsPage,
   LabTestInformationPage,
-  VideosPage,
   PhotosPage,
   PresentationsPage,
   ArticlesPage,
 } from './pages/ResourcePages'
+import { VideosPage } from './pages/VideosPage'
 import { MediaPage } from './pages/MediaPage'
 import { LEGACY_REDIRECTS } from './data/legacyRedirects'
 

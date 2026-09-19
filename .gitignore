@@ -21,6 +21,9 @@ dist-ssr
 # Do not commit or deploy this tree with the production application.
 legacy-crs-site/
 
+# Local-only media working copies and recut previews. Never deploy.
+local-preview/
+
 # Local Windows thumbnail caches
 Thumbs.db
 ehthumbs.db

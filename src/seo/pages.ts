@@ -169,7 +169,7 @@ export const pageSeo: Record<string, SeoRecord> = {
   '/videos': {
     title: 'Educational Videos | Cardiac Rhythm Specialists',
     description:
-      'Educational heart rhythm videos from Dr. Leo Polosajian. Older Flash videos are archived; current videos are available on YouTube.',
+      'Educational heart rhythm videos from Dr. Leo Polosajian. Current videos are available on YouTube.',
   },
   '/photos': {
     title: 'Photos | Cardiac Rhythm Specialists',
