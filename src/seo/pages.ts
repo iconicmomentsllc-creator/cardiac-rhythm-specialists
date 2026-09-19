@@ -101,7 +101,7 @@ export const pageSeo: Record<string, SeoRecord> = {
   },
   '/contact': {
     title: 'Contact Cardiac Rhythm Specialists in Reseda, CA',
-    description: `Call ${phone} or email ${practice.email}. Visit 7640 Tampa Ave, Suite 101, Reseda, CA 91335. Office hours, directions, and a contact form are available.`,
+    description: `Call ${phone} or email ${practice.email} for administrative inquiries. Visit 7640 Tampa Ave, Suite 101, Reseda, CA 91335. Office hours and directions are available.`,
   },
   '/faq': {
     title: 'Heart Rhythm FAQ | Cardiac Rhythm Specialists',
@@ -119,7 +119,7 @@ export const pageSeo: Record<string, SeoRecord> = {
   },
   '/privacy': {
     title: 'Privacy Policy | Cardiac Rhythm Specialists',
-    description: `Privacy information for Cardiac Rhythm Specialists in Reseda, CA. Do not send confidential medical information through the website form. Call ${phone}.`,
+    description: `Privacy information for Cardiac Rhythm Specialists in Reseda, CA. Appointments are requested by phone. Do not send medical records or other sensitive patient information by email. Call ${phone}.`,
   },
   '/terms': {
     title: 'Terms of Use | Cardiac Rhythm Specialists',
@@ -142,11 +142,11 @@ export const pageSeo: Record<string, SeoRecord> = {
   },
   '/patient-resources': {
     title: 'Patient Resources | Cardiac Rhythm Specialists in Reseda, CA',
-    description: `Appointment requests, forms, FAQs, medical records, and education for Cardiac Rhythm Specialists. Call ${phone} or email ${practice.email}.`,
+    description: `Appointment help, printable forms, FAQs, medical records, and education for Cardiac Rhythm Specialists. Call ${phone}.`,
   },
   '/appointment-request': {
     title: 'Appointment Request | Cardiac Rhythm Specialists',
-    description: `Request an appointment with Cardiac Rhythm Specialists in Reseda. Requests go to ${practice.email}. Call ${phone} for a faster response.`,
+    description: `Call to request an appointment at Cardiac Rhythm Specialists in Reseda. This website cannot complete scheduling online. Call ${phone}.`,
   },
   '/patient-forms': {
     title: 'Patient Forms | Cardiac Rhythm Specialists',
@@ -159,7 +159,7 @@ export const pageSeo: Record<string, SeoRecord> = {
   },
   '/prescription-refills': {
     title: 'Prescription Refills | Cardiac Rhythm Specialists',
-    description: `Call ${phone} for prescription refill questions. Do not send medication details through the website form.`,
+    description: `Call ${phone} for prescription refill questions. Please do not send medication details by email.`,
   },
   '/lab-test-information': {
     title: 'Lab and Test Information | Cardiac Rhythm Specialists',

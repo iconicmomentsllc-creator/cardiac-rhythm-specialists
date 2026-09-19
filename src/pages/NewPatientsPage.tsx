@@ -45,7 +45,7 @@ export function NewPatientsPage() {
           <li>Referral information if you were given any (we do not state that a referral is always required)</li>
         </ul>
         <p className="mt-3">
-          Do not email records through the website form. Call the office about medical records
+          Please do not send medical records by email. Call the office about medical records
           requests.
         </p>
       </section>

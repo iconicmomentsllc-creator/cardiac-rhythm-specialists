@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom'
 import { practice } from '../data/practice'
 import { ContentLayout } from '../components/ContentLayout'
-import { InquiryForm } from '../components/InquiryForm'
 
 const resourceLinks = [
-  { to: '/appointment-request', label: 'Appointment request', body: 'Request a visit. Staff will confirm any appointment.' },
+  { to: '/appointment-request', label: 'Appointment request', body: 'Call the office to request a visit. Staff will help with scheduling.' },
   { to: '/patient-forms', label: 'Patient forms', body: 'Print forms to bring to the office when asked.' },
   { to: '/new-patients', label: 'Preparing for your visit', body: 'What to bring and how to schedule.' },
   { to: '/faq', label: 'Frequently asked questions', body: 'Heart rhythm and office questions in plain language.' },
   { to: '/medical-records', label: 'Medical records', body: 'How to ask the office about records.' },
-  { to: '/prescription-refills', label: 'Prescription refills', body: 'Call the office. Do not send refill details by web form.' },
+  { to: '/prescription-refills', label: 'Prescription refills', body: 'Call the office for refill questions.' },
   { to: '/lab-test-information', label: 'Lab and test information', body: 'How to ask about results.' },
   { to: '/education', label: 'Patient education', body: 'Recovered educational topics and illustrated booklets.' },
   { to: '/media', label: 'Media', body: 'Videos, presentations, articles, and educational multimedia from Dr. Polosajian.' },
@@ -27,7 +26,7 @@ export function PatientResourcesPage() {
       path="/patient-resources"
       eyebrow="For patients"
       title="Patient resources"
-      intro="The original Cardiac Rhythm Specialists site kept forms, appointment help, and education together. This page does the same, with current contact information."
+      intro="Find appointment help, printable forms, and education in one place, with current office contact information."
     >
       <p>This website is not a patient portal. For most requests, calling the office is still the fastest option.</p>
       <ul className="mt-8 grid gap-4">
@@ -43,28 +42,6 @@ export function PatientResourcesPage() {
           </li>
         ))}
       </ul>
-    </ContentLayout>
-  )
-}
-
-export function AppointmentRequestPage() {
-  return (
-    <ContentLayout
-      path="/appointment-request"
-      eyebrow="Appointments"
-      title="Appointment request"
-      intro="Request an appointment with Cardiac Rhythm Specialists. Submitting this form does not guarantee an appointment. Staff will follow up using the contact information you provide."
-    >
-      <p>
-        Call{' '}
-        <a href={practice.phoneTel} className="font-semibold underline underline-offset-4">
-          {practice.phoneDisplay}
-        </a>{' '}
-        if you need a faster response. Requests are sent to {practice.email}.
-      </p>
-      <div className="mt-8 max-w-xl">
-        <InquiryForm formType="appointment" heading="Request an appointment" headingLevel="h2" />
-      </div>
     </ContentLayout>
   )
 }
@@ -107,15 +84,14 @@ export function MedicalRecordsPage() {
       path="/medical-records"
       eyebrow="Medical records"
       title="Medical records"
-      intro="Ask the office about medical records. Do not send records or detailed health information through the website form."
+      intro="Ask the office about medical records by phone. Please do not send records or other sensitive patient information by email."
     >
       <p>
         Call{' '}
         <a href={practice.phoneTel} className="font-semibold underline underline-offset-4">
           {practice.phoneDisplay}
         </a>{' '}
-        or email {practice.email} for records questions. Staff can tell you what is needed for a
-        request.
+        for records questions. Staff can tell you what is needed for a request.
       </p>
       <p>
         Recovered pages mentioned a records-release form that is not currently attached as a working
@@ -131,7 +107,7 @@ export function PrescriptionRefillsPage() {
       path="/prescription-refills"
       eyebrow="Prescriptions"
       title="Prescription refills"
-      intro="Prescription refill questions should go through the office by phone. Do not send medication names, doses, or pharmacy details through the website form."
+      intro="Prescription refill questions should go through the office by phone. Please do not send medication names, doses, or pharmacy details by email."
     >
       <p>
         Call{' '}
@@ -160,8 +136,9 @@ export function LabTestInformationPage() {
         Call{' '}
         <a href={practice.phoneTel} className="font-semibold underline underline-offset-4">
           {practice.phoneDisplay}
-        </a>
-        . Do not use the contact form for urgent symptoms or for detailed results questions.
+        </a>{' '}
+        for results questions. Do not use the website for urgent symptoms. Please do not send test
+        results or other sensitive patient information by email.
       </p>
       <p>
         Educational pages about Holter monitors, event monitors, EKGs, and echocardiograms are in{' '}

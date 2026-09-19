@@ -1,6 +1,6 @@
 import { About } from '../components/About'
+import { AppointmentInvite } from '../components/AppointmentInvite'
 import { Care } from '../components/Care'
-import { Contact } from '../components/Contact'
 import { Education } from '../components/Education'
 import { Hero } from '../components/Hero'
 import { HowCanWeHelp } from '../components/HowCanWeHelp'
@@ -18,7 +18,7 @@ export function HomePage() {
       <Care />
       <Education />
       <PatientInfo />
-      <Contact />
+      <AppointmentInvite />
       <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <MedicalDisclaimer compact />
       </div>

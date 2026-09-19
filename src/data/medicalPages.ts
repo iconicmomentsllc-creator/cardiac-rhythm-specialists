@@ -290,7 +290,7 @@ export const CONDITIONS: Record<string, MedicalPageContent> = {
         heading: 'Common symptoms that may prompt evaluation',
         paragraphs: [
           'Heart failure symptoms can include shortness of breath, swelling in the legs, fatigue, and reduced activity tolerance. Rhythm-related symptoms can include palpitations, a fast or slow pulse, or fainting.',
-          'These symptoms have many possible causes. Emergency symptoms require 911, not a website form.',
+          'These symptoms have many possible causes. Emergency symptoms require 911, not the website.',
         ],
       },
       {
@@ -421,7 +421,7 @@ export const CONDITIONS: Record<string, MedicalPageContent> = {
         heading: 'Symptoms that may prompt evaluation',
         paragraphs: [
           'Recovered practice pages listed diminished or irregular pulse, fatigue, shortness of breath, syncope (fainting), palpitations, low blood pressure, chest pain, and cardiac arrest among symptoms associated with VT.',
-          'Dizziness, lightheadedness, or loss of consciousness can occur when blood flow is compromised. Emergency symptoms require 911, not a website form.',
+          'Dizziness, lightheadedness, or loss of consciousness can occur when blood flow is compromised. Emergency symptoms require 911, not the website.',
         ],
       },
       {
@@ -1419,7 +1419,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
         heading: 'Living with a pacemaker and device care',
         paragraphs: [
           'After a pacemaker is placed, follow-up is important. Device checks, wound questions, and activity guidance are typically handled by the implanting and follow-up team. Our office lists pacemaker and defibrillator device care among the reasons patients seek help.',
-          'Call the office about device-care questions. Do not send device reports through the website form.',
+          'Call the office about device-care questions. Do not send device reports through the website.',
         ],
       },
       {
@@ -1474,7 +1474,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
       {
         heading: 'Device care',
         paragraphs: [
-          'People who already have an ICD typically need scheduled checks. Contact the office about defibrillator device care. Do not use the website form for alerts, shocks, or urgent symptoms — call the office or emergency services as appropriate.',
+          'People who already have an ICD typically need scheduled checks. Contact the office about defibrillator device care. Do not use the website for alerts, shocks, or urgent symptoms — call the office or emergency services as appropriate.',
         ],
       },
       {
@@ -1781,7 +1781,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
         heading: 'After implantation',
         paragraphs: [
           'Follow-up device checks are an important part of care. Wound questions and activity guidance come from the implanting and follow-up team. Our office lists pacemaker device care among reasons patients call.',
-          'Do not send device reports through the website form.',
+          'Do not send device reports through the website.',
         ],
       },
       {
@@ -1838,7 +1838,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
       {
         heading: 'After a shock or an alert',
         paragraphs: [
-          'Follow the instructions you were given. If you feel unwell or were not given instructions, seek urgent medical help. Do not use the website form for shocks or urgent symptoms.',
+          'Follow the instructions you were given. If you feel unwell or were not given instructions, seek urgent medical help. Do not use the website for shocks or urgent symptoms.',
         ],
       },
       {

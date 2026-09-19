@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
 import { practice } from '../data/practice'
+import { AppointmentCallPanel } from './AppointmentCallPanel'
 import { Breadcrumbs } from './Breadcrumbs'
-import { InquiryForm } from './InquiryForm'
 import { LazyMap } from './LazyMap'
 import { breadcrumbsFor } from '../seo/structuredData'
 
@@ -14,7 +15,7 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
           {asPage ? <Breadcrumbs items={breadcrumbsFor('/contact')} /> : null}
           <p className="section-label">Contact the office</p>
           <Heading className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
-            Phone, address, hours, and contact form
+            Phone, address, hours, and directions
           </Heading>
           <p className="mt-4 text-lg leading-relaxed text-navy">
             {practice.legalName} is located in Reseda, California, and serves patients from Los
@@ -23,37 +24,35 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
             <a href={practice.phoneTel} className="font-semibold underline underline-offset-4">
               {practice.phoneDisplay}
             </a>{' '}
-            or email{' '}
-            <a href={practice.emailMailto} className="font-semibold underline underline-offset-4">
-              {practice.email}
-            </a>
-            .
+            to reach the office.
           </p>
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">
             <div className="rounded-2xl border border-navy/10 bg-white p-6">
-              <h3 className="text-base font-semibold text-navy">Phone</h3>
+              <h2 className="font-serif text-2xl font-semibold text-navy">Phone</h2>
               <a href={practice.phoneTel} className="btn btn-primary mt-4">
                 Call {practice.phoneDisplay}
               </a>
             </div>
 
             <div className="rounded-2xl border border-navy/10 bg-white p-6">
-              <h3 className="text-base font-semibold text-navy">Email</h3>
+              <h2 className="font-serif text-2xl font-semibold text-navy">Email</h2>
               <p className="mt-3 text-lg">
                 <a href={practice.emailMailto} className="font-semibold underline underline-offset-4">
                   {practice.email}
                 </a>
               </p>
-              <p className="mt-2 text-base leading-relaxed text-navy">
-                Website forms also route to this address. Do not email detailed medical information.
+              <p className="mt-3 text-base leading-relaxed text-navy">
+                Email is intended for administrative inquiries only. Please do not send medical
+                records, protected health information, or other sensitive patient information by
+                email.
               </p>
             </div>
 
             <div className="rounded-2xl border border-navy/10 bg-white p-6">
-              <h3 className="text-base font-semibold text-navy">Office address</h3>
+              <h2 className="font-serif text-2xl font-semibold text-navy">Office address</h2>
               <address className="mt-3 not-italic text-lg leading-relaxed text-navy">
                 {practice.legalName}
                 <br />
@@ -73,7 +72,7 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
             </div>
 
             <div className="rounded-2xl border border-navy/10 bg-white p-6">
-              <h3 className="text-base font-semibold text-navy">Office hours</h3>
+              <h2 className="font-serif text-2xl font-semibold text-navy">Office hours</h2>
               <div className="mt-4 grid gap-5 sm:grid-cols-2">
                 <div>
                   <p className="text-lg font-semibold text-navy">{practice.weekdayLabel}</p>
@@ -107,12 +106,20 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-navy/10 bg-white p-6 sm:p-8">
-            <InquiryForm
-              formType="contact"
-              heading="Send a message"
-              headingLevel={asPage ? 'h2' : 'h3'}
-            />
+          <div>
+            <h2 className="font-serif text-2xl font-semibold text-navy">Request an appointment</h2>
+            <p className="mt-3 text-lg leading-relaxed text-navy">
+              Appointments are scheduled by phone. Staff can help with scheduling and insurance
+              information.
+            </p>
+            <div className="mt-6">
+              <AppointmentCallPanel />
+            </div>
+            <p className="mt-6">
+              <Link to="/appointment-request" className="font-semibold underline underline-offset-4">
+                Appointment information
+              </Link>
+            </p>
           </div>
         </div>
       </div>

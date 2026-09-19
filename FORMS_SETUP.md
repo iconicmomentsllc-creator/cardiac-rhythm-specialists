@@ -1,43 +1,28 @@
-# Form delivery setup (Vercel + Resend)
+# Email (Resend)
 
-Contact and appointment requests are the only public forms. Both use `InquiryForm` and POST only to `/api/inquiry`. The API sends mail to `process.env.CONTACT_EMAIL` (set this to `info@crsmdinc.com` in Vercel). Recipients cannot be set from the browser.
+Public patient contact and appointment forms have been removed. The website does not collect appointment requests, free-text messages, or other patient-submitted information.
+
+Appointments are requested by telephone. Staff can help with scheduling and insurance information. Patients should confirm their own coverage and benefits with their insurer.
+
+`api/inquiry.ts` no longer sends mail. If the route is called, it returns **410** and tells the visitor to call the office. It does not read a request body and does not call Resend.
+
+## Resend may remain for non-PHI business email
+
+Do **not** remove Resend from the Vercel project solely because public forms are gone. The API key and verified sending domain may stay in place for future **non-PHI** practice or business email.
+
+Do **not** use Resend to send:
+
+- appointment requests
+- symptoms, diagnoses, or treatment questions
+- medical records or other patient-identifiable health information
 
 ## Where secrets are used
 
 | Variable | Used in | Client bundle |
 | --- | --- | --- |
-| `RESEND_API_KEY` | `api/inquiry.ts` only | No |
-| `CONTACT_EMAIL` | `api/inquiry.ts` only | No |
-| `FROM_EMAIL` | `api/inquiry.ts` only | No |
+| `RESEND_API_KEY` | Reserved for future non-PHI server email. Not called by the public website while patient forms are disabled. | No |
+| `CONTACT_EMAIL` | Same. Documented recipient for office email (`info@crsmdinc.com`). | No |
+| `FROM_EMAIL` | Same. Verified sender: `Cardiac Rhythm Specialists <website@crsmdinc.com>` | No |
 | `VITE_*` variables | Frontend SEO/analytics | Yes — do not put Resend secrets here |
 
 Vite only exposes variables that start with `VITE_` to the browser. Never name these `VITE_RESEND_API_KEY`, `VITE_CONTACT_EMAIL`, or `VITE_FROM_EMAIL`.
-
-## Vercel (production forms)
-
-Forms work on the Vercel production origin (`www.crsmdinc.com`). GitHub Pages has no serverless `/api/inquiry` route and is not used as production.
-
-1. Open the Vercel project for this repo.
-2. Go to **Settings → Environment Variables**.
-3. Add `RESEND_API_KEY` for **Production** and **Preview**. Paste the API key from Resend (not the client/public token).
-4. Add `CONTACT_EMAIL` for **Production** and **Preview**. Use `info@crsmdinc.com`.
-5. Add `FROM_EMAIL` for **Production** and **Preview**. Use the verified sender:
-   `Cardiac Rhythm Specialists <website@crsmdinc.com>`
-6. In Resend, verify the sending domain (or at least the from-address) before expecting delivery.
-7. Redeploy after saving variables. Existing deployments do not pick up new secrets until a new deploy.
-
-If any of the three variables is missing, or if `CONTACT_EMAIL` is not a valid address, `/api/inquiry` returns **503** with a message telling the visitor to call the office. The site does not fake a successful send.
-
-## Local development
-
-Copy `.env.example` to `.env.local` for Vite public values. Serverless email still needs the Resend variables in the Vercel (or local API) environment, not in frontend code.
-
-## What the API does
-
-- Accepts POST JSON from Contact (`formType: "contact"`) and Appointment (`formType: "appointment"`)
-- Sends mail to `process.env.CONTACT_EMAIL`
-- Sends from `process.env.FROM_EMAIL`
-- Uses `reply_to` as the visitor’s email
-- Requires `preferredContact` on the server, matching the client form
-- Treats a filled honeypot field (`website`) as a bot and returns a silent success
-- Rate-limits by client IP

@@ -3,7 +3,7 @@ import { practice } from '../data/practice'
 
 export function CallToAction({
   heading = 'Talk with our Reseda office',
-  body = 'Call to ask about appointments, referrals, or heart rhythm evaluation. Staff can help you take the next step.',
+  body = 'Call to ask about appointments, referrals, or heart rhythm evaluation. Staff can help with scheduling and insurance information.',
   variant = 'default',
 }: {
   heading?: string
@@ -25,7 +25,7 @@ export function CallToAction({
           Call {practice.phoneDisplay}
         </a>
         <Link to="/appointment-request" className="btn btn-secondary w-full sm:w-auto">
-          Request an appointment
+          Appointment information
         </Link>
         <Link to="/contact" className="btn btn-secondary w-full sm:w-auto">
           Office address and hours

@@ -81,6 +81,13 @@ const srcText = walkText('src', /\.(ts|tsx)$/)
 if (srcText.includes('physicianApprovalNeeded')) {
   failures.push('physicianApprovalNeeded remains in src (unused review flag)')
 }
+if (srcText.includes('InquiryForm') || srcText.includes("fetch('/api/inquiry'")) {
+  failures.push('Public inquiry form remains in src')
+}
+const inquiryApi = fs.existsSync('api/inquiry.ts') ? fs.readFileSync('api/inquiry.ts', 'utf8') : ''
+if (inquiryApi.includes('api.resend.com')) {
+  failures.push('api/inquiry still sends mail via Resend')
+}
 if (/style\s*=\s*\{\{/.test(srcText)) {
   failures.push('inline React style attributes remain in src')
 }

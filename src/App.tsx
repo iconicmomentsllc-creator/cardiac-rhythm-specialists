@@ -26,7 +26,6 @@ import {
 } from './pages/TopicRoutes'
 import {
   PatientResourcesPage,
-  AppointmentRequestPage,
   PatientFormsPage,
   MedicalRecordsPage,
   PrescriptionRefillsPage,
@@ -35,6 +34,7 @@ import {
   PresentationsPage,
   ArticlesPage,
 } from './pages/ResourcePages'
+import { AppointmentRequestPage } from './pages/AppointmentRequestPage'
 import { VideosPage } from './pages/VideosPage'
 import { MediaPage } from './pages/MediaPage'
 import { LEGACY_REDIRECTS } from './data/legacyRedirects'

@@ -10,11 +10,12 @@ export function PatientInfo() {
           How to request appointments and office help
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
-          Please call the office. Staff can help with the requests listed below.
+          Please call the office. Staff can help with the requests listed below, including
+          scheduling and insurance information.
         </p>
         <p className="mt-3 max-w-2xl text-lg leading-relaxed text-navy">
-          Please do not submit confidential medical information through this form.
-          Do not send medical records through the website.
+          Please do not send medical records, protected health information, or other sensitive
+          patient information by email or through the website.
         </p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

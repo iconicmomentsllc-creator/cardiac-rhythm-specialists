@@ -24,7 +24,7 @@ const cards = [
   {
     to: '/appointment-request',
     title: 'I’m Not Sure Where to Start',
-    body: 'Request an appointment or call the office and we will help you take the next step.',
+    body: 'Call our office to request an appointment. Staff will help with scheduling and insurance information.',
   },
 ] as const
 

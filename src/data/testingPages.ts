@@ -344,7 +344,7 @@ export const TESTS: Record<string, TestingPageContent> = {
         heading: 'What a check typically includes',
         paragraphs: [
           'A clinician or device specialist interrogates the device, reviews battery and lead performance, and looks at stored rhythm information. Settings may be adjusted with a programmer — a clinic computer that communicates with the device, often via a wand placed over the implant.',
-          'Do not use the website form for alerts, shocks, or urgent symptoms. Call the office or 911 as appropriate.',
+          'Do not use the website for alerts, shocks, or urgent symptoms. Call the office or 911 as appropriate.',
         ],
       },
       {
@@ -447,7 +447,7 @@ export const TESTS: Record<string, TestingPageContent> = {
     h1: 'ICD Checks in Reseda, CA',
     eyebrow: 'Cardiac device testing',
     intro:
-      'Follow-up visits are an important part of care after an ICD is implanted. Checks review the generator, leads, and stored events, including treated fast rhythms. Contact the office about defibrillator device care — not the website form for shocks.',
+      'Follow-up visits are an important part of care after an ICD is implanted. Checks review the generator, leads, and stored events, including treated fast rhythms. Contact the office about defibrillator device care — not the website for shocks.',
     sections: [
       {
         heading: 'Early visits after implant',

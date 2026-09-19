@@ -36,7 +36,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: 'How do I schedule an appointment?',
-    answer: `Please call the office at ${practice.phoneDisplay} during weekday hours (${practice.weekdayHours}). Staff can help with appointments and other office requests. This website is not a patient portal.`,
+    answer: `Please call the office at ${practice.phoneDisplay} during weekday hours (${practice.weekdayHours}). Staff can help with scheduling and insurance information. Please confirm your coverage and benefits with your insurer. This website is not a patient portal and cannot complete scheduling online.`,
   },
   {
     question: 'Does the office accept my insurance?',

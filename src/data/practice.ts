@@ -110,5 +110,5 @@ export const practice = {
 export const MEDICAL_DISCLAIMER =
   'The information on this website is provided for general educational purposes and is not a substitute for professional medical advice, diagnosis, or treatment. If you believe you may be experiencing a medical emergency, call 911 or seek immediate medical attention.'
 
-export const CONTENT_UPDATED_ISO = '2026-09-13'
-export const CONTENT_UPDATED_LABEL = 'September 13, 2026'
+export const CONTENT_UPDATED_ISO = '2026-09-19'
+export const CONTENT_UPDATED_LABEL = 'September 19, 2026'
