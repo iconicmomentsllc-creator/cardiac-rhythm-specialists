@@ -205,8 +205,8 @@ export function PresentationsPage() {
       ]}
     >
       <p>
-        Current hospital affiliations used on this website are Providence, Cedars-Sinai Medical
-        Center, and Valley Presbyterian Hospital. A hospital named on an older flyer is not added
+        Current hospital affiliations used on this website are Providence Cedars-Sinai Tarzana Medical
+        Center, Cedars-Sinai Medical Center, and Valley Presbyterian Hospital. A hospital named on an older flyer is not added
         as a current affiliation because of that flyer.
       </p>
       <figure className="mt-8">

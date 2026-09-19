@@ -25,7 +25,7 @@ export const practice = {
   photoAlt:
     'Leo Polosajian, MD, MS, FACC, FHRS, CCDS, cardiologist and cardiac electrophysiologist',
   hospitalAffiliations: [
-    'Providence',
+    'Providence Cedars-Sinai Tarzana Medical Center',
     'Cedars-Sinai Medical Center',
     'Valley Presbyterian Hospital',
   ],

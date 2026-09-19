@@ -51,7 +51,7 @@ export function About() {
           <li className="rounded-2xl border border-navy/10 bg-white px-6 py-6">
             <p className="text-base font-semibold text-navy">Hospital affiliations</p>
             <p className="mt-2 text-xl font-semibold text-navy">
-              Providence, Cedars-Sinai Medical Center, and Valley Presbyterian Hospital
+              Providence Cedars-Sinai Tarzana Medical Center, Cedars-Sinai Medical Center, and Valley Presbyterian Hospital
             </p>
           </li>
         </ul>
