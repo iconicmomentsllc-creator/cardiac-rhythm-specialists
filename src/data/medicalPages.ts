@@ -1586,7 +1586,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
         heading: 'Preparation discussed in recovered education',
         paragraphs: [
           'Recovered pre-test guidance asked patients not to eat or drink for 6 to 8 hours before the study, with small sips of water for medications if allowed. Some medications may be stopped for a few days if the physician instructs that. Arrange a ride home; patients are typically not allowed to drive after sedation.',
-          'Tell the team about prior reactions to medications or anesthesia and any bleeding history. Empty your bladder before the procedure; a urinary catheter is sometimes used. These are historical prep notes and must be confirmed with the treating physician — they are flagged for approval.',
+          'Tell the team about prior reactions to medications or anesthesia and any bleeding history. Empty your bladder before the procedure; a urinary catheter is sometimes used. These are historical prep notes and must be confirmed with the treating physician.',
         ],
       },
       {
@@ -1867,7 +1867,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
       {
         heading: 'What a loop recorder is',
         paragraphs: [
-          'Recovered education described an implantable loop recorder as a small device placed under the skin under local anesthesia. It continuously records heart activity similar to an ECG for an extended period — the recovered page said up to two years.',
+          'Recovered education described an implantable loop recorder as a small device placed under the skin under local anesthesia. It continuously records heart activity similar to an ECG for an extended period.',
           'If the patient has a fainting episode, the device can be activated to save the recording before, during, and after the event so a physician can review it.',
         ],
       },
@@ -1889,7 +1889,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
         heading: 'Placement and removal',
         paragraphs: [
           'The recovered page stated the device is surgically placed under the skin under local anesthesia and, after the recording period, surgically removed under local anesthesia.',
-          'Prep, wound care, and activity limits come from the treating physician. Those instructions are flagged for approval.',
+          'Prep, wound care, and activity limits come from the treating physician.',
         ],
       },
       {
@@ -1939,7 +1939,7 @@ export const TREATMENTS: Record<string, MedicalPageContent> = {
         heading: 'Preparation notes from recovered education',
         paragraphs: [
           'Replacement is often done in a hospital or day-surgery setting. Many people go home the same day and should not drive immediately afterward, so plan a ride.',
-          'You may be told not to eat or drink, or not to take certain medications, for a number of hours before the procedure. An IV is placed. Medication makes you sleepy but not always fully unconscious. Confirm prep with your physician — flagged for approval.',
+          'You may be told not to eat or drink, or not to take certain medications, for a number of hours before the procedure. An IV is placed. Medication makes you sleepy but not always fully unconscious. Confirm prep with your physician.',
         ],
       },
       {
