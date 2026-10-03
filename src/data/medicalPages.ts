@@ -1,3 +1,5 @@
+import { VASCULAR_PAGES } from './vascularPages'
+
 export type RelatedLink = {
   to: string
   label: string
@@ -16,6 +18,8 @@ export type MedicalPageImage = {
   caption?: string
 }
 
+export type ConditionGroup = 'rhythm' | 'vascular' | 'vascular-symptom'
+
 export type MedicalPageContent = {
   slug: string
   kind: 'condition' | 'treatment' | 'test' | 'education'
@@ -26,13 +30,18 @@ export type MedicalPageContent = {
   related: RelatedLink[]
   shortTitle?: string
   images?: MedicalPageImage[]
+  group?: ConditionGroup
 }
 
 export function topicLabel(page: Pick<MedicalPageContent, 'shortTitle' | 'h1'>) {
   return page.shortTitle ?? page.h1
 }
 
-export const CONDITIONS: Record<string, MedicalPageContent> = {
+export function conditionGroup(page: MedicalPageContent): ConditionGroup {
+  return page.group ?? 'rhythm'
+}
+
+const RHYTHM_CONDITIONS: Record<string, MedicalPageContent> = {
   'atrial-fibrillation': {
     slug: 'atrial-fibrillation',
     kind: 'condition',
@@ -1270,6 +1279,11 @@ export const CONDITIONS: Record<string, MedicalPageContent> = {
       { to: '/education/the-normal-heart', label: 'The normal heart' },
     ],
   },
+}
+
+export const CONDITIONS: Record<string, MedicalPageContent> = {
+  ...RHYTHM_CONDITIONS,
+  ...VASCULAR_PAGES,
 }
 
 export const TREATMENTS: Record<string, MedicalPageContent> = {

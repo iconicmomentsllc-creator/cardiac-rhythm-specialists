@@ -19,7 +19,7 @@ const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[
 const lastmods = new Set([...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((match) => match[1]))
 const today = new Date().toISOString().slice(0, 10)
 const lastmod = [...lastmods][0]
-if (locs.length !== 79) failures.push(`Sitemap has ${locs.length} URLs, expected 79`)
+if (locs.length !== 85) failures.push(`Sitemap has ${locs.length} URLs, expected 85`)
 if (locs.some((loc) => loc.endsWith('/education/multimedia-library'))) {
   failures.push('Sitemap includes noindex /education/multimedia-library')
 }

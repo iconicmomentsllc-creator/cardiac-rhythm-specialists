@@ -1,18 +1,22 @@
 import { Link, useLocation } from 'react-router-dom'
 import { practice } from '../data/practice'
 
-const footerLinks = [
-  { to: '/about-dr-polosajian', label: 'About' },
+const careLinks = [
   { to: '/conditions', label: 'Conditions' },
   { to: '/treatments', label: 'Treatments' },
   { to: '/testing', label: 'Testing' },
+  { to: '/education', label: 'Patient Education' },
+  { to: '/media', label: 'Media' },
+] as const
+
+const patientLinks = [
+  { to: '/about-dr-polosajian', label: 'About' },
   { to: '/patient-resources', label: 'Patient Resources' },
   { to: '/appointment-request', label: 'Appointment Request' },
   { to: '/new-patients', label: 'New Patients' },
   { to: '/insurance', label: 'Insurance' },
-  { to: '/education', label: 'Patient Education' },
-  { to: '/media', label: 'Media' },
   { to: '/contact', label: 'Contact' },
+  { to: '/faq', label: 'FAQ' },
 ] as const
 
 const legalLinks = [
@@ -20,16 +24,44 @@ const legalLinks = [
   { to: '/accessibility', label: 'Accessibility' },
   { to: '/medical-disclaimer', label: 'Medical Disclaimer' },
   { to: '/terms', label: 'Terms of Use' },
-  { to: '/faq', label: 'FAQ' },
 ] as const
+
+function FooterNavList({
+  label,
+  links,
+  pathname,
+}: {
+  label: string
+  links: readonly { to: string; label: string }[]
+  pathname: string
+}) {
+  return (
+    <nav aria-label={label} className="footer-nav">
+      <h2 className="footer-nav-heading">{label}</h2>
+      <ul className="footer-link-list">
+        {links.map((item) => (
+          <li key={item.to}>
+            <Link
+              to={item.to}
+              className="footer-link"
+              aria-current={pathname === item.to ? 'page' : undefined}
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
 
 export function Footer() {
   const location = useLocation()
 
   return (
     <footer className="overflow-x-clip border-t border-navy/10 bg-cream pb-8 text-navy print:pb-8">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
-        <div>
+      <div className="footer-grid mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="footer-brand">
           <p className="font-serif text-2xl font-semibold tracking-tight">{practice.brandName}</p>
           <p className="physician-name mt-2 text-lg font-semibold leading-snug text-navy">
             {practice.physician}
@@ -71,8 +103,11 @@ export function Footer() {
           </nav>
         </div>
 
-        <div>
-          <p className="text-base font-semibold text-navy">Office</p>
+        <FooterNavList label="Care" links={careLinks} pathname={location.pathname} />
+        <FooterNavList label="For patients" links={patientLinks} pathname={location.pathname} />
+
+        <div className="footer-office">
+          <h2 className="footer-nav-heading">Office</h2>
           <address className="mt-3 not-italic text-lg leading-relaxed text-navy">
             {practice.brandName}
             <br />
@@ -97,23 +132,7 @@ export function Footer() {
             Get Directions
             <span className="sr-only"> to our Reseda office (opens in a new tab)</span>
           </a>
-          <nav aria-label="Footer" className="mt-6 flex flex-col gap-1">
-            {footerLinks.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="inline-flex min-h-11 items-center font-semibold underline underline-offset-4"
-                aria-current={location.pathname === item.to ? 'page' : undefined}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-
-        <div>
-          <p className="text-base font-semibold text-navy">Office hours</p>
-          <div className="mt-3 space-y-4 text-lg">
+          <div className="mt-8 space-y-4 text-lg">
             <div>
               <p className="font-semibold">{practice.weekdayLabel}</p>
               <p>{practice.weekdayHours}</p>
@@ -128,12 +147,12 @@ export function Footer() {
       <div className="border-t border-navy/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-base text-navy sm:px-6">
           <p>© {new Date().getFullYear()} {practice.legalName}</p>
-          <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav aria-label="Legal" className="footer-legal">
             {legalLinks.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="inline-flex min-h-14 items-center font-semibold underline underline-offset-4"
+                className="footer-legal-link"
                 aria-current={location.pathname === item.to ? 'page' : undefined}
               >
                 {item.label}

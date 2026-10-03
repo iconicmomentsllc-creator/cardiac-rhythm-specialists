@@ -11,9 +11,9 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: `A cardiac electrophysiologist is a cardiologist with additional training focused on the heart’s electrical system and heart rhythm disorders. Patients sometimes call this a heart rhythm specialist. ${practice.physician} provides cardiology and cardiac electrophysiology care at ${practice.brandName} in Reseda.`,
   },
   {
-    question: 'What conditions does a heart rhythm specialist evaluate?',
+    question: 'Does the practice evaluate vascular conditions or leg symptoms?',
     answer:
-      'A heart rhythm specialist may evaluate symptoms such as palpitations, an irregular heartbeat, a pulse that seems too fast or too slow, lightheadedness, or fainting that may be related to the heart’s rhythm. Named rhythm disorders such as atrial fibrillation may also be evaluated after referral or testing. The right evaluation depends on the individual.',
+      'In addition to heart rhythm care, Dr. Polosajian evaluates vascular conditions such as peripheral artery disease and related circulation concerns. Symptoms such as leg pain, cramping, swelling, or non-healing wounds can have many causes and are not a diagnosis. A cardiovascular evaluation can help determine whether vascular disease may be contributing.',
   },
   {
     question: 'What is atrial fibrillation?',

@@ -32,9 +32,9 @@ export const pageSeo: Record<string, SeoRecord> = {
     description: `Meet Leo Polosajian, MD, MS, FACC, FHRS, CCDS, a cardiologist and cardiac electrophysiologist at Cardiac Rhythm Specialists in Reseda. Call ${phone}.`,
   },
   '/conditions': {
-    title: 'Heart Rhythm Conditions | Cardiac Rhythm Specialists',
+    title: 'Heart Rhythm and Vascular Conditions | Cardiac Rhythm Specialists',
     description:
-      'Learn about heart rhythm conditions evaluated in Reseda, including atrial fibrillation, arrhythmias, palpitations, and related symptoms. Call our office with questions.',
+      'Learn about heart rhythm and vascular conditions evaluated in Reseda, including atrial fibrillation, PAD, varicose veins, DVT, and related symptoms. Call our office with questions.',
   },
   '/conditions/atrial-fibrillation': {
     title: 'Atrial Fibrillation (AFib) in Reseda, CA | Heart Rhythm Care',
@@ -60,6 +60,36 @@ export const pageSeo: Record<string, SeoRecord> = {
     title: 'Heart Failure and Heart Rhythm Care in Reseda, CA',
     description:
       'Educational information about how heart failure and heart rhythm disorders can be related, and when specialized evaluation may be discussed. Call our Reseda office.',
+  },
+  '/conditions/peripheral-artery-disease': {
+    title: 'Peripheral Artery Disease (PAD) in Reseda, CA | Vascular Education',
+    description:
+      'Patient-friendly information about peripheral artery disease (PAD). This page is educational and is not a diagnosis. Call Cardiac Rhythm Specialists in Reseda with questions.',
+  },
+  '/conditions/peripheral-vascular-disease': {
+    title: 'Peripheral Vascular Disease (PVD) in Reseda, CA | Vascular Education',
+    description:
+      'Learn how peripheral vascular disease (PVD) differs from PAD and from venous conditions. Educational information only, not a diagnosis. Call our Reseda office.',
+  },
+  '/conditions/varicose-veins': {
+    title: 'Varicose Veins Education in Reseda, CA | Cardiac Rhythm Specialists',
+    description:
+      'Educational information about varicose veins. Visible veins or leg aching are not a diagnosis. Cardiac Rhythm Specialists is in Reseda, CA.',
+  },
+  '/conditions/deep-vein-thrombosis': {
+    title: 'Deep Vein Thrombosis (DVT) Education in Reseda, CA',
+    description:
+      'Patient-friendly information about deep vein thrombosis (DVT). Leg swelling or pain has many causes and is not a diagnosis. Call 911 for emergency symptoms.',
+  },
+  '/conditions/limb-ischemia': {
+    title: 'Limb Ischemia and CLTI Education in Reseda, CA',
+    description:
+      'Educational information about limb ischemia and chronic limb-threatening ischemia. Wounds and pain are not a diagnosis. Call our Reseda office or 911 if urgent.',
+  },
+  '/conditions/vascular-symptoms': {
+    title: 'Symptoms That May Warrant a Vascular Evaluation | Reseda, CA',
+    description:
+      'Leg pain, cramping, swelling, or non-healing wounds can have many causes. A cardiovascular evaluation can help determine whether vascular disease may be contributing.',
   },
   '/treatments': {
     title: 'Heart Rhythm Treatments | Cardiac Rhythm Specialists',

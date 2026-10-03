@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom'
-import { CONDITIONS, TREATMENTS, topicLabel, type MedicalPageContent } from '../data/medicalPages'
+import {
+  CONDITIONS,
+  TREATMENTS,
+  conditionGroup,
+  topicLabel,
+  type MedicalPageContent,
+} from '../data/medicalPages'
 import { TESTS } from '../data/testingPages'
 import { EDUCATION } from '../data/educationPages'
 import { BOOKLET_LIST } from '../data/booklets'
 import { MULTIMEDIA_LIBRARY } from '../data/multimediaLibrary'
+import { EXTERNAL_RESOURCE_DISCLAIMER, EXTERNAL_RESOURCES } from '../data/externalResources'
 import { practice } from '../data/practice'
 import { ContentLayout, MedicalPageLayout } from '../components/ContentLayout'
+import { LearnMoreLink } from '../components/LearnMoreLink'
 import { TopicImages, TopicSections } from '../components/TopicSections'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -16,6 +24,7 @@ function TopicArticle({
   path: string
   page: MedicalPageContent
 }) {
+  const resource = EXTERNAL_RESOURCES[path]
   return (
     <MedicalPageLayout
       path={path}
@@ -26,6 +35,7 @@ function TopicArticle({
     >
       <TopicImages images={page.images} />
       <TopicSections sections={page.sections} />
+      {resource ? <LearnMoreLink resource={resource} /> : null}
     </MedicalPageLayout>
   )
 }
@@ -99,14 +109,17 @@ function HubList({
       <ul>
         {items.map((item) => {
           const title = topicLabel(item)
+          const href = to(item.slug)
+          const resource = EXTERNAL_RESOURCES[href]
           return (
             <li key={item.slug} className="hub-item">
               <Heading className="hub-item-title">
-                <Link to={to(item.slug)} className="hub-item-link">
+                <Link to={href} className="hub-item-link">
                   {title}
                 </Link>
               </Heading>
               <p className="hub-item-intro">{item.intro}</p>
+              {resource ? <LearnMoreLink resource={resource} compact showDisclaimer={false} /> : null}
             </li>
           )
         })}
@@ -143,23 +156,60 @@ function LinkHub({
 }
 
 export function ConditionsIndexPage() {
+  const all = Object.values(CONDITIONS)
+  const rhythm = all.filter((page) => conditionGroup(page) === 'rhythm')
+  const vascular = all.filter((page) => conditionGroup(page) === 'vascular')
+  const vascularSymptoms = all.filter((page) => conditionGroup(page) === 'vascular-symptom')
+
   return (
     <ContentLayout
       path="/conditions"
-      eyebrow="Heart rhythm conditions"
-      title="Heart rhythm conditions"
-      intro="These pages explain conditions that were part of the original Cardiac Rhythm Specialists education library. They are for patients in Reseda and the surrounding Los Angeles area. They are educational and are not a diagnosis."
+      eyebrow="Conditions we evaluate"
+      title="Heart rhythm and vascular conditions"
+      intro="These pages explain heart rhythm conditions from the original Cardiac Rhythm Specialists education library, plus vascular conditions and symptoms Dr. Polosajian evaluates. They are for patients in Reseda and the surrounding Los Angeles area. They are educational and are not a diagnosis."
       showDisclaimer
     >
       <p>
         A cardiac electrophysiologist is a heart rhythm specialist. Evaluation may be appropriate
         for palpitations, irregular heartbeat, atrial fibrillation, syncope, or related symptoms.
+        Cardiovascular evaluation may also be appropriate when circulation concerns in the legs are
+        part of the question a physician is considering.
       </p>
+
+      <h2 className="topic-section-heading mt-10">Heart rhythm conditions</h2>
       <HubList
-        items={Object.values(CONDITIONS)}
+        items={rhythm}
         to={(slug) => `/conditions/${slug}`}
         label="Heart rhythm condition pages"
+        headingLevel="h3"
       />
+
+      <h2 className="topic-section-heading mt-12">Vascular conditions</h2>
+      <p className="mt-3">
+        The pages below describe named vascular conditions. They are not the same as symptoms such
+        as leg pain or swelling.
+      </p>
+      <HubList
+        items={vascular}
+        to={(slug) => `/conditions/${slug}`}
+        label="Vascular condition pages"
+        headingLevel="h3"
+      />
+
+      <h2 className="topic-section-heading mt-12">Symptoms that may warrant a vascular evaluation</h2>
+      <p className="mt-3">
+        Symptoms such as leg pain, cramping, swelling, skin changes, or non-healing wounds can have
+        many causes. A cardiovascular evaluation can help determine whether vascular disease may be
+        contributing.
+      </p>
+      <HubList
+        items={vascularSymptoms}
+        to={(slug) => `/conditions/${slug}`}
+        label="Vascular symptom information pages"
+        headingLevel="h3"
+      />
+
+      <p className="mt-8 text-base leading-relaxed text-navy">{EXTERNAL_RESOURCE_DISCLAIMER}</p>
       <p className="mt-8">
         Related reading:{' '}
         <Link to="/treatments" className="font-semibold underline underline-offset-4">
@@ -200,6 +250,7 @@ export function TreatmentsIndexPage() {
         to={(slug) => `/treatments/${slug}`}
         label="Treatment and procedure pages"
       />
+      <p className="mt-8 text-base leading-relaxed text-navy">{EXTERNAL_RESOURCE_DISCLAIMER}</p>
     </ContentLayout>
   )
 }

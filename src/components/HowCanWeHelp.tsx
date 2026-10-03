@@ -26,6 +26,11 @@ const cards = [
     title: 'I’m Not Sure Where to Start',
     body: 'Call our office to request an appointment. Staff will help with scheduling and insurance information.',
   },
+  {
+    to: '/conditions/vascular-symptoms',
+    title: 'Leg Pain, Cramps, or Wounds',
+    body: 'Learn about symptoms that may warrant a vascular evaluation. These symptoms have many causes and are not a diagnosis.',
+  },
 ] as const
 
 export function HowCanWeHelp() {
@@ -69,7 +74,7 @@ export function HowCanWeHelp() {
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Link to="/conditions" className="btn btn-secondary w-full sm:w-auto">
-            View Heart Rhythm Conditions
+            View Conditions
           </Link>
           <Link to="/treatments" className="btn btn-secondary w-full sm:w-auto">
             View Treatments &amp; Device Care

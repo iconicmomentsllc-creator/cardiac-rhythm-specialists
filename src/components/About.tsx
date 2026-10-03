@@ -34,21 +34,23 @@ export function About() {
           A full explanation of his professional designations is on the about page.
         </p>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-          <li className="rounded-2xl border border-navy/10 bg-white px-6 py-6">
+          <li className="info-card">
             <p className="text-base font-semibold text-navy">Physician</p>
             <p className="physician-name mt-2 text-xl font-semibold leading-snug text-navy">
               {practice.physician}
             </p>
           </li>
-          <li className="rounded-2xl border border-navy/10 bg-white px-6 py-6">
+          <li className="info-card">
             <p className="text-base font-semibold text-navy">Specialty</p>
             <p className="mt-2 text-xl font-semibold text-navy">{practice.specialtyLong}</p>
           </li>
-          <li className="rounded-2xl border border-navy/10 bg-white px-6 py-6">
+          <li className="info-card">
             <p className="text-base font-semibold text-navy">Focus of care</p>
-            <p className="mt-2 text-xl font-semibold text-navy">Heart rhythm disorders</p>
+            <p className="mt-2 text-xl font-semibold text-navy">
+              Heart rhythm disorders and vascular evaluation
+            </p>
           </li>
-          <li className="rounded-2xl border border-navy/10 bg-white px-6 py-6">
+          <li className="info-card">
             <p className="text-base font-semibold text-navy">Hospital affiliations</p>
             <p className="mt-2 text-xl font-semibold text-navy">
               Providence Cedars-Sinai Tarzana Medical Center, Cedars-Sinai Medical Center, and Valley Presbyterian Hospital

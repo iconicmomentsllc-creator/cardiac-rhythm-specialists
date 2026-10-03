@@ -27,7 +27,8 @@ export function VideosPage() {
           YouTube
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
-        .
+        . Individual videos from that channel can be added to this page when they are selected for
+        the website.
       </p>
     </ContentLayout>
   )

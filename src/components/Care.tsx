@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
+import { EXTERNAL_RESOURCE_DISCLAIMER, EXTERNAL_RESOURCES } from '../data/externalResources'
 import { practice } from '../data/practice'
+import { LearnMoreLink } from './LearnMoreLink'
 
 const services = [
   {
@@ -37,17 +39,63 @@ const primaryConditions = [
   },
 ] as const
 
+const vascularConditions = [
+  {
+    to: '/conditions/peripheral-artery-disease',
+    title: 'Peripheral artery disease (PAD)',
+    body: 'A named arterial condition that can affect blood flow to the legs. This card is information, not a diagnosis.',
+  },
+  {
+    to: '/conditions/varicose-veins',
+    title: 'Varicose veins',
+    body: 'Enlarged leg veins are a venous condition. Visible veins or aching do not, by themselves, diagnose vein disease.',
+  },
+  {
+    to: '/conditions/deep-vein-thrombosis',
+    title: 'Deep vein thrombosis (DVT)',
+    body: 'A blood clot in a deep vein is a named condition. Leg swelling or pain has many causes and is not a diagnosis of DVT.',
+  },
+] as const
+
+function InfoCard({
+  title,
+  body,
+  to,
+  readLabel,
+}: {
+  title: string
+  body: string
+  to: string
+  readLabel: string
+}) {
+  const resource = EXTERNAL_RESOURCES[to]
+
+  return (
+    <article className="condition-card flex h-full flex-col rounded-2xl border border-navy/10 bg-white px-6 py-6">
+      <h4 className="font-serif text-xl font-semibold text-navy">{title}</h4>
+      <p className="mt-3 flex-1 text-lg leading-relaxed text-navy">{body}</p>
+      <p className="mt-5">
+        <Link to={to} className="btn-text">
+          {readLabel}
+        </Link>
+      </p>
+      {resource ? <LearnMoreLink resource={resource} compact showDisclaimer={false} /> : null}
+    </article>
+  )
+}
+
 export function Care() {
   return (
     <section id="care" className="scroll-mt-28 border-t border-navy/10 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-        <p className="section-label">Heart rhythm care</p>
+        <p className="section-label">Heart rhythm and vascular care</p>
         <h2 className="mt-3 max-w-3xl font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
           Conditions and services we help with
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
           {practice.brandName} provides cardiology care focused on heart rhythm
-          disorders at our office in Reseda.
+          disorders at our office in Reseda. {practice.physicianInformal} also evaluates
+          vascular conditions and symptoms that may relate to circulation in the legs.
         </p>
 
         <h3 className="mt-12 font-serif text-2xl font-semibold text-navy">
@@ -56,16 +104,52 @@ export function Care() {
         <ul className="mt-6 grid gap-4 md:grid-cols-3">
           {primaryConditions.map((item) => (
             <li key={item.title} className="min-w-0">
-              <Link
+              <InfoCard
+                title={item.title}
+                body={item.body}
                 to={item.to}
-                className="flex h-full flex-col rounded-2xl border border-navy/10 bg-white px-6 py-6 no-underline hover:border-gold"
-              >
-                <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
-                <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>
-              </Link>
+                readLabel={`Read about ${item.title.toLowerCase()}`}
+              />
             </li>
           ))}
         </ul>
+
+        <h3 className="mt-14 font-serif text-2xl font-semibold text-navy">Vascular conditions</h3>
+        <p className="mt-3 max-w-2xl text-lg leading-relaxed text-navy">
+          These are named conditions. Use the page link to read our educational material, then the
+          Learn more link for additional reading from a national organization.
+        </p>
+        <ul className="mt-6 grid gap-4 md:grid-cols-3">
+          {vascularConditions.map((item) => (
+            <li key={item.title} className="min-w-0">
+              <InfoCard
+                title={item.title}
+                body={item.body}
+                to={item.to}
+                readLabel="Read this educational page"
+              />
+            </li>
+          ))}
+        </ul>
+
+        <h3 className="mt-14 font-serif text-2xl font-semibold text-navy">
+          Symptoms that may warrant a vascular evaluation
+        </h3>
+        <article className="condition-card mt-6 max-w-3xl rounded-2xl border border-navy/10 bg-white px-6 py-6">
+          <p className="text-lg leading-relaxed text-navy">
+            Symptoms such as leg pain, cramping, swelling, skin changes, or non-healing wounds can
+            have many causes. A cardiovascular evaluation can help determine whether vascular
+            disease may be contributing.
+          </p>
+          <p className="mt-5">
+            <Link to="/conditions/vascular-symptoms" className="btn-text">
+              Read about symptoms that may warrant a vascular evaluation
+            </Link>
+          </p>
+        </article>
+        <p className="mt-4 max-w-3xl text-base leading-relaxed text-navy">
+          {EXTERNAL_RESOURCE_DISCLAIMER}
+        </p>
 
         <details className="disclosure mt-6 rounded-2xl bg-white">
           <summary className="flex min-h-16 cursor-pointer items-center justify-between gap-4 px-5 py-3 text-lg font-semibold text-navy">
@@ -88,6 +172,20 @@ export function Care() {
               </li>
               <li>
                 Heart rhythm questions after a referral from another doctor
+              </li>
+              <li>
+                <Link to="/conditions/peripheral-vascular-disease" className="font-semibold underline underline-offset-4">
+                  Peripheral vascular disease (PVD)
+                </Link>
+                , a broader term that can include arterial or venous circulation problems
+              </li>
+              <li>
+                <Link to="/conditions/limb-ischemia" className="font-semibold underline underline-offset-4">
+                  Limb ischemia
+                </Link>
+                {' '}
+                and chronic limb-threatening ischemia, when a physician is considering reduced
+                arterial blood flow
               </li>
             </ul>
             <p className="mt-5 text-lg leading-relaxed text-navy">

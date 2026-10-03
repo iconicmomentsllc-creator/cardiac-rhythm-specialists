@@ -9,6 +9,7 @@ const specialties = [
   { to: '/treatments/pacemaker', label: 'Pacemakers' },
   { to: '/treatments/implantable-cardioverter-defibrillator', label: 'ICDs' },
   { to: '/testing/holter-monitoring', label: 'Holter Monitoring' },
+  { to: '/conditions/peripheral-artery-disease', label: 'PAD' },
 ] as const
 
 export function Hero() {
@@ -29,7 +30,8 @@ export function Hero() {
         </p>
         <p className="mt-4 max-w-2xl text-xl leading-relaxed text-navy">
           Specialized care for heart rhythm disorders, including evaluation and
-          treatment of arrhythmias. The Reseda office serves patients from Los
+          treatment of arrhythmias, and evaluation of vascular conditions such as
+          peripheral artery disease. The Reseda office serves patients from Los
           Angeles, the San Fernando Valley, Thousand Oaks, Simi Valley, Glendale,
           and North Hollywood.
         </p>
@@ -66,6 +68,7 @@ export function Hero() {
               <Link
                 to={item.to}
                 className="inline-flex min-h-12 items-center rounded-full border border-navy/15 bg-white px-4 text-base font-semibold text-navy hover:border-gold"
+                aria-label={item.label === 'PAD' ? 'Peripheral artery disease' : undefined}
               >
                 {item.label}
               </Link>

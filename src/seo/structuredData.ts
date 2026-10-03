@@ -43,6 +43,10 @@ function organizationNode(): JsonLd {
       'Pacemakers',
       'Implantable cardioverter defibrillators',
       'Holter monitoring',
+      'Peripheral artery disease',
+      'Peripheral vascular disease',
+      'Varicose veins',
+      'Deep vein thrombosis',
     ],
     areaServed: [
       { '@type': 'City', name: 'Reseda' },

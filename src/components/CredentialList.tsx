@@ -17,7 +17,7 @@ export function CredentialList() {
         {practice.credentials.map((item) => (
           <li
             key={item.abbr}
-            className="rounded-2xl border border-navy/10 px-6 py-5"
+            className="info-card"
           >
             <p className="text-lg font-semibold tracking-wide text-navy">{item.abbr}</p>
             <p className="mt-1 text-lg leading-relaxed text-navy">{item.meaning}</p>

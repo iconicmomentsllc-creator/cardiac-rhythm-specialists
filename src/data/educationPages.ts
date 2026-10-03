@@ -275,7 +275,7 @@ export const EDUCATION: Record<string, EducationPageContent> = {
       {
         heading: 'Organizations patients often ask about',
         paragraphs: [
-          'National organizations that publish patient education on heart rhythm and heart disease include groups such as the Heart Rhythm Society and the American Heart Association. Listing them here is not an endorsement of any specific article, and their materials can change.',
+          'National organizations that publish patient education on heart rhythm, heart disease, and vascular conditions include groups such as the Heart Rhythm Society, the American Heart Association, and the Society for Vascular Surgery. Condition and treatment pages on this website include Learn more links to specific patient-education articles when a matching page has been verified. Listing an organization is not an endorsement of this practice, and their materials can change.',
           'If you want a printed pamphlet or a specific topic, call the office and ask what the practice currently shares with patients.',
         ],
       },

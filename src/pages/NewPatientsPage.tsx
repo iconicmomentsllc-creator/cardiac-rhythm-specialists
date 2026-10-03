@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { practice } from '../data/practice'
 import { ContentLayout } from '../components/ContentLayout'
 
@@ -61,12 +62,14 @@ export function NewPatientsPage() {
       <section>
         <h2 className="mt-10 font-serif text-2xl font-semibold text-navy">Office requests we can help with</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-          {practice.officeRequests.map((item) => (
-            <li
-              key={item}
-              className="flex min-h-14 items-center rounded-2xl border border-navy/10 px-5 font-semibold"
-            >
-              {item}
+          {practice.officeRequestLinks.map((item) => (
+            <li key={item.label} className="min-w-0">
+              <Link
+                to={item.to}
+                className="flex min-h-14 items-center rounded-2xl border border-navy/10 px-5 font-semibold no-underline hover:border-gold"
+              >
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>

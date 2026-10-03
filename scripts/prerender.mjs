@@ -90,8 +90,8 @@ const first = render('/')
 const PUBLIC_PATHS = first.publicPaths
 const SITEMAP_PATHS = first.sitemapPaths
 const lastmod = new Date().toISOString().slice(0, 10)
-if (!Array.isArray(PUBLIC_PATHS) || PUBLIC_PATHS.length !== 80) {
-  throw new Error(`Expected 80 public paths, received ${PUBLIC_PATHS?.length ?? 0}`)
+if (!Array.isArray(PUBLIC_PATHS) || PUBLIC_PATHS.length !== 86) {
+  throw new Error(`Expected 86 public paths, received ${PUBLIC_PATHS?.length ?? 0}`)
 }
 if (!Array.isArray(SITEMAP_PATHS) || SITEMAP_PATHS.includes('/education/multimedia-library')) {
   throw new Error('Noindex multimedia-library page must not appear in the sitemap path list')

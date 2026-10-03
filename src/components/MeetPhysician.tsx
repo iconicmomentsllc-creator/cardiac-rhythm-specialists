@@ -31,7 +31,8 @@ export function MeetPhysician() {
             </p>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy">
               {practice.physicianInformalFull} provides specialized cardiovascular care with a
-              focus on diagnosing and treating heart rhythm disorders. His goal is
+              focus on diagnosing and treating heart rhythm disorders. He also evaluates vascular
+              conditions and symptoms that may relate to circulation in the legs. His goal is
               to help patients understand their condition, their treatment options,
               and the next steps in their care.
             </p>

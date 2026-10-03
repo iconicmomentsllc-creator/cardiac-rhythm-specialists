@@ -19,12 +19,14 @@ export function PatientInfo() {
         </p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {practice.officeRequests.map((item) => (
-            <li
-              key={item}
-              className="flex min-h-16 items-center rounded-2xl border border-navy/10 bg-white px-5 text-lg font-semibold text-navy"
-            >
-              {item}
+          {practice.officeRequestLinks.map((item) => (
+            <li key={item.label} className="min-w-0">
+              <Link
+                to={item.to}
+                className="flex min-h-16 items-center rounded-2xl border border-navy/10 bg-white px-5 text-lg font-semibold text-navy no-underline hover:border-gold"
+              >
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>

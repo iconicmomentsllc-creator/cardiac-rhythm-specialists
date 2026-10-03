@@ -73,21 +73,21 @@ export const practice = {
   siteUrl: SITE_ORIGIN,
   directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`,
   mapsEmbedUrl: `https://maps.google.com/maps?q=${encodeURIComponent(fullAddress)}&z=16&output=embed`,
-  officeRequests: [
-    'Appointments',
-    'Referrals',
-    'Prescription questions',
-    'Medical records',
-    'Insurance questions',
-    'Procedure instructions',
+  officeRequestLinks: [
+    { label: 'Appointments', to: '/appointment-request' },
+    { label: 'Referrals', to: '/appointment-request' },
+    { label: 'Prescription questions', to: '/prescription-refills' },
+    { label: 'Medical records', to: '/medical-records' },
+    { label: 'Insurance questions', to: '/insurance' },
+    { label: 'Procedure instructions', to: '/patient-resources' },
   ],
-  youtubeName: 'Dr. Leo Polosajian',
-  youtubeHandle: '@dr.leopolosajian6474',
-  youtubeUrl: 'https://www.youtube.com/@dr.leopolosajian6474',
+  youtubeName: 'Dr Leo Polosajian',
+  youtubeHandle: '@DrLeoPolosajian',
+  youtubeUrl: 'https://www.youtube.com/@DrLeoPolosajian',
   instagramHandle: '@drleopolosaijan',
   instagramUrl: 'https://www.instagram.com/drleopolosaijan/',
   sameAs: [
-    'https://www.youtube.com/@dr.leopolosajian6474',
+    'https://www.youtube.com/@DrLeoPolosajian',
     'https://www.instagram.com/drleopolosaijan/',
     'https://www.drleopolosajian.com/',
   ],
@@ -110,6 +110,6 @@ export const practice = {
 export const MEDICAL_DISCLAIMER =
   'The information on this website is provided for general educational purposes and is not a substitute for professional medical advice, diagnosis, or treatment. If you believe you may be experiencing a medical emergency, call 911 or seek immediate medical attention.'
 
-export const CONTENT_UPDATED_ISO = '2026-09-19'
-export const CONTENT_UPDATED_LABEL = 'September 19, 2026'
+export const CONTENT_UPDATED_ISO = '2026-09-29'
+export const CONTENT_UPDATED_LABEL = 'September 29, 2026'
 export const CONTENT_UPDATED_NOTICE = `Website content updated ${CONTENT_UPDATED_LABEL}`
