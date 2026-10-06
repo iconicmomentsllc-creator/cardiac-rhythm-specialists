@@ -71,7 +71,7 @@ function InfoCard({
   const resource = EXTERNAL_RESOURCES[to]
 
   return (
-    <article className="condition-card flex h-full flex-col rounded-2xl border border-navy/10 bg-white px-6 py-6">
+    <article className="condition-card flex h-full flex-col px-6 py-7">
       <h4 className="font-serif text-xl font-semibold text-navy">{title}</h4>
       <p className="mt-3 flex-1 text-lg leading-relaxed text-navy">{body}</p>
       <p className="mt-5">
@@ -89,10 +89,10 @@ export function Care() {
     <section id="care" className="scroll-mt-28 border-t border-navy/10 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <p className="section-label">Heart rhythm and vascular care</p>
-        <h2 className="mt-3 max-w-3xl font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
+        <h2 className="section-heading mt-4">
           Conditions and services we help with
         </h2>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
+        <p className="lede mt-4">
           {practice.brandName} provides cardiology care focused on heart rhythm
           disorders at our office in Reseda. {practice.physicianInformal} also evaluates
           vascular conditions and symptoms that may relate to circulation in the legs.
@@ -135,7 +135,7 @@ export function Care() {
         <h3 className="mt-14 font-serif text-2xl font-semibold text-navy">
           Symptoms that may warrant a vascular evaluation
         </h3>
-        <article className="condition-card mt-6 max-w-3xl rounded-2xl border border-navy/10 bg-white px-6 py-6">
+        <article className="condition-card mt-6 max-w-3xl px-6 py-7">
           <p className="text-lg leading-relaxed text-navy">
             Symptoms such as leg pain, cramping, swelling, skin changes, or non-healing wounds can
             have many causes. A cardiovascular evaluation can help determine whether vascular
@@ -203,7 +203,7 @@ export function Care() {
             <li key={item.title} className="min-w-0">
               <Link
                 to={item.to}
-                className="flex h-full flex-col rounded-2xl border border-navy/10 bg-white px-6 py-6 no-underline hover:border-gold"
+                className="condition-card flex h-full flex-col px-6 py-7 no-underline"
               >
                 <h4 className="font-serif text-xl font-semibold text-navy">{item.title}</h4>
                 <p className="mt-3 text-lg leading-relaxed text-navy">{item.body}</p>

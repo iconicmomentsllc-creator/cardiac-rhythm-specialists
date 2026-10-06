@@ -13,8 +13,8 @@ export function VideosPageSections() {
     <div className="space-y-16">
       <section aria-labelledby="featured-videos-heading" className="space-y-6">
         <header className="space-y-3">
-          <p className="text-base font-semibold tracking-wide text-gold">Current</p>
-          <h2 id="featured-videos-heading" className="font-serif text-3xl font-semibold leading-tight text-navy sm:text-4xl">
+          <p className="section-label">Current</p>
+          <h2 id="featured-videos-heading" className="section-heading">
             Featured Videos
           </h2>
           <p className="max-w-2xl text-lg leading-relaxed text-navy">
@@ -27,7 +27,7 @@ export function VideosPageSections() {
               <h3 className="video-title shrink-0 text-2xl font-semibold leading-snug text-navy">
                 {video.title}
               </h3>
-              <div className="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
+              <div className="media-frame mt-5 aspect-video w-full">
                 <YouTubeFacade videoId={video.id} title={video.title} />
               </div>
             </li>
@@ -52,7 +52,7 @@ export function VideosPageSections() {
                 {video.publisherCredit ? (
                   <p className="mt-2 text-base leading-relaxed text-navy">{video.publisherCredit}</p>
                 ) : null}
-                <div className="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
+                <div className="media-frame mt-5 aspect-video w-full">
                   <YouTubeFacade videoId={video.youtubeId} title={video.title} />
                 </div>
               </li>
@@ -73,7 +73,7 @@ export function VideosPageSections() {
           <ul className="grid items-stretch gap-12">
             {historicalPracticeVideos.map((video) => (
               <li key={video.id} className="flex min-w-0 flex-col">
-                <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
+                <div className="media-frame aspect-video w-full">
                   <video
                     className="absolute inset-0 h-full w-full"
                     controls

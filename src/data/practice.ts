@@ -84,11 +84,11 @@ export const practice = {
   youtubeName: 'Dr Leo Polosajian',
   youtubeHandle: '@DrLeoPolosajian',
   youtubeUrl: 'https://www.youtube.com/@DrLeoPolosajian',
-  instagramHandle: '@drleopolosaijan',
-  instagramUrl: 'https://www.instagram.com/drleopolosaijan/',
+  instagramHandle: '@dr.leopolosajian',
+  instagramUrl: 'https://www.instagram.com/dr.leopolosajian/',
   sameAs: [
     'https://www.youtube.com/@DrLeoPolosajian',
-    'https://www.instagram.com/drleopolosaijan/',
+    'https://www.instagram.com/dr.leopolosajian/',
     'https://www.drleopolosajian.com/',
   ],
   featuredVideos: [
@@ -110,6 +110,6 @@ export const practice = {
 export const MEDICAL_DISCLAIMER =
   'The information on this website is provided for general educational purposes and is not a substitute for professional medical advice, diagnosis, or treatment. If you believe you may be experiencing a medical emergency, call 911 or seek immediate medical attention.'
 
-export const CONTENT_UPDATED_ISO = '2026-09-29'
-export const CONTENT_UPDATED_LABEL = 'September 29, 2026'
+export const CONTENT_UPDATED_ISO = '2026-10-03'
+export const CONTENT_UPDATED_LABEL = 'October 3, 2026'
 export const CONTENT_UPDATED_NOTICE = `Website content updated ${CONTENT_UPDATED_LABEL}`

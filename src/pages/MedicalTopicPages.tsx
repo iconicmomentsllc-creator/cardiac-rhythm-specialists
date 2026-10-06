@@ -13,8 +13,10 @@ import { MULTIMEDIA_LIBRARY } from '../data/multimediaLibrary'
 import { EXTERNAL_RESOURCE_DISCLAIMER, EXTERNAL_RESOURCES } from '../data/externalResources'
 import { practice } from '../data/practice'
 import { ContentLayout, MedicalPageLayout } from '../components/ContentLayout'
+import { InstagramCard } from '../components/InstagramCard'
 import { LearnMoreLink } from '../components/LearnMoreLink'
 import { TopicImages, TopicSections } from '../components/TopicSections'
+import { instagramForPath } from '../data/instagram'
 import { NotFoundPage } from './NotFoundPage'
 
 function TopicArticle({
@@ -25,6 +27,7 @@ function TopicArticle({
   page: MedicalPageContent
 }) {
   const resource = EXTERNAL_RESOURCES[path]
+  const instagram = instagramForPath(path)
   return (
     <MedicalPageLayout
       path={path}
@@ -36,6 +39,11 @@ function TopicArticle({
       <TopicImages images={page.images} />
       <TopicSections sections={page.sections} />
       {resource ? <LearnMoreLink resource={resource} /> : null}
+      {instagram ? (
+        <div className="mt-10">
+          <InstagramCard item={instagram} headingLevel="h2" />
+        </div>
+      ) : null}
     </MedicalPageLayout>
   )
 }

@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { practice } from '../data/practice'
+import { InstagramIcon } from './InstagramIcon'
 
 const careLinks = [
   { to: '/conditions', label: 'Conditions' },
@@ -25,6 +26,14 @@ const legalLinks = [
   { to: '/medical-disclaimer', label: 'Medical Disclaimer' },
   { to: '/terms', label: 'Terms of Use' },
 ] as const
+
+function YouTubeIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6 shrink-0 fill-current">
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.7 12 3.7 12 3.7s-7.5 0-9.4.4A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.4 9.4.4 9.4.4s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7.1L15.8 12z" />
+    </svg>
+  )
+}
 
 function FooterNavList({
   label,
@@ -60,14 +69,15 @@ export function Footer() {
 
   return (
     <footer className="overflow-x-clip border-t border-navy/10 bg-cream pb-8 text-navy print:pb-8">
-      <div className="footer-grid mx-auto max-w-6xl px-4 py-14 sm:px-6">
+      <div className="footer-grid mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-14">
         <div className="footer-brand">
-          <p className="font-serif text-2xl font-semibold tracking-tight">{practice.brandName}</p>
+          <h2 className="footer-nav-heading">Practice</h2>
+          <p className="mt-3 font-serif text-2xl font-semibold tracking-tight">{practice.brandName}</p>
           <p className="physician-name mt-2 text-lg font-semibold leading-snug text-navy">
             {practice.physician}
           </p>
           <p className="mt-1 text-lg text-navy">{practice.specialtyLong}</p>
-          <p className="mt-3 text-lg">
+          <p className="mt-4 text-lg">
             <a href={practice.emailMailto} className="font-semibold underline underline-offset-4">
               {practice.email}
             </a>
@@ -75,18 +85,18 @@ export function Footer() {
           <a href={practice.phoneTel} className="btn btn-primary mt-5">
             Call {practice.phoneDisplay}
           </a>
-          <nav aria-label="Social media" className="mt-6 flex flex-col gap-2">
+          <nav aria-label="Social media" className="footer-social">
             <a
               href={practice.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-text inline-flex items-center gap-3"
             >
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6 shrink-0 fill-current">
-                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.7 12 3.7 12 3.7s-7.5 0-9.4.4A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.4 9.4.4 9.4.4s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.8 15.5v-7.1L15.8 12z" />
-              </svg>
+              <YouTubeIcon />
               YouTube
-              <span className="sr-only"> (opens in a new tab)</span>
+              <span className="sr-only">
+                {`: ${practice.youtubeName} (opens in a new tab)`}
+              </span>
             </a>
             <a
               href={practice.instagramUrl}
@@ -94,20 +104,20 @@ export function Footer() {
               rel="noopener noreferrer"
               className="btn-text inline-flex items-center gap-3"
             >
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6 shrink-0 fill-current">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.8 6.2a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z" />
-              </svg>
+              <InstagramIcon />
               Instagram
-              <span className="sr-only"> (opens in a new tab)</span>
+              <span className="sr-only">
+                {`: ${practice.instagramHandle} (opens in a new tab)`}
+              </span>
             </a>
           </nav>
         </div>
 
         <FooterNavList label="Care" links={careLinks} pathname={location.pathname} />
-        <FooterNavList label="For patients" links={patientLinks} pathname={location.pathname} />
+        <FooterNavList label="For Patients" links={patientLinks} pathname={location.pathname} />
 
         <div className="footer-office">
-          <h2 className="footer-nav-heading">Office</h2>
+          <h2 className="footer-nav-heading">Visit Us</h2>
           <address className="mt-3 not-italic text-lg leading-relaxed text-navy">
             {practice.brandName}
             <br />
@@ -127,25 +137,28 @@ export function Footer() {
             href={practice.directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-text mt-4 inline-flex items-center"
+            className="btn-text mt-3 inline-flex items-center"
           >
             Get Directions
-            <span className="sr-only"> to our Reseda office (opens in a new tab)</span>
+            <span className="sr-only"> to {practice.fullAddress} (opens in a new tab)</span>
           </a>
-          <div className="mt-8 space-y-4 text-lg">
-            <div>
-              <p className="font-semibold">{practice.weekdayLabel}</p>
-              <p>{practice.weekdayHours}</p>
-            </div>
-            <div>
-              <p className="font-semibold">{practice.weekendLabel}</p>
-              <p>{practice.weekendHours}</p>
-            </div>
+          <div className="footer-hours">
+            <h3 className="footer-hours-heading">Office Hours</h3>
+            <p>
+              <span className="font-semibold">{practice.weekdayLabel}</span>
+              <br />
+              {practice.weekdayHours}
+            </p>
+            <p>
+              <span className="font-semibold">{practice.weekendLabel}</span>
+              <br />
+              {practice.weekendHours}
+            </p>
           </div>
         </div>
       </div>
-      <div className="border-t border-navy/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-base text-navy sm:px-6">
+      <div className="footer-legal-bar">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 text-base text-navy sm:px-6 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {practice.legalName}</p>
           <nav aria-label="Legal" className="footer-legal">
             {legalLinks.map((item) => (

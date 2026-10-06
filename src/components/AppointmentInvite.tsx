@@ -6,17 +6,17 @@ export function AppointmentInvite() {
     <section
       id="request-appointment"
       aria-labelledby="appointment-invite-heading"
-      className="scroll-mt-28 border-t border-navy/10 bg-mist"
+      className="scroll-mt-28 border-t border-navy/10 bg-cream"
     >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <p className="section-label">Appointments</p>
         <h2
           id="appointment-invite-heading"
-          className="mt-3 max-w-3xl font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy"
+          className="section-heading mt-4"
         >
           Ready to Schedule Your Visit?
         </h2>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
+        <p className="lede mt-4">
           Appointments are scheduled by calling our office. Staff can help with scheduling and
           insurance information.
         </p>

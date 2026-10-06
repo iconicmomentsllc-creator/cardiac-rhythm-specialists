@@ -14,10 +14,10 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
         <div className="max-w-2xl">
           {asPage ? <Breadcrumbs items={breadcrumbsFor('/contact')} /> : null}
           <p className="section-label">Contact the office</p>
-          <Heading className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
+          <Heading className="page-title mt-4">
             Phone, address, hours, and directions
           </Heading>
-          <p className="mt-4 text-lg leading-relaxed text-navy">
+          <p className="lede mt-4">
             {practice.legalName} is located in Reseda, California, and serves patients from Los
             Angeles, the San Fernando Valley, Thousand Oaks, Simi Valley, Glendale, and North
             Hollywood. Call{' '}
@@ -30,14 +30,14 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">
-            <div className="rounded-2xl border border-navy/10 bg-white p-6">
+            <div className="condition-card p-6">
               <h2 className="font-serif text-2xl font-semibold text-navy">Phone</h2>
               <a href={practice.phoneTel} className="btn btn-primary mt-4">
                 Call {practice.phoneDisplay}
               </a>
             </div>
 
-            <div className="rounded-2xl border border-navy/10 bg-white p-6">
+            <div className="condition-card p-6">
               <h2 className="font-serif text-2xl font-semibold text-navy">Email</h2>
               <p className="mt-3 text-lg">
                 <a href={practice.emailMailto} className="font-semibold underline underline-offset-4">
@@ -51,7 +51,7 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-navy/10 bg-white p-6">
+            <div className="condition-card p-6">
               <h2 className="font-serif text-2xl font-semibold text-navy">Office address</h2>
               <address className="mt-3 not-italic text-lg leading-relaxed text-navy">
                 {practice.legalName}
@@ -71,7 +71,7 @@ export function Contact({ asPage = false }: { asPage?: boolean }) {
               </a>
             </div>
 
-            <div className="rounded-2xl border border-navy/10 bg-white p-6">
+            <div className="condition-card p-6">
               <h2 className="font-serif text-2xl font-semibold text-navy">Office hours</h2>
               <div className="mt-4 grid gap-5 sm:grid-cols-2">
                 <div>

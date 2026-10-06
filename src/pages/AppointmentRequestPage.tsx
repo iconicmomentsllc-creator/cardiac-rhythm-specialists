@@ -13,7 +13,7 @@ export function AppointmentRequestPage() {
         <Breadcrumbs items={breadcrumbsFor('/appointment-request')} />
         <header className="max-w-3xl">
           <p className="section-label">Appointments</p>
-          <h1 className="mt-3 font-serif text-[clamp(1.875rem,4.5vw,2.75rem)] font-semibold leading-snug tracking-tight text-navy">
+          <h1 className="page-title mt-4">
             Request an Appointment
           </h1>
           <p className="mt-5 text-xl font-medium leading-relaxed text-navy">

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import { INSTAGRAM_HOME } from '../data/instagram'
 import { MEDIA_HOME_LINKS } from '../data/media'
 import { practice } from '../data/practice'
+import { InstagramCardList } from './InstagramCard'
+import { InstagramIcon } from './InstagramIcon'
 import { YouTubeFacade } from './YouTubeFacade'
 
 function YouTubeIcon() {
@@ -11,23 +14,15 @@ function YouTubeIcon() {
   )
 }
 
-function InstagramIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6 shrink-0 fill-current">
-      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.8 6.2a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z" />
-    </svg>
-  )
-}
-
 export function Education() {
   return (
     <section id="videos" className="scroll-mt-28 border-t border-navy/10 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <p className="section-label">Videos from Dr. Polosajian</p>
-        <h2 className="mt-3 max-w-3xl font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
+        <h2 className="section-heading mt-4">
           Videos &amp; Patient Education
         </h2>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy">
+        <p className="lede mt-4">
           Learn more about heart health and cardiac care through educational
           videos from {practice.physicianInformal}. Videos are hosted by YouTube. Use the
           player controls for captions and playback when they are available.
@@ -39,7 +34,7 @@ export function Education() {
               <h3 className="video-title shrink-0 text-xl font-semibold leading-snug text-navy">
                 {video.title}
               </h3>
-              <div className="relative mt-4 aspect-video w-full overflow-hidden rounded-2xl border border-navy/10 bg-navy">
+              <div className="media-frame mt-4 aspect-video w-full">
                 <YouTubeFacade videoId={video.id} title={video.title} />
               </div>
             </li>
@@ -57,20 +52,20 @@ export function Education() {
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
 
-        <div className="mt-14 max-w-2xl">
+        <div className="mt-14 max-w-3xl">
           <h3 className="font-serif text-2xl font-semibold text-navy">
-            Follow Dr. Leo on Instagram
+            Latest from {practice.physicianInformal}
           </h3>
-          <p className="mt-3 text-xl font-semibold text-navy">{practice.instagramHandle}</p>
           <p className="mt-3 text-lg leading-relaxed text-navy">
-            See additional heart-health education from {practice.physicianInformal} on
-            Instagram.
+            Short educational videos on Instagram ({practice.instagramHandle}) supplement the
+            written pages on this website. They are not a substitute for a medical visit.
           </p>
+          <InstagramCardList items={INSTAGRAM_HOME} headingLevel="h4" />
           <a
             href={practice.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary mt-6 gap-3"
+            className="btn btn-secondary mt-6 gap-3"
           >
             <InstagramIcon />
             View Instagram
@@ -80,10 +75,10 @@ export function Education() {
 
         <div className="mt-16 max-w-3xl border-t border-navy/10 pt-14">
           <p className="section-label">Media library</p>
-          <h2 className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
+          <h2 className="section-heading mt-4">
             Explore {practice.physicianInformal}’s Media & Education
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-navy">
+          <p className="lede mt-4">
             Browse videos, presentations, articles, and illustrated patient education from Cardiac
             Rhythm Specialists in one place.
           </p>

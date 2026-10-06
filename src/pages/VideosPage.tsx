@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ContentLayout } from '../components/ContentLayout'
 import { VideosPageSections } from '../components/VideosPageSections'
 import { practice } from '../data/practice'
@@ -29,6 +30,13 @@ export function VideosPage() {
         </a>
         . Individual videos from that channel can be added to this page when they are selected for
         the website.
+      </p>
+      <p>
+        Short Instagram education is listed on the{' '}
+        <Link to="/media" className="font-semibold underline underline-offset-4">
+          media library
+        </Link>
+        , with links back to the written condition and treatment pages on this site.
       </p>
     </ContentLayout>
   )

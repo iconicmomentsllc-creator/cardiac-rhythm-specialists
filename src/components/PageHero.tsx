@@ -14,7 +14,7 @@ export function PageHero({
   return (
     <header className="max-w-3xl">
       {eyebrow ? <p className="section-label">{eyebrow}</p> : null}
-      <h1 className="physician-name mt-3 font-serif text-[clamp(1.5rem,4vw,2.5rem)] font-semibold leading-snug tracking-tight text-navy">
+      <h1 className="page-title physician-name mt-4">
         {title}
       </h1>
       {intro ? (

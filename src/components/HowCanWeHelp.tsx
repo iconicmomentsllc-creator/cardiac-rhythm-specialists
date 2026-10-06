@@ -41,27 +41,27 @@ export function HowCanWeHelp() {
       className="scroll-mt-28 border-t border-navy/10 bg-white"
     >
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-        <p className="section-label uppercase tracking-[0.08em]">Patient Care</p>
+        <p className="section-label">Patient Care</p>
         <h2
           id="how-can-we-help-heading"
-          className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy"
+          className="section-heading mt-4"
         >
           How Can We Help?
         </h2>
-        <p className="mt-3 max-w-2xl text-xl font-medium leading-relaxed text-navy">
+        <p className="mt-4 max-w-2xl text-xl font-medium leading-relaxed text-navy">
           What brings you in today?
         </p>
-        <p className="mt-3 max-w-2xl text-lg leading-relaxed text-navy">
+        <p className="lede mt-3">
           Explore common reasons patients visit our practice or contact our office
           if you are unsure where to begin.
         </p>
 
-        <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <ul className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {cards.map((card) => (
             <li key={card.title} className="min-w-0">
               <Link
                 to={card.to}
-                className="help-card flex h-full min-h-44 flex-col rounded-2xl border border-navy/10 bg-white px-6 py-7 no-underline"
+                className="help-card flex h-full min-h-44 flex-col px-7 py-8 no-underline"
               >
                 <h3 className="font-serif text-xl font-semibold leading-snug text-navy">
                   {card.title}

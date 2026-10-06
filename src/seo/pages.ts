@@ -168,7 +168,7 @@ export const pageSeo: Record<string, SeoRecord> = {
   '/media': {
     title: 'Media | Videos, Presentations, and Education | Cardiac Rhythm Specialists',
     description:
-      'Find educational videos from Dr. Leo Polosajian, plus historical presentations, articles, and recovered patient-education materials from Cardiac Rhythm Specialists.',
+      'Watch featured educational videos from Dr. Leo Polosajian, browse Instagram explainers with links to written patient pages, and review historical presentations from Cardiac Rhythm Specialists.',
   },
   '/patient-resources': {
     title: 'Patient Resources | Cardiac Rhythm Specialists in Reseda, CA',

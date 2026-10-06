@@ -36,7 +36,7 @@ export function RelatedContent({
             <li key={link.to}>
               <Link
                 to={link.to}
-                className="flex min-h-14 items-center rounded-xl border border-navy/10 px-4 font-semibold text-navy underline underline-offset-4 hover:border-gold"
+                className="resource-tile flex min-h-14 items-center px-4 font-semibold text-navy underline underline-offset-4"
               >
                 {link.label}
               </Link>

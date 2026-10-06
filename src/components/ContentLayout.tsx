@@ -30,7 +30,7 @@ export function ContentLayout({
   const isTopic = presentation === 'topic'
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-[5.5rem]">
       <Breadcrumbs items={crumbs} />
       <PageHero eyebrow={eyebrow} title={title} intro={intro} />
       <div

@@ -66,7 +66,7 @@ export function NewPatientsPage() {
             <li key={item.label} className="min-w-0">
               <Link
                 to={item.to}
-                className="flex min-h-14 items-center rounded-2xl border border-navy/10 px-5 font-semibold no-underline hover:border-gold"
+                className="resource-tile flex min-h-14 items-center px-5 font-semibold no-underline"
               >
                 {item.label}
               </Link>

@@ -7,10 +7,10 @@ export function About() {
     <section id="about" className="scroll-mt-28 border-t border-navy/10 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <p className="section-label">About {practice.physicianInformal}</p>
-        <h2 className="mt-3 max-w-4xl font-serif text-[clamp(1.5rem,3.6vw,2.25rem)] font-semibold tracking-tight leading-snug text-navy">
+        <h2 className="section-heading mt-4">
           <PhysicianName /> is a cardiologist and cardiac electrophysiologist
         </h2>
-        <div className="mt-6 max-w-2xl space-y-4 text-lg leading-relaxed text-navy">
+        <div className="lede mt-6 space-y-4">
           <p>
             Patients are seen by {practice.physicianInformal} at {practice.legalName} in
             Reseda, California.

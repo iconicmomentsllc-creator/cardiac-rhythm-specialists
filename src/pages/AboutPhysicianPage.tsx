@@ -93,14 +93,14 @@ export function AboutPhysicianPage() {
         </p>
       </section>
 
-      <figure className="mt-10 max-w-xs">
+      <figure className="physician-portrait mt-10">
         <img
           src={practice.photoSrc}
           alt={practice.photoAlt}
           width={340}
           height={452}
           decoding="async"
-          className="aspect-[170/226] h-auto w-full rounded-2xl border border-navy/10 object-cover object-[center_18%]"
+          className="aspect-[170/226] h-auto w-full object-cover object-[center_18%]"
         />
       </figure>
 

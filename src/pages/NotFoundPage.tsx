@@ -5,7 +5,7 @@ export function NotFoundPage() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
       <p className="section-label">Page not found</p>
-      <h1 className="mt-3 font-serif text-[clamp(1.875rem,4vw,2.5rem)] font-semibold tracking-tight text-navy">
+      <h1 className="page-title mt-4">
         We could not find that page
       </h1>
       <p className="mt-5 text-lg leading-relaxed text-navy">

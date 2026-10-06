@@ -2,7 +2,7 @@ import { practice } from '../data/practice'
 
 export function AppointmentCallPanel() {
   return (
-    <div className="rounded-2xl border border-navy/10 bg-white p-6 sm:p-8">
+    <div className="condition-card p-6 sm:p-8">
       <a href={practice.phoneTel} className="btn btn-primary w-full sm:w-auto">
         Call to Request an Appointment
       </a>

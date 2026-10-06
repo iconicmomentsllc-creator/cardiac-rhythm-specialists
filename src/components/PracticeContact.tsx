@@ -2,7 +2,7 @@ import { practice } from '../data/practice'
 
 export function PracticeContact({ heading = 'Office' }: { heading?: string }) {
   return (
-    <section className="mt-12 rounded-2xl border border-navy/10 bg-white p-6" aria-labelledby="practice-contact-heading">
+    <section className="condition-card mt-12 p-6" aria-labelledby="practice-contact-heading">
       <h2 id="practice-contact-heading" className="font-serif text-2xl font-semibold text-navy">
         {heading}
       </h2>

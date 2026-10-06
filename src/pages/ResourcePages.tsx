@@ -35,7 +35,7 @@ export function PatientResourcesPage() {
           <li key={item.to}>
             <Link
               to={item.to}
-              className="block rounded-2xl border border-navy/10 px-6 py-6 no-underline hover:border-gold"
+              className="resource-tile block px-6 py-6 no-underline"
             >
               <h2 className="font-serif text-xl font-semibold text-navy">{item.label}</h2>
               <p className="mt-2 text-lg leading-relaxed text-navy">{item.body}</p>
@@ -165,14 +165,14 @@ export function PhotosPage() {
         { to: '/education', label: 'Patient education' },
       ]}
     >
-      <figure className="mt-6 max-w-xs">
+      <figure className="physician-portrait mt-6">
         <img
           src={practice.photoSrc}
           alt={practice.photoAlt}
           width={340}
           height={452}
           decoding="async"
-          className="aspect-[170/226] h-auto w-full rounded-2xl border border-navy/10 object-cover object-[center_18%]"
+          className="aspect-[170/226] h-auto w-full object-cover object-[center_18%]"
         />
       </figure>
       <p className="mt-6">

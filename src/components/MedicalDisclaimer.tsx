@@ -11,7 +11,7 @@ export function MedicalDisclaimer({
       className={
         compact
           ? 'mt-10 text-base leading-relaxed text-navy'
-          : 'mt-12 rounded-2xl border border-navy/10 bg-mist px-5 py-5 text-base leading-relaxed text-navy'
+          : 'mt-12 rounded-[var(--radius-surface)] border border-navy/10 bg-cream px-5 py-5 text-base leading-relaxed text-navy'
       }
     >
       <p>

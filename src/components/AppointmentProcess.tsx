@@ -32,7 +32,7 @@ export function AppointmentProcess() {
             key={step.title}
             className="flex min-w-0 flex-1 flex-col lg:flex-row lg:items-stretch"
           >
-            <div className="flex-1 rounded-2xl border border-navy/10 bg-white px-5 py-6">
+            <div className="condition-card flex-1 px-5 py-6">
               <p className="text-base font-semibold tracking-wide text-gold">
                 {String(index + 1).padStart(2, '0')}
               </p>

@@ -14,8 +14,8 @@ export function CallToAction({
     <aside
       className={
         variant === 'topic'
-          ? 'mt-14 rounded-xl border border-navy/10 bg-cream px-6 py-8'
-          : 'mt-12 rounded-xl border border-navy/10 bg-mist px-6 py-8'
+          ? 'mt-14 rounded-[var(--radius-surface)] border border-navy/10 bg-cream px-7 py-9'
+          : 'mt-12 rounded-[var(--radius-surface)] border border-navy/10 bg-cream px-7 py-9'
       }
     >
       <h2 className="font-serif text-2xl font-semibold text-navy">{heading}</h2>
