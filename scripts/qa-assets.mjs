@@ -3,6 +3,7 @@ import path from 'node:path'
 
 const publicDir = 'public'
 const srcs = new Set([
+  '/crs-logo.png',
   '/dr-leo-polosajian.jpg',
   '/forms/new-patient-intake-form.pdf',
   '/education/holter-monitoring.jpg',

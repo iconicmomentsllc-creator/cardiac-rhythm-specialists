@@ -36,7 +36,7 @@
 
 @media (min-width: 1536px) {
   :root {
-    --focus-offset-top: 6.25rem;
+    --focus-offset-top: 12rem;
   }
 }
 
@@ -525,50 +525,46 @@ iframe {
 .site-logo {
   display: flex;
   min-width: 0;
-  align-items: center;
-  gap: 0.65rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
 }
 
-.site-logo-mark {
-  width: 2.25rem;
-  height: 2.25rem;
+.site-logo-image {
+  display: block;
+  width: min(100%, 28rem);
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 986 / 235;
+  object-fit: contain;
+  object-position: left center;
   flex-shrink: 0;
 }
 
 .site-logo-text {
   min-width: 0;
-  text-align: left;
-}
-
-.site-logo-name {
-  display: block;
   max-width: 100%;
-  color: var(--color-navy);
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  overflow-wrap: break-word;
-  word-break: keep-all;
-}
-
-.site-logo-meta {
-  display: block;
-  margin-top: 0.2rem;
-  color: var(--color-navy);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  line-height: 1.35;
+  text-align: left;
 }
 
 .site-logo-physician {
   display: block;
+  max-width: 100%;
+  color: var(--color-navy);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .site-logo-specialty {
   display: block;
   margin-top: 0.15rem;
+  color: var(--color-navy);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 @media (min-width: 480px) {
@@ -596,11 +592,11 @@ iframe {
 
   .site-header-inner {
     display: grid;
-    grid-template-columns: minmax(13rem, 15rem) minmax(0, 1fr) auto;
+    grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr) auto;
     align-items: center;
-    gap: 0.35rem 1.15rem;
+    gap: 0.35rem 0.75rem;
     max-width: 96rem;
-    padding: 0.85rem 1.5rem;
+    padding: 0.7rem 1.25rem;
   }
 
   .site-header-brand {
@@ -623,7 +619,7 @@ iframe {
     display: inline-flex;
     min-height: 3rem;
     align-items: center;
-    padding: 0.2rem 0.32rem;
+    padding: 0.2rem 0.18rem;
     color: var(--color-navy);
     font-size: 0.98rem;
     font-weight: 600;
@@ -649,7 +645,7 @@ iframe {
 
   .site-header-cta-btn {
     min-height: 2.85rem;
-    padding-inline: 1rem;
+    padding-inline: 0.8rem;
     font-size: 0.98rem;
     white-space: nowrap;
   }
@@ -660,20 +656,14 @@ iframe {
   }
 
   .site-logo {
-    max-width: 15rem;
+    max-width: 24rem;
   }
 
-  .site-logo-mark {
-    width: 2.15rem;
-    height: 2.15rem;
+  .site-logo-image {
+    width: min(100%, 24rem);
   }
 
-  .site-logo-name {
-    font-size: 1rem;
-    line-height: 1.2;
-  }
-
-  .site-logo-meta {
+  .site-logo-physician {
     font-size: 0.875rem;
     line-height: 1.3;
   }
@@ -717,6 +707,36 @@ iframe {
   html[data-a11y-text="150"] .site-header-panel,
   html[data-a11y-text="162.5"] .site-header-panel {
     display: block;
+  }
+}
+
+@media (min-width: 1680px) {
+  .site-header-inner {
+    grid-template-columns: minmax(20rem, 28rem) minmax(0, 1fr) auto;
+    gap: 0.35rem 1rem;
+    padding: 0.7rem 1.5rem;
+  }
+
+  .site-logo {
+    max-width: 28rem;
+  }
+
+  .site-logo-image {
+    width: min(100%, 28rem);
+  }
+}
+
+@media (min-width: 1920px) {
+  .site-header-inner {
+    grid-template-columns: minmax(22rem, 30rem) minmax(0, 1fr) auto;
+  }
+
+  .site-logo {
+    max-width: 30rem;
+  }
+
+  .site-logo-image {
+    width: min(100%, 30rem);
   }
 }
 
