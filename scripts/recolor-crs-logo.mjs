@@ -2,8 +2,12 @@ import fs from 'node:fs'
 import zlib from 'node:zlib'
 import path from 'node:path'
 
-const SRC = path.resolve('public/crs-logo.png')
+const ORIGINAL = path.resolve(
+  'C:/Users/donmoneymaker/.cursor/projects/c-Users-donmoneymaker-cardiac-rhythm-specialists/assets/CRSLOGO-296ac8da-d75a-4ff4-bcf9-eded1393373f.png',
+)
+const DEST = path.resolve('public/crs-logo.png')
 const NAVY = { r: 0x14, g: 0x20, b: 0x33 }
+const RED = { r: 0x9b, g: 0x1b, b: 0x32 }
 
 const ADAM7 = [
   { x0: 0, y0: 0, dx: 8, dy: 8 },
@@ -99,7 +103,6 @@ function hue(r, g, b) {
 }
 
 function isLettering(r, g, b, a, x) {
-  // Heart occupies the left of the artwork; lettering begins after it.
   if (x < 148) return false
   if (a < 12) return false
   if (r < 80) return false
@@ -111,7 +114,15 @@ function isLettering(r, g, b, a, x) {
   return true
 }
 
-const buf = fs.readFileSync(SRC)
+function isRedLetter(x, y) {
+  if (y <= 140 && x >= 475 && x <= 695) return true
+  if (y >= 148 && x >= 176 && x <= 219) return true
+  if (y >= 148 && x >= 384 && x <= 457) return true
+  if (y >= 148 && x >= 605 && x <= 638) return true
+  return false
+}
+
+const buf = fs.readFileSync(ORIGINAL)
 let offset = 8
 const idats = []
 let w
@@ -156,11 +167,8 @@ if (interlace === 1) {
   unfilter(inflated, w, h, bpp).copy(pixels)
 }
 
-let changed = 0
-let minX = w
-let maxX = 0
-let minY = h
-let maxY = 0
+let red = 0
+let navy = 0
 for (let y = 0; y < h; y += 1) {
   for (let x = 0; x < w; x += 1) {
     const o = (y * w + x) * 4
@@ -169,14 +177,12 @@ for (let y = 0; y < h; y += 1) {
     const b = pixels[o + 2]
     const a = pixels[o + 3]
     if (!isLettering(r, g, b, a, x)) continue
-    pixels[o] = NAVY.r
-    pixels[o + 1] = NAVY.g
-    pixels[o + 2] = NAVY.b
-    changed += 1
-    if (x < minX) minX = x
-    if (x > maxX) maxX = x
-    if (y < minY) minY = y
-    if (y > maxY) maxY = y
+    const color = isRedLetter(x, y) ? RED : NAVY
+    pixels[o] = color.r
+    pixels[o + 1] = color.g
+    pixels[o + 2] = color.b
+    if (color === RED) red += 1
+    else navy += 1
   }
 }
 
@@ -204,7 +210,6 @@ const png = Buffer.concat([
   chunk('IEND', Buffer.alloc(0)),
 ])
 
-fs.writeFileSync(SRC, png)
-console.log(`Recolored ${changed} lettering pixels to #142033`)
-console.log(`Lettering bounds x=${minX}-${maxX} y=${minY}-${maxY} of ${w}x${h}`)
-console.log(`Wrote ${SRC} (${png.length} bytes)`)
+fs.writeFileSync(DEST, png)
+console.log(`Red #9B1B32: ${red} pixels; navy #142033: ${navy} pixels`)
+console.log(`Wrote ${DEST} (${png.length} bytes)`)
