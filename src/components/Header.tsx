@@ -5,7 +5,7 @@ import { MEDIA_SECTION_PATHS } from '../data/media'
 import { practice } from '../data/practice'
 import { Logo } from './Logo'
 
-const DESKTOP_NAV_QUERY = '(min-width: 1536px)'
+const DESKTOP_NAV_QUERY = '(min-width: 1024px)'
 
 const navItems = [
   { to: '/', label: 'Home' },
@@ -130,61 +130,53 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Link
-          to="/"
-          className="site-header-brand"
-          aria-label="Cardiac Rhythm Specialists, Inc. home"
-          aria-current={isActive('/') ? 'page' : undefined}
-          onClick={closeMenu}
-        >
-          <Logo />
-        </Link>
+        <div className="site-header-top">
+          <Link
+            to="/"
+            className="site-header-brand"
+            aria-label="Cardiac Rhythm Specialists, Inc. home"
+            aria-current={isActive('/') ? 'page' : undefined}
+            onClick={closeMenu}
+          >
+            <Logo />
+          </Link>
 
-        <div className="site-header-desktop">
-          <nav aria-label="Primary" className="site-header-nav">
-            {navItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={navClass(item.to)}
-                aria-current={isActive(item.to) ? 'page' : undefined}
-              >
-                {item.label}
+          <div className="site-header-actions">
+            <div className="site-header-cta">
+              <Link to="/appointment-request" className="btn btn-secondary site-header-cta-btn">
+                Request appointment
               </Link>
-            ))}
-          </nav>
-          <div className="site-header-cta">
-            <Link to="/appointment-request" className="btn btn-secondary site-header-cta-btn">
-              Request appointment
-            </Link>
-            <a href={practice.phoneTel} className="btn btn-primary site-header-cta-btn">
-              Call {practice.phoneDisplay}
-            </a>
+              <a href={practice.phoneTel} className="btn btn-primary site-header-cta-btn">
+                Call {practice.phoneDisplay}
+              </a>
+            </div>
+
+            <button
+              ref={menuButtonRef}
+              type="button"
+              className="btn btn-secondary site-header-menu-btn"
+              aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              onClick={() => setOpen((value) => !value)}
+            >
+              {open ? 'Close' : 'Menu'}
+            </button>
           </div>
         </div>
 
-        <div className="site-header-mobile">
-          <Link
-            to="/appointment-request"
-            className="btn btn-secondary site-header-mobile-btn"
-          >
-            Request appointment
-          </Link>
-          <a href={practice.phoneTel} className="btn btn-primary site-header-mobile-btn">
-            Call {practice.phoneDisplay}
-          </a>
-          <button
-            ref={menuButtonRef}
-            type="button"
-            className="btn btn-secondary site-header-menu-btn"
-            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? 'Close' : 'Menu'}
-          </button>
-        </div>
+        <nav aria-label="Primary" className="site-header-nav">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={navClass(item.to)}
+              aria-current={isActive(item.to) ? 'page' : undefined}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
 
       <div
@@ -192,13 +184,13 @@ export function Header() {
         id="mobile-nav"
         className={open ? 'site-header-panel' : 'hidden'}
       >
-        <div className="mx-auto max-w-[1280px] px-4 py-4 sm:px-6">
-          <nav aria-label="Mobile" className="flex flex-col gap-1">
+        <div className="site-header-panel-inner">
+          <nav aria-label="Mobile" className="site-header-panel-nav">
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="flex min-h-14 items-center rounded-xl px-3 text-lg font-semibold text-navy hover:bg-cream"
+                className="site-header-panel-link"
                 aria-current={isActive(item.to) ? 'page' : undefined}
                 onClick={closeMenu}
               >
@@ -206,9 +198,21 @@ export function Header() {
               </Link>
             ))}
           </nav>
+          <div className="site-header-panel-cta">
+            <Link
+              to="/appointment-request"
+              className="btn btn-secondary"
+              onClick={closeMenu}
+            >
+              Request appointment
+            </Link>
+            <a href={practice.phoneTel} className="btn btn-primary" onClick={closeMenu}>
+              Call {practice.phoneDisplay}
+            </a>
+          </div>
           <button
             type="button"
-            className="btn btn-secondary mt-4 w-full"
+            className="btn btn-secondary site-header-panel-close"
             onClick={() => {
               closeMenu()
               menuButtonRef.current?.focus()
