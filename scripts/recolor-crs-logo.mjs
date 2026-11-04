@@ -117,7 +117,7 @@ function isLettering(r, g, b, a, x) {
 function isRedLetter(x, y) {
   if (y <= 140 && x >= 475 && x <= 695) return true
   if (y >= 148 && x >= 176 && x <= 219) return true
-  if (y >= 148 && x >= 384 && x <= 457) return true
+  if (y >= 148 && x >= 384 && x <= 431) return true
   if (y >= 148 && x >= 605 && x <= 638) return true
   return false
 }
